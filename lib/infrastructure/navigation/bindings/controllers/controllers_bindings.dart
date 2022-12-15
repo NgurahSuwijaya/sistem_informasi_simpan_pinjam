@@ -1,0 +1,1 @@
+export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/home.controller.binding.dart'; 
