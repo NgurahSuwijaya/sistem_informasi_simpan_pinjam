@@ -26,5 +26,5 @@ class AppFont {
       const TextStyle(fontSize: 10, fontWeight: FontWeight.w400);
 
   static TextStyle get button =>
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.w700);
+      const TextStyle(fontSize: 14, fontWeight: FontWeight.w700);
 }

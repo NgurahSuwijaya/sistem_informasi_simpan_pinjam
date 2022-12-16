@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
 
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
@@ -19,7 +20,11 @@ class Main extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: initialRoute,
       getPages: Nav.routes,
-      theme: ThemeData(fontFamily: "Poppins"),
+      theme: ThemeData(
+        fontFamily: "Poppins",
+        primaryColor: AppColor.green1,
+        colorScheme: AppColor.kColorScheme,
+      ),
     );
   }
 }
