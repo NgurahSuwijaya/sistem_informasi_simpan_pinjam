@@ -42,37 +42,21 @@ class LoginScreen extends GetView<LoginController> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                AppInput(hint: "Email"),
+                AppInput(
+                  hint: "Email",
+                  obscureText: false,
+                ),
                 const SizedBox(
                   height: 15,
                 ),
                 Obx(() {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Password",
-                        style: AppFont.title1,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      TextFormField(
-                        controller: controller.passwordController,
-                        obscureText: !controller.isPasswordVisible.value,
-                        decoration: InputDecoration(
-                            hintText: "Password",
-                            hintStyle: const TextStyle(color: AppColor.gray2),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide:
-                                    const BorderSide(color: AppColor.gray1)),
-                            suffixIcon: IconButton(
-                                icon: const Icon(Icons.remove_red_eye),
-                                onPressed: controller.onShowPassword)),
-                      ),
-                    ],
+                  return AppInput(
+                    hint: "Password",
+                    obscureText: !controller.isPasswordVisible.value,
+                    sufixIcons: IconButton(
+                      icon: const Icon(Icons.remove_red_eye),
+                      onPressed: controller.onShowPassword,
+                    ),
                   );
                 }),
                 const SizedBox(

@@ -7,12 +7,17 @@ import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dar
 class AppInput extends StatefulWidget {
   final String hint;
   TextEditingController? controller;
+  final bool obscureText;
+  final Widget? prefixIcons;
+  final Widget? sufixIcons;
 
-  AppInput({
-    super.key,
-    required this.hint,
-    this.controller,
-  });
+  AppInput(
+      {super.key,
+      required this.hint,
+      this.controller,
+      required this.obscureText,
+      this.prefixIcons,
+      this.sufixIcons});
 
   @override
   State<AppInput> createState() => _AppInputState();
@@ -36,9 +41,12 @@ class _AppInputState extends State<AppInput> {
             ),
             TextFormField(
               controller: widget.controller,
+              obscureText: widget.obscureText,
               decoration: InputDecoration(
                   hintText: widget.hint,
                   hintStyle: const TextStyle(color: AppColor.gray2),
+                  suffixIcon: widget.sufixIcons,
+                  prefixIcon: widget.prefixIcons,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(color: AppColor.gray1))),
