@@ -41,5 +41,15 @@ class Nav {
       page: () => const DashboardScreen(),
       binding: DashboardControllerBinding(),
     ),
+    GetPage(
+      name: Routes.PROFILE,
+      page: () => const ProfileScreen(),
+      binding: ProfileControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.NOTIFICATION,
+      page: () => const NotificationScreen(),
+      binding: NotificationControllerBinding(),
+    ),
   ];
 }
