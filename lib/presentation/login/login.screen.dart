@@ -44,6 +44,8 @@ class LoginScreen extends GetView<LoginController> {
               children: [
                 AppInput(
                   hint: "Email",
+                  canEdit: true,
+                  topText: "Email",
                   obscureText: false,
                 ),
                 const SizedBox(
@@ -51,6 +53,8 @@ class LoginScreen extends GetView<LoginController> {
                 ),
                 Obx(() {
                   return AppInput(
+                    topText: "Password",
+                    canEdit: true,
                     hint: "Password",
                     obscureText: !controller.isPasswordVisible.value,
                     sufixIcons: IconButton(
@@ -64,7 +68,9 @@ class LoginScreen extends GetView<LoginController> {
                 ),
                 AppButton(
                   text: "Masuk",
-                  onPressed: (() {}),
+                  onPressed: (() {
+                    Get.toNamed("/home");
+                  }),
                 ),
               ],
             ),

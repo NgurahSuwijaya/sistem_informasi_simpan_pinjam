@@ -5,10 +5,16 @@ import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.da
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dart';
 
 class AppButton extends StatelessWidget {
-  AppButton({super.key, required this.text, this.onPressed, this.width = 500});
+  AppButton(
+      {super.key,
+      required this.text,
+      this.onPressed,
+      this.width = 500,
+      this.color});
   final String text;
   final Function()? onPressed;
   double? width;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +24,7 @@ class AppButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+            backgroundColor: color,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
         child: Text(

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/profile/component/profile_content.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/profile/component/profile_footer.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/profile/component/profile_header.dart';
 
 import 'controllers/profile.controller.dart';
 
@@ -9,16 +13,29 @@ class ProfileScreen extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ProfileScreen'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'ProfileScreen is working',
-          style: TextStyle(fontSize: 20),
+        backgroundColor: AppColor.gray3,
+        appBar: AppBar(
+          title: const Text('Profile'),
+          centerTitle: true,
         ),
-      ),
-    );
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                ProfileHeader(),
+                SizedBox(
+                  height: 30,
+                ),
+                ProfileContent(),
+                SizedBox(
+                  height: 20,
+                ),
+                ProfileFooter()
+              ],
+            ),
+          ),
+        ));
   }
 }

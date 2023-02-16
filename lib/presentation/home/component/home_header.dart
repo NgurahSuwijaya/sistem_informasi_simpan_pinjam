@@ -41,7 +41,12 @@ class HomeHeader extends StatelessWidget {
           ),
         ],
       ),
-      IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.bell))
+      IconButton(
+          onPressed: () {},
+          icon: Icon(
+            CupertinoIcons.bell_fill,
+            color: AppColor.gray4,
+          ))
     ]);
   }
 }

@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
+import 'package:get/get.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_card_button.dart';
@@ -25,9 +22,11 @@ class HomeFooter extends StatelessWidget {
                   Column(
                     children: [
                       AppCardButton(
-                        icon: Icon(CupertinoIcons.book_fill),
+                        icon: const Icon(CupertinoIcons.book_fill),
                         color: AppColor.sPurple,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed('/simpanan');
+                        },
                       ),
                       Text(
                         "Simpanan",
@@ -42,9 +41,11 @@ class HomeFooter extends StatelessWidget {
                   Column(
                     children: [
                       AppCardButton(
-                        icon: Icon(CupertinoIcons.money_dollar),
+                        icon: const Icon(CupertinoIcons.money_dollar),
                         color: AppColor.sYellow,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed('/pinjaman');
+                        },
                       ),
                       Text(
                         "Informasi",
@@ -59,7 +60,7 @@ class HomeFooter extends StatelessWidget {
                   Column(
                     children: [
                       AppCardButton(
-                        icon: Icon(CupertinoIcons.calendar_today),
+                        icon: const Icon(CupertinoIcons.calendar_today),
                         color: AppColor.sBlue,
                         onPressed: () {},
                       ),
@@ -76,7 +77,7 @@ class HomeFooter extends StatelessWidget {
                   Column(
                     children: [
                       AppCardButton(
-                        icon: Icon(CupertinoIcons.plus_app_fill),
+                        icon: const Icon(CupertinoIcons.plus_app_fill),
                         color: AppColor.sRed,
                         onPressed: () {},
                       ),
@@ -92,17 +93,17 @@ class HomeFooter extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
                     children: [
                       AppCardButton(
-                        icon: Icon(CupertinoIcons.clock_fill),
+                        icon: const Icon(CupertinoIcons.clock_fill),
                         color: AppColor.sBlue,
                         onPressed: () {},
                       ),
@@ -112,14 +113,14 @@ class HomeFooter extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    width: 23,
-                  ),
+                  // const SizedBox(
+                  //   width: 23,
+                  // ),
                   Column(
                     children: [
                       AppCardButton(
-                        icon: Icon(CupertinoIcons.bell),
-                        color: AppColor.sRed,
+                        icon: const Icon(CupertinoIcons.bell_fill),
+                        color: AppColor.green1,
                         onPressed: () {},
                       ),
                       Text(
@@ -128,18 +129,38 @@ class HomeFooter extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    width: 23,
-                  ),
+                  // const SizedBox(
+                  //   width: 23,
+                  // ),
                   Column(
                     children: [
                       AppCardButton(
-                        icon: Icon(CupertinoIcons.person_fill),
+                        icon: const Icon(CupertinoIcons.person_fill),
                         color: AppColor.gray2,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed("/profile");
+                        },
                       ),
                       Text(
                         "Profil",
+                        style: AppFont.subtitle3,
+                      ),
+                    ],
+                  ),
+                  // const SizedBox(
+                  //   width: 23,
+                  // ),
+                  Column(
+                    children: [
+                      AppCardButton(
+                        icon: const Icon(CupertinoIcons.arrow_right),
+                        color: AppColor.sRed,
+                        onPressed: () {
+                          Get.toNamed("/profile");
+                        },
+                      ),
+                      Text(
+                        "Keluar",
                         style: AppFont.subtitle3,
                       ),
                     ],

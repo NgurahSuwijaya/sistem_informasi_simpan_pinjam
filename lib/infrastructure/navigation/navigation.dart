@@ -51,5 +51,40 @@ class Nav {
       page: () => const NotificationScreen(),
       binding: NotificationControllerBinding(),
     ),
+    GetPage(
+      name: Routes.EDIT_PROFILE,
+      page: () => const EditProfileScreen(),
+      binding: EditProfileControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.SIMPANAN,
+      page: () => const SimpananScreen(),
+      binding: SimpananControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_SIMPANAN,
+      page: () => const DetailSimpananScreen(),
+      binding: DetailSimpananControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.PINJAMAN,
+      page: () => const PinjamanScreen(),
+      binding: PinjamanControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ANGSURAN,
+      page: () => const AngsuranScreen(),
+      binding: AngsuranControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.PENGAJUAN,
+      page: () => const PengajuanScreen(),
+      binding: PengajuanControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.HISTORY,
+      page: () => const HistoryScreen(),
+      binding: HistoryControllerBinding(),
+    ),
   ];
 }
