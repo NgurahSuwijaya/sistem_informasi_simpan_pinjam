@@ -79,7 +79,9 @@ class HomeFooter extends StatelessWidget {
                       AppCardButton(
                         icon: const Icon(CupertinoIcons.plus_app_fill),
                         color: AppColor.sRed,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed('/pengajuan');
+                        },
                       ),
                       Text(
                         "Pengajuan",

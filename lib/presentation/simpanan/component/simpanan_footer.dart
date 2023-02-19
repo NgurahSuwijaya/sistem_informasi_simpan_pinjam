@@ -1,6 +1,8 @@
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
 
 class SimpananFooter extends StatelessWidget {
@@ -12,7 +14,9 @@ class SimpananFooter extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: AppButton(
         text: "Lanjutkan",
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed('/detail-simpanan');
+        },
       ),
     );
   }

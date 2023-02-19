@@ -78,13 +78,18 @@ class Nav {
     ),
     GetPage(
       name: Routes.PENGAJUAN,
-      page: () => const PengajuanScreen(),
+      page: () => PengajuanScreen(),
       binding: PengajuanControllerBinding(),
     ),
     GetPage(
       name: Routes.HISTORY,
       page: () => const HistoryScreen(),
       binding: HistoryControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_PENGAJUAN,
+      page: () => const DetailPengajuanScreen(),
+      binding: DetailPengajuanControllerBinding(),
     ),
   ];
 }

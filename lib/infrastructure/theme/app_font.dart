@@ -13,10 +13,13 @@ class AppFont {
       color: AppColor.blackComponent);
 
   static TextStyle get title1 => const TextStyle(
-      fontSize: 16, fontWeight: FontWeight.w700, color: AppColor.gray4);
+      fontSize: 16, fontWeight: FontWeight.w800, color: AppColor.gray4);
 
   static TextStyle get title2 => const TextStyle(
       fontSize: 16, fontWeight: FontWeight.w500, color: AppColor.green1);
+
+  static TextStyle get title3 => const TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: AppColor.gray4);
 
   static TextStyle get hint => const TextStyle(
       fontSize: 12,
@@ -42,5 +45,5 @@ class AppFont {
       color: AppColor.blackComponent);
 
   static TextStyle get button => const TextStyle(
-      fontSize: 14, fontWeight: FontWeight.w700, color: AppColor.white);
+      fontSize: 16, fontWeight: FontWeight.w700, color: AppColor.white);
 }

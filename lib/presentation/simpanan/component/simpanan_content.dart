@@ -22,6 +22,7 @@ class _SimpananContentState extends State<SimpananContent> {
     'Simpanan Wajib',
     'Simpanan Pribadi',
   ];
+
   final List<String> bankTujuan = [
     'BCA',
     'BRI',
@@ -137,7 +138,7 @@ class _SimpananContentState extends State<SimpananContent> {
                         ),
                         SizedBox(
                           height: 40,
-                          width: 90,
+                          width: 100,
                           child: ElevatedButton(
                             onPressed: (() {}),
                             style: ElevatedButton.styleFrom(
