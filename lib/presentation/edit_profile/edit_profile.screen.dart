@@ -31,7 +31,10 @@ class EditProfileScreen extends GetView<EditProfileController> {
                   ),
                   EditProfileHeader(),
                   EditProfileContent(),
-                  EditProfileFooter()
+                  EditProfileFooter(),
+                  SizedBox(
+                    height: 100,
+                  )
                 ],
               ),
             ),

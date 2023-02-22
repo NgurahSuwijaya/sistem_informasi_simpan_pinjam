@@ -31,7 +31,10 @@ class SimpananScreen extends GetView<SimpananController> {
                   ),
                   SimpananHeader(),
                   SimpananContent(),
-                  SimpananFooter()
+                  SimpananFooter(),
+                  SizedBox(
+                    height: 100,
+                  )
                 ],
               ),
             ),

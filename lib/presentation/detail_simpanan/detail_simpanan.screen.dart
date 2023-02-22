@@ -87,7 +87,7 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
                                     style: AppFont.title1,
                                   ),
                                   const SizedBox(
-                                    height: 5,
+                                    height: 10,
                                   ),
                                   Row(
                                     mainAxisAlignment:
@@ -143,7 +143,7 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
                                     style: AppFont.title1,
                                   ),
                                   const SizedBox(
-                                    height: 5,
+                                    height: 10,
                                   ),
                                   Row(
                                     mainAxisAlignment:
@@ -172,7 +172,7 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
                                       ),
                                       Text(
                                         "Rp 1,000,0000,000",
-                                        style: AppFont.title2,
+                                        style: AppFont.title4,
                                       ),
                                     ],
                                   ),

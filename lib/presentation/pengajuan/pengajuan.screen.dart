@@ -295,7 +295,7 @@ class PengajuanScreen extends GetView<PengajuanController> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -319,7 +319,10 @@ class PengajuanScreen extends GetView<PengajuanController> {
                       )
                     ],
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 70,
+                ),
               ],
             ),
           ),

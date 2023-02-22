@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'controllers/angsuran.controller.dart';
+import 'controllers/angsuran_menetap.controller.dart';
 
-class AngsuranScreen extends GetView<AngsuranController> {
-  const AngsuranScreen({Key? key}) : super(key: key);
+class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
+  const AngsuranMenetapScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AngsuranScreen'),
+        title: const Text('AngsuranMenetapScreen'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'AngsuranScreen is working',
+          'AngsuranMenetapScreen is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

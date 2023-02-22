@@ -83,11 +83,84 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
+                                  'Keterangan Jaminan',
+                                  style: AppFont.title1,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Tipe Jaminan",
+                                      style: AppFont.title3,
+                                    ),
+                                    Text(
+                                      "Kendaraan Roda Dua",
+                                      style: AppFont.title2,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Nama Jaminan",
+                                      style: AppFont.title3,
+                                    ),
+                                    Text(
+                                      "Vario 150 (2022)",
+                                      style: AppFont.title2,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Nilai Aset Jaminan",
+                                      style: AppFont.title3,
+                                    ),
+                                    Text(
+                                      "Rp15,000,000",
+                                      style: AppFont.title2,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )),
+                      Container(
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              bottom:
+                                  BorderSide(width: 1.0, color: AppColor.gray5),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 25, vertical: 20),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
                                   'Informasi Pengajuan',
                                   style: AppFont.title1,
                                 ),
                                 const SizedBox(
-                                  height: 5,
+                                  height: 10,
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -176,28 +249,6 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          )),
-                      Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom:
-                                  BorderSide(width: 1.0, color: AppColor.gray5),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 20),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Keterangan Simpanan',
-                                  style: AppFont.title1,
-                                ),
                                 const SizedBox(
                                   height: 5,
                                 ),
@@ -206,29 +257,23 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Jenis Transaksi",
+                                      "Jumlah Pinjaman",
                                       style: AppFont.title3,
                                     ),
-                                    Text(
-                                      "Simpanan Wajib",
-                                      style: AppFont.title2,
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Jumlah",
-                                      style: AppFont.title3,
-                                    ),
-                                    Text(
-                                      "Rp 1,000,0000,000",
-                                      style: AppFont.title2,
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Rp",
+                                          style: AppFont.title4,
+                                        ),
+                                        const SizedBox(
+                                          width: 1,
+                                        ),
+                                        Text(
+                                          '50,000,000',
+                                          style: AppFont.title4,
+                                        )
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -271,7 +316,7 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                 AppButton(
                   text: "Simpan",
                   onPressed: () {
-                    Get.toNamed('/detail-simpanan');
+                    Get.toNamed('');
                   },
                 ),
                 const SizedBox(
@@ -283,6 +328,9 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                   onPressed: () {
                     Get.back();
                   },
+                ),
+                const SizedBox(
+                  height: 40,
                 ),
               ],
             ),

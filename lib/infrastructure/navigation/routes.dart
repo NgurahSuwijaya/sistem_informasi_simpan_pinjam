@@ -5,7 +5,9 @@ class Routes {
   }
 
   static const ANGSURAN = '/angsuran';
+  static const ANGSURAN_MENURUN = '/angsuran-menurun';
   static const DASHBOARD = '/dashboard';
+  static const DETAIL_PENGAJUAN = '/detail-pengajuan';
   static const DETAIL_SIMPANAN = '/detail-simpanan';
   static const EDIT_PROFILE = '/edit-profile';
   static const HISTORY = '/history';
@@ -16,5 +18,5 @@ class Routes {
   static const PINJAMAN = '/pinjaman';
   static const PROFILE = '/profile';
   static const SIMPANAN = '/simpanan';
-  static const DETAIL_PENGAJUAN = '/detail-pengajuan';
+  static const ANGSURAN_MENETAP = '/angsuran-menetap';
 }

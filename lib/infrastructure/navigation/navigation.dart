@@ -72,11 +72,6 @@ class Nav {
       binding: PinjamanControllerBinding(),
     ),
     GetPage(
-      name: Routes.ANGSURAN,
-      page: () => const AngsuranScreen(),
-      binding: AngsuranControllerBinding(),
-    ),
-    GetPage(
       name: Routes.PENGAJUAN,
       page: () => PengajuanScreen(),
       binding: PengajuanControllerBinding(),
@@ -90,6 +85,16 @@ class Nav {
       name: Routes.DETAIL_PENGAJUAN,
       page: () => const DetailPengajuanScreen(),
       binding: DetailPengajuanControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ANGSURAN_MENURUN,
+      page: () => const AngsuranMenurunScreen(),
+      binding: AngsuranMenurunControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ANGSURAN_MENETAP,
+      page: () => const AngsuranMenetapScreen(),
+      binding: AngsuranMenetapControllerBinding(),
     ),
   ];
 }

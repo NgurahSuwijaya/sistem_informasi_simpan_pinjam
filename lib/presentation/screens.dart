@@ -1,4 +1,5 @@
-export 'package:sistem_informasi_simpan_pinjam/presentation/angsuran/angsuran.screen.dart';
+export 'package:sistem_informasi_simpan_pinjam/presentation/angsuran_menetap/angsuran_menetap.screen.dart';
+export 'package:sistem_informasi_simpan_pinjam/presentation/angsuran_menurun/angsuran_menurun.screen.dart';
 export 'package:sistem_informasi_simpan_pinjam/presentation/dashboard/dashboard.screen.dart';
 export 'package:sistem_informasi_simpan_pinjam/presentation/detail_pengajuan/detail_pengajuan.screen.dart';
 export 'package:sistem_informasi_simpan_pinjam/presentation/detail_simpanan/detail_simpanan.screen.dart';

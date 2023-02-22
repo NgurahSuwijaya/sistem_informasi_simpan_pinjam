@@ -28,7 +28,10 @@ class PinjamanScreen extends GetView<PinjamanController> {
                   ),
                   PinjamanHeader(),
                   PinjamanContent(),
-                  PinjamanFooter()
+                  PinjamanFooter(),
+                  SizedBox(
+                    height: 100,
+                  )
                 ],
               ),
             ),

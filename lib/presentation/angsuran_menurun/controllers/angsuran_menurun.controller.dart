@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class AngsuranController extends GetxController {
-  //TODO: Implement AngsuranController
+class AngsuranMenurunController extends GetxController {
+  //TODO: Implement AngsuranMenurunController
 
   final count = 0.obs;
   @override
