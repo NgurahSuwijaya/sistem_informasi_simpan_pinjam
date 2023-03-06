@@ -54,6 +54,8 @@ class _AppInputState extends State<AppInput> {
               keyboardType: widget.textInputType,
               controller: widget.controller,
               obscureText: widget.obscureText,
+              // maxLines: 7,
+              // minLines: 1,
               decoration: InputDecoration(
                   hintText: widget.hint,
                   hintStyle: const TextStyle(color: AppColor.gray1),

@@ -23,6 +23,10 @@ class AppFont {
 
   static TextStyle get title4 => const TextStyle(
       fontSize: 16, fontWeight: FontWeight.w800, color: AppColor.green1);
+  static TextStyle get title41 => const TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w800, color: AppColor.sRed);
+  static TextStyle get title42 => const TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w800, color: AppColor.sPurple);
 
   static TextStyle get hint => const TextStyle(
       fontSize: 12,

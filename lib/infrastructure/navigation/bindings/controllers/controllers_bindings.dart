@@ -1,6 +1,7 @@
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/angsuran_menetap.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/angsuran_menurun.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/dashboard.controller.binding.dart';
+export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/detail_angsuran.controller.binding.dart'; 
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/detail_pengajuan.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/detail_simpanan.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/edit_profile.controller.binding.dart';

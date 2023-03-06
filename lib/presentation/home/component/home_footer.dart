@@ -62,7 +62,9 @@ class HomeFooter extends StatelessWidget {
                       AppCardButton(
                         icon: const Icon(CupertinoIcons.calendar_today),
                         color: AppColor.sBlue,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed('/angsuran-menetap');
+                        },
                       ),
                       Text(
                         "Angsuran",
@@ -107,7 +109,9 @@ class HomeFooter extends StatelessWidget {
                       AppCardButton(
                         icon: const Icon(CupertinoIcons.clock_fill),
                         color: AppColor.sBlue,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed('/notification');
+                        },
                       ),
                       Text(
                         "Mutasi",

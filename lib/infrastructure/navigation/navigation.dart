@@ -93,8 +93,13 @@ class Nav {
     ),
     GetPage(
       name: Routes.ANGSURAN_MENETAP,
-      page: () => const AngsuranMenetapScreen(),
+      page: () => AngsuranMenetapScreen(),
       binding: AngsuranMenetapControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_ANGSURAN,
+      page: () => const DetailAngsuranScreen(),
+      binding: DetailAngsuranControllerBinding(),
     ),
   ];
 }
