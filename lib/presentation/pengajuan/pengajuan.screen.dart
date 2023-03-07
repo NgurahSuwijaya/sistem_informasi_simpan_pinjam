@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
-
 import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
 import '../../widget/app_dropdown.dart';
