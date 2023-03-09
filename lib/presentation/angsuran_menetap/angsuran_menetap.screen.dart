@@ -136,35 +136,35 @@ class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
                               ],
                             ),
                           )),
-                      Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom:
-                                  BorderSide(width: 1.0, color: AppColor.gray5),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 20),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Angsuran Ke-",
-                                  style: AppFont.title3,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "Ke 4",
-                                  style: AppFont.title4,
-                                ),
-                              ],
-                            ),
-                          )),
+                      // Container(
+                      //     width: double.infinity,
+                      //     decoration: const BoxDecoration(
+                      //       border: Border(
+                      //         bottom:
+                      //             BorderSide(width: 1.0, color: AppColor.gray5),
+                      //       ),
+                      //     ),
+                      //     child: Padding(
+                      //       padding: const EdgeInsets.symmetric(
+                      //           horizontal: 25, vertical: 20),
+                      //       child: Column(
+                      //         mainAxisAlignment: MainAxisAlignment.start,
+                      //         crossAxisAlignment: CrossAxisAlignment.start,
+                      //         children: [
+                      //           Text(
+                      //             "Angsuran Ke-",
+                      //             style: AppFont.title3,
+                      //           ),
+                      //           const SizedBox(
+                      //             height: 5,
+                      //           ),
+                      //           Text(
+                      //             "Ke 4",
+                      //             style: AppFont.title4,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     )),
                       Container(
                           width: double.infinity,
                           decoration: const BoxDecoration(
