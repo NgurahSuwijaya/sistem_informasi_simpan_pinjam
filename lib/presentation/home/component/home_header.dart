@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/home/controllers/home.controller.dart';
 
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key});
+  final HomeController controller;
+  HomeHeader({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +29,10 @@ class HomeHeader extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Hallo Aris',
-                style: AppFont.h2,
-              ),
+              Obx((() => Text(
+                    controller.simpananData.value.member.user.name,
+                    style: AppFont.h2,
+                  ))),
               SizedBox(
                 height: 5,
               ),

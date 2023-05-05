@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/home/controllers/home.controller.dart';
 
 class HomeContent extends StatelessWidget {
-  const HomeContent({super.key});
+  final HomeController homeController;
+  const HomeContent({super.key, required this.homeController});
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +44,26 @@ class HomeContent extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text(
-                    "Rp 1.000.000.000",
-                    style: TextStyle(
-                        color: AppColor.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700),
+                  Row(
+                    children: [
+                      const Text(
+                        "Rp",
+                        style: TextStyle(
+                            color: AppColor.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Obx((() => Text(
+                            homeController.simpananData.value.saldo.toString(),
+                            style: const TextStyle(
+                                color: AppColor.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700),
+                          )))
+                    ],
                   ),
                   const SizedBox(
                     height: 70,
@@ -54,14 +71,16 @@ class HomeContent extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "ID070801",
-                        style: AppFont.subtitle1,
-                      ),
-                      Text(
-                        "USIP A",
-                        style: AppFont.subtitle1,
-                      )
+                      Obx((() => Text(
+                            homeController
+                                .simpananData.value.member.nomorIndukAnggota,
+                            style: AppFont.subtitle1,
+                          ))),
+                      Obx((() => Text(
+                            homeController.simpananData.value.member.user
+                                .institutions.name,
+                            style: AppFont.subtitle1,
+                          ))),
                     ],
                   )
                 ],

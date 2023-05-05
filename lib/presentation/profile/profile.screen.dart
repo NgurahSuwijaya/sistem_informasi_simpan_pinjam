@@ -15,27 +15,35 @@ class ProfileScreen extends GetView<ProfileController> {
     return Scaffold(
         backgroundColor: AppColor.gray3,
         appBar: AppBar(
-          title: const Text('Profile'),
+          title: const Text('Profil Anggota'),
           centerTitle: true,
         ),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                ProfileHeader(),
-                SizedBox(
-                  height: 30,
+        body: Obx(() => controller.isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ProfileHeader(
+                        profileController: controller,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      ProfileContent(
+                        profileController: controller,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ProfileFooter(
+                        profileController: controller,
+                      )
+                    ],
+                  ),
                 ),
-                ProfileContent(),
-                SizedBox(
-                  height: 20,
-                ),
-                ProfileFooter()
-              ],
-            ),
-          ),
-        ));
+              )));
   }
 }

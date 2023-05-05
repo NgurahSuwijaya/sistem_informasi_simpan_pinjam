@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/controllers/pinjaman.controller.dart';
 
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_input.dart';
 
 class PinjamanFooter extends StatelessWidget {
-  const PinjamanFooter({super.key});
+  const PinjamanFooter({super.key, required PinjamanController controller});
 
   @override
   Widget build(BuildContext context) {

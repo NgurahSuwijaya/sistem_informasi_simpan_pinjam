@@ -16,7 +16,7 @@ class EditProfileScreen extends GetView<EditProfileController> {
     return Scaffold(
         backgroundColor: AppColor.gray3,
         appBar: AppBar(
-          title: const Text('EditProfileScreen'),
+          title: const Text('Edit Profile'),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -30,6 +30,9 @@ class EditProfileScreen extends GetView<EditProfileController> {
                     height: 20,
                   ),
                   EditProfileHeader(),
+                  SizedBox(
+                    height: 20,
+                  ),
                   EditProfileContent(),
                   EditProfileFooter(),
                   SizedBox(

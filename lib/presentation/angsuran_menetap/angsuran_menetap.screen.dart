@@ -7,8 +7,9 @@ import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
 import '../../widget/app_button.dart';
 import '../../widget/app_card_button.dart';
-import '../../widget/app_dropdown.dart';
+import '../../widget/app_pengajuan_dropdown.dart';
 import '../../widget/app_input.dart';
+import '../../widget/app_simpanan_dropdown.dart';
 import 'controllers/angsuran_menetap.controller.dart';
 
 class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
@@ -324,19 +325,21 @@ class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 AppInput(
-                                    value: '11 November 2023',
-                                    hint: 'Tanggal Pembayaran',
-                                    topText: 'Tanggal Pembayaran',
-                                    obscureText: false,
-                                    canEdit: false),
+                                  value: '11 November 2023',
+                                  hint: 'Tanggal Pembayaran',
+                                  topText: 'Tanggal Pembayaran',
+                                  obscureText: false,
+                                  canEdit: false,
+                                ),
                                 const SizedBox(
                                   height: 20,
                                 ),
                                 AppInput(
-                                    hint: 'Rp 1.000.000',
-                                    topText: 'Jumlah yang dibayarkan',
-                                    obscureText: false,
-                                    canEdit: true),
+                                  hint: 'Rp 1.000.000',
+                                  topText: 'Jumlah yang dibayarkan',
+                                  obscureText: false,
+                                  canEdit: true,
+                                ),
                                 const SizedBox(
                                   height: 20,
                                 ),
@@ -381,7 +384,7 @@ class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    AppDropDown(
+                                    AppSimpananDropDown(
                                       items: bank,
                                       name: 'Bank Tujuan',
                                     ),
@@ -391,11 +394,12 @@ class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
                                   height: 20,
                                 ),
                                 AppInput(
-                                    hint: '',
-                                    value: '7729029094',
-                                    topText: 'Nomor Rekening Koperasi',
-                                    obscureText: false,
-                                    canEdit: true),
+                                  hint: '',
+                                  value: '7729029094',
+                                  topText: 'Nomor Rekening Koperasi',
+                                  obscureText: false,
+                                  canEdit: true,
+                                ),
                                 const SizedBox(
                                   height: 20,
                                 ),

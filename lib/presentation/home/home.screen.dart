@@ -13,15 +13,31 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.gray3,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
-          child: Column(
-            children: const [HomeHeader(), HomeContent(), HomeFooter()],
-          ),
-        ),
-      ),
-    );
+        backgroundColor: AppColor.gray3,
+        body: Obx(
+          () => controller.isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : SafeArea(
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(left: 30, right: 30, top: 10),
+                    child: Column(
+                      children: [
+                        HomeHeader(
+                          controller: controller,
+                        ),
+                        HomeContent(
+                          homeController: controller,
+                        ),
+                        HomeFooter(
+                          homeController: controller,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+        ));
   }
 }

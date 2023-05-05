@@ -25,50 +25,53 @@ class EditProfileContent extends StatelessWidget {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
+              // AppInput(
+              //   topText: "Nama",
+              //   hint: "Nama",
+              //   canEdit: true,
+              //   obscureText: false,
+              //   prefixIcons: Icon(CupertinoIcons.person_2_fill),
+              // ),
+              // SizedBox(
+              //   height: 10,
+              // ),
+              // AppInput(
+              //   topText: "Email",
+              //   hint: "Email",
+              //   canEdit: true,
+              //   obscureText: false,
+              //   prefixIcons: Icon(CupertinoIcons.mail_solid),
+              // ),
+              // SizedBox(
+              //   height: 10,
+              // ),
+              // AppInput(
+              //   topText: "Instansi",
+              //   hint: "Instansi",
+              //   canEdit: true,
+              //   obscureText: false,
+              //   prefixIcons: Icon(CupertinoIcons.house_fill),
+              // ),
+              // SizedBox(
+              //   height: 10,
+              // ),
               AppInput(
-                topText: "Nama",
-                hint: "Nama",
+                topText: "Telepon",
+                canEdit: true,
+                hint: "Telepon",
+                obscureText: false,
+                prefixIcons: Icon(CupertinoIcons.phone_fill),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              AppInput(
+                topText: "Alamat",
+                hint: "Alamat",
                 canEdit: true,
                 obscureText: false,
-                prefixIcons: Icon(CupertinoIcons.person_2_fill),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              AppInput(
-                topText: "Email",
-                hint: "Email",
-                canEdit: true,
-                obscureText: false,
-                prefixIcons: Icon(CupertinoIcons.mail_solid),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              AppInput(
-                  topText: "Instansi",
-                  hint: "Instansi",
-                  canEdit: true,
-                  obscureText: false,
-                  prefixIcons: Icon(CupertinoIcons.house_fill)),
-              SizedBox(
-                height: 10,
-              ),
-              AppInput(
-                  topText: "Telepon",
-                  canEdit: true,
-                  hint: "Telepon",
-                  obscureText: false,
-                  prefixIcons: Icon(CupertinoIcons.phone_fill)),
-              SizedBox(
-                height: 10,
-              ),
-              AppInput(
-                  topText: "Alamat",
-                  hint: "Alamat",
-                  canEdit: true,
-                  obscureText: false,
-                  prefixIcons: Icon(CupertinoIcons.placemark_fill))
+                prefixIcons: Icon(CupertinoIcons.placemark_fill),
+              )
             ],
           )),
     );

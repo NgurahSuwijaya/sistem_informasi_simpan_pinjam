@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/home/controllers/home.controller.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_card_button.dart';
 
 class HomeFooter extends StatelessWidget {
-  const HomeFooter({super.key});
+  final HomeController homeController;
+  const HomeFooter({super.key, required this.homeController});
 
   @override
   Widget build(BuildContext context) {

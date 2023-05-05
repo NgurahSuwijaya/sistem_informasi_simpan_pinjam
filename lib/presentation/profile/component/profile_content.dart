@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/profile/controllers/profile.controller.dart';
 
 class ProfileContent extends StatelessWidget {
-  const ProfileContent({super.key});
+  final ProfileController profileController;
+  const ProfileContent({super.key, required this.profileController});
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +34,11 @@ class ProfileContent extends StatelessWidget {
                   bottom: BorderSide(width: 1.0, color: AppColor.gray1),
                 ),
               ),
-              child: const ListTile(
-                leading: Icon(CupertinoIcons.person_2_fill),
-                title: Text('Aris Aditya'),
+              child: ListTile(
+                leading: const Icon(CupertinoIcons.person_2_fill),
+                title: Obx((() => Text(
+                      profileController.memberProfileData.value.user.name,
+                    ))),
               ),
             ),
             const SizedBox(
@@ -45,9 +50,11 @@ class ProfileContent extends StatelessWidget {
                   bottom: BorderSide(width: 1.0, color: AppColor.gray1),
                 ),
               ),
-              child: const ListTile(
-                leading: Icon(CupertinoIcons.mail_solid),
-                title: Text('aris.aditya@gmail.com'),
+              child: ListTile(
+                leading: const Icon(CupertinoIcons.mail_solid),
+                title: Obx((() => Text(
+                      profileController.memberProfileData.value.user.email,
+                    ))),
               ),
             ),
             const SizedBox(
@@ -59,9 +66,12 @@ class ProfileContent extends StatelessWidget {
                   bottom: BorderSide(width: 1.0, color: AppColor.gray1),
                 ),
               ),
-              child: const ListTile(
-                leading: Icon(CupertinoIcons.house_fill),
-                title: Text('USIP PAMMAS'),
+              child: ListTile(
+                leading: const Icon(CupertinoIcons.house_fill),
+                title: Obx((() => Text(
+                      profileController
+                          .memberProfileData.value.user.institutions.name,
+                    ))),
               ),
             ),
             const SizedBox(
@@ -73,9 +83,12 @@ class ProfileContent extends StatelessWidget {
                   bottom: BorderSide(width: 1.0, color: AppColor.gray1),
                 ),
               ),
-              child: const ListTile(
-                leading: Icon(CupertinoIcons.phone_fill),
-                title: Text('081267195871'),
+              child: ListTile(
+                leading: const Icon(CupertinoIcons.phone_fill),
+                title: Obx((() => Text(
+                      profileController
+                          .memberProfileData.value.user.phoneNumber,
+                    ))),
               ),
             ),
             const SizedBox(
@@ -87,9 +100,11 @@ class ProfileContent extends StatelessWidget {
                   bottom: BorderSide(width: 1.0, color: AppColor.gray1),
                 ),
               ),
-              child: const ListTile(
+              child: ListTile(
                 leading: Icon(CupertinoIcons.placemark_fill),
-                title: Text('Banjar Kaje Kauh'),
+                title: Obx((() => Text(
+                      profileController.memberProfileData.value.user.address,
+                    ))),
               ),
             ),
             const SizedBox(

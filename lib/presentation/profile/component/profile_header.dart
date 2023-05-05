@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/profile/controllers/profile.controller.dart';
 
 import '../../../infrastructure/theme/app_color.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+  final ProfileController profileController;
+  const ProfileHeader({super.key, required this.profileController});
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +25,14 @@ class ProfileHeader extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const Text(
-          "1905551104",
-          style: TextStyle(
-              color: AppColor.green1,
-              fontSize: 14,
-              fontWeight: FontWeight.w600),
+        Obx(
+          (() =>
+              Text(profileController.memberProfileData.value.nomorIndukAnggota,
+                  style: const TextStyle(
+                    color: AppColor.green1,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ))),
         )
       ],
     );

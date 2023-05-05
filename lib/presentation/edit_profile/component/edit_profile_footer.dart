@@ -1,6 +1,8 @@
+// ignore: implementation_imports
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
 import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
 
@@ -24,7 +26,9 @@ class EditProfileFooter extends StatelessWidget {
             height: 10,
           ),
           AppButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.back();
+            },
             text: "Kembali",
             color: AppColor.sRed,
           )

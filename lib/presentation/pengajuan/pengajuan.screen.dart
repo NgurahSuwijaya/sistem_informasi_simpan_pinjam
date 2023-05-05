@@ -1,10 +1,11 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
 import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
-import '../../widget/app_dropdown.dart';
+import '../../widget/app_pengajuan_dropdown.dart';
 import '../../widget/app_input.dart';
 import 'controllers/pengajuan.controller.dart';
 
@@ -27,6 +28,7 @@ class PengajuanScreen extends GetView<PengajuanController> {
     '42',
     '48',
     '52',
+    ''
   ];
 
   final List<String> kategoriPinjaman = [
@@ -55,7 +57,7 @@ class PengajuanScreen extends GetView<PengajuanController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -115,92 +117,152 @@ class PengajuanScreen extends GetView<PengajuanController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
+                                  "Kategori Pinjaman",
+                                  style: AppFont.title1,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                //                             DropdownButtonHideUnderline(
+                                //   child: DropdownButton2(
+                                //     hint: Row(
+                                //       children: [
+                                //         const SizedBox(
+                                //           width: 15,
+                                //         ),
+                                //         Text(
+                                //           'Kategori Pinjaman',
+                                //           style: TextStyle(
+                                //             fontSize: 14,
+                                //             color: Theme.of(context).hintColor,
+                                //           ),
+                                //         ),
+                                //       ],
+                                //     ),
+                                //     items: kategoriPinjaman
+                                //         .map((item) => DropdownMenuItem<String>(
+                                //               value: item,
+                                //               child: Row(
+                                //                 children: [
+                                //                   const SizedBox(
+                                //                     width: 15,
+                                //                   ),
+                                //                   Text(item, style: AppFont.subtitle1),
+                                //                 ],
+                                //               ),
+                                //             ))
+                                //         .toList(),
+                                //     value: selectedValue,
+                                //     onChanged: (value) {
+                                //       setState(() {
+                                //         selectedValue = value as String;
+                                //       });
+                                //       widget.controller.updateSelectedItem(value as String);
+                                //     },
+                                //     buttonHeight: 60,
+                                //     buttonWidth: double.infinity,
+                                //     buttonDecoration: BoxDecoration(
+                                //       color: AppColor.white,
+                                //       borderRadius: BorderRadius.circular(5),
+                                //       border: Border.all(width: 0.7, color: AppColor.gray1),
+                                //     ),
+                                //     buttonElevation: 0,
+                                //     itemHeight: 40,
+                                //     itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                //   ),
+                                // ),
+                                AppPengajuanDropDown(
+                                  items: kategoriPinjaman,
+                                  name: 'Kategori Pinjaman',
+                                  controller: controller,
+                                  selectedValue: controller.selectedItem.value,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
                                   "Jenis Bunga",
                                   style: AppFont.title1,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
-                                AppDropDown(
-                                  items: jenisBunga,
-                                  name: 'Jenis Bunga',
-                                ),
-                                SizedBox(
+                                AppPengajuanDropDown(
+                                    items: jenisBunga,
+                                    name: 'Jenis Bunga',
+                                    controller: controller,
+                                    selectedValue:
+                                        controller.selectedItem.value),
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Text(
                                   "Jangka Waktu (Bulan)",
                                   style: AppFont.title1,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
-                                AppDropDown(
-                                  items: jangkaWaktu,
-                                  name: 'Jangka Waktu',
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  "Kategori Pinjaman",
-                                  style: AppFont.title1,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                AppDropDown(
-                                  items: kategoriPinjaman,
-                                  name: 'Kategori Pinjaman',
-                                ),
-                                SizedBox(
+                                AppPengajuanDropDown(
+                                    items: jangkaWaktu,
+                                    name: 'Jangka Waktu',
+                                    controller: controller,
+                                    selectedValue:
+                                        controller.selectedItem.value),
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 AppInput(
-                                    value: '3',
-                                    hint: 'Bunga (%) Per Bulan',
-                                    topText: 'Bunga (%) Perbulan',
-                                    obscureText: false,
-                                    canEdit: true),
-                                SizedBox(
+                                  value: '3',
+                                  hint: 'Bunga (%) Per Bulan',
+                                  topText: 'Bunga (%) Perbulan',
+                                  obscureText: false,
+                                  canEdit: false,
+                                ),
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Text(
                                   "Tipe Jaminan",
                                   style: AppFont.title1,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
-                                AppDropDown(
-                                  items: tipeJaminan,
-                                  name: 'Tipe Jaminan',
-                                ),
-                                SizedBox(
+                                AppPengajuanDropDown(
+                                    items: tipeJaminan,
+                                    name: 'Tipe Jaminan',
+                                    controller: controller,
+                                    selectedValue:
+                                        controller.selectedItem.value),
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 AppInput(
-                                    hint: 'Contoh Honda Vario 160 2019',
-                                    topText: 'Nama Aset Jaminan',
-                                    obscureText: false,
-                                    canEdit: true),
-                                SizedBox(
+                                  hint: 'Contoh Honda Vario 160 2019',
+                                  topText: 'Nama Aset Jaminan',
+                                  obscureText: false,
+                                  canEdit: true,
+                                ),
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 AppInput(
-                                    hint: '1000000',
-                                    topText: 'Nilai Aset Jaminan (Rp)',
-                                    obscureText: false,
-                                    canEdit: true),
-                                SizedBox(
+                                  hint: '1000000',
+                                  topText: 'Nilai Aset Jaminan (Rp)',
+                                  obscureText: false,
+                                  canEdit: true,
+                                ),
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 AppInput(
-                                    hint: '1000000',
-                                    topText: 'Nominal Pinjaman (Rp)',
-                                    obscureText: false,
-                                    canEdit: true),
-                                SizedBox(
+                                  hint: '1000000',
+                                  topText: 'Nominal Pinjaman (Rp)',
+                                  obscureText: false,
+                                  canEdit: true,
+                                ),
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Padding(
@@ -213,7 +275,7 @@ class PengajuanScreen extends GetView<PengajuanController> {
                                         "Bukti Bayar",
                                         style: AppFont.title1,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       Row(
@@ -285,14 +347,14 @@ class PengajuanScreen extends GetView<PengajuanController> {
                                 ),
                                 IconButton(
                                     onPressed: () {},
-                                    icon: Icon(CupertinoIcons.trash))
+                                    icon: const Icon(CupertinoIcons.trash))
                               ],
                             ),
                           )),
                     ]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -305,7 +367,7 @@ class PengajuanScreen extends GetView<PengajuanController> {
                           Get.toNamed('/detail-pengajuan');
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       AppButton(

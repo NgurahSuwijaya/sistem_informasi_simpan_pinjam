@@ -6,9 +6,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dart';
 import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_dropdown.dart';
+import 'package:sistem_informasi_simpan_pinjam/widget/app_pengajuan_dropdown.dart';
 
 import '../../../widget/app_input.dart';
+import '../../../widget/app_simpanan_dropdown.dart';
 
 class SimpananContent extends StatefulWidget {
   const SimpananContent({super.key});
@@ -67,7 +68,7 @@ class _SimpananContentState extends State<SimpananContent> {
                 SizedBox(
                   height: 3,
                 ),
-                AppDropDown(
+                AppSimpananDropDown(
                   items: jenisSimpanan,
                   name: 'Jenis Simpanan',
                 ),
@@ -90,7 +91,7 @@ class _SimpananContentState extends State<SimpananContent> {
                 SizedBox(
                   height: 3,
                 ),
-                AppDropDown(
+                AppSimpananDropDown(
                   items: bankTujuan,
                   name: 'Bank Tujuan',
                 ),

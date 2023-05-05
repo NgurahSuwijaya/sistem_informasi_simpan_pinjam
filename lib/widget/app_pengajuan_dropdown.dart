@@ -2,20 +2,29 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/controllers/pengajuan.controller.dart';
 
 import '../infrastructure/theme/app_color.dart';
 import '../infrastructure/theme/app_font.dart';
 
-class AppDropDown extends StatefulWidget {
+class AppPengajuanDropDown extends StatefulWidget {
   final List<String> items;
+  final PengajuanController controller;
   final String name;
-  AppDropDown({super.key, required this.items, required this.name});
+  final String selectedValue;
+
+  AppPengajuanDropDown(
+      {super.key,
+      required this.items,
+      required this.name,
+      required this.controller,
+      required this.selectedValue});
 
   @override
-  State<AppDropDown> createState() => _AppDropDownState();
+  State<AppPengajuanDropDown> createState() => _AppPengajuanDropDownState();
 }
 
-class _AppDropDownState extends State<AppDropDown> {
+class _AppPengajuanDropDownState extends State<AppPengajuanDropDown> {
   String? selectedValue;
 
   @override
@@ -24,7 +33,7 @@ class _AppDropDownState extends State<AppDropDown> {
       child: DropdownButton2(
         hint: Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
             Text(
@@ -41,7 +50,7 @@ class _AppDropDownState extends State<AppDropDown> {
                   value: item,
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
                       Text(item, style: AppFont.subtitle1),
@@ -54,6 +63,7 @@ class _AppDropDownState extends State<AppDropDown> {
           setState(() {
             selectedValue = value as String;
           });
+          if (widget.name == 'Kategori Pinjaman') {}
         },
         buttonHeight: 60,
         buttonWidth: double.infinity,
