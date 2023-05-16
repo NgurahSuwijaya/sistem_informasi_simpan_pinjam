@@ -10,6 +10,12 @@ import 'controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
   const HomeScreen({Key? key}) : super(key: key);
+
+  Future<void> _refresh() async {
+    await controller
+        .getSimpanan(); // Call the fetchData function from your controller
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,22 +25,31 @@ class HomeScreen extends GetView<HomeController> {
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : SafeArea(
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 30, right: 30, top: 10),
-                    child: Column(
-                      children: [
-                        HomeHeader(
-                          controller: controller,
-                        ),
-                        HomeContent(
-                          homeController: controller,
-                        ),
-                        HomeFooter(
-                          homeController: controller,
-                        )
-                      ],
+              : RefreshIndicator(
+                  onRefresh: _refresh,
+                  child: SafeArea(
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Column(
+                        children: [
+                          HomeHeader(
+                            controller: controller,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          HomeContent(
+                            homeController: controller,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          HomeFooter(
+                            homeController: controller,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

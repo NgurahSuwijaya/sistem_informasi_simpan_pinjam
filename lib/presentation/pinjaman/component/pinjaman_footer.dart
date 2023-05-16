@@ -55,6 +55,7 @@ class PinjamanFooter extends StatelessWidget {
                     textInputType: TextInputType.none,
                     obscureText: false,
                     canEdit: false,
+                    isCurrency: true,
                   ),
                 )),
             Container(
@@ -74,6 +75,7 @@ class PinjamanFooter extends StatelessWidget {
                     textInputType: TextInputType.none,
                     obscureText: false,
                     canEdit: false,
+                    isCurrency: true,
                   ),
                 )),
           ],

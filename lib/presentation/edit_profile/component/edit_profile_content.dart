@@ -61,6 +61,7 @@ class EditProfileContent extends StatelessWidget {
                 hint: "Telepon",
                 obscureText: false,
                 prefixIcons: Icon(CupertinoIcons.phone_fill),
+                isCurrency: false,
               ),
               SizedBox(
                 height: 10,
@@ -71,6 +72,7 @@ class EditProfileContent extends StatelessWidget {
                 canEdit: true,
                 obscureText: false,
                 prefixIcons: Icon(CupertinoIcons.placemark_fill),
+                isCurrency: false,
               )
             ],
           )),

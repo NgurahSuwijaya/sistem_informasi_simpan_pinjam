@@ -16,7 +16,7 @@ class Institution extends Equatable {
   int persentasePajakBungaSimpanan;
   int awalTahunBuku;
   String status;
-  String note;
+  // String note;
   DateTime createdAt;
   DateTime updatedAt;
 
@@ -33,7 +33,7 @@ class Institution extends Equatable {
     required this.persentasePajakBungaSimpanan,
     required this.awalTahunBuku,
     required this.status,
-    required this.note,
+    // required this.note,
     required this.createdAt,
     required this.updatedAt,
   });

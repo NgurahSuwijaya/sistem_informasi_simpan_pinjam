@@ -1,12 +1,36 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:path/path.dart';
 
+import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
+import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/response_simpanan_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:sistem_informasi_simpan_pinjam/domain/models/response_tipe_simpanan_model.dart';
 
 import '../error/exception.dart';
 
 abstract class SimpananDataSource {
   Future<ResponseSimpananModel> onGetSimpananData(String? token);
+  Future<ResponseTipeSimpananModel> onGetTipeSimpananData(String? token);
+  Future<ResponsePostModel> onPostSimpananData(
+      String? token,
+      int tipeSimpananId,
+      int tipeTransaksiId,
+      int jumlah,
+      String tipeSimpanan,
+      DateTime tanggalTransaksi,
+      String rekening,
+      File? buktiBayar);
+  // Future<ResponsePostModel> onPostPenarikanData(
+  //   String? token,
+  //   int tipeSimpananId,
+  //   int tipeTransaksiId,
+  //   int jumlah,
+  //   String tipeSimpanan,
+  //   DateTime tanggalTransaksi,
+  //   String rekening,
+  // );
 }
 
 class SimpananDataSourceImpl implements SimpananDataSource {
@@ -22,13 +46,67 @@ class SimpananDataSourceImpl implements SimpananDataSource {
       'Authorization': 'Bearer ${token ?? " "}',
       'Content-Type': 'application/json',
     });
-    print(response.statusCode);
-    print(response.body.runtimeType);
     if (response.statusCode == 200) {
-      print("ayam");
-      var ayam = ResponseSimpananModel.fromJson(json.decode(response.body));
-      print(ayam.data.id);
       return ResponseSimpananModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<ResponseTipeSimpananModel> onGetTipeSimpananData(String? token) async {
+    final response = await _httpClient
+        .get(Uri.parse('$baseUrl/tipe-simpanan/indexMember?'), headers: {
+      'Authorization': 'Bearer ${token ?? " "}',
+      'Content-Type': 'application/json',
+    });
+    print(response.statusCode);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return ResponseTipeSimpananModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<ResponsePostModel> onPostSimpananData(
+      String? tokenn,
+      int tipeSimpananId,
+      int tipeTransaksiId,
+      int jumlah,
+      String tipeSimpanan,
+      DateTime tanggalTransaksi,
+      String rekening,
+      File? buktiBayar) async {
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('$baseUrl/simpanan/store-online?'));
+
+    request.headers['Authorization'] = 'Bearer ${tokenn ?? ""}';
+    request.headers['Accept'] = 'application/json';
+    print(tokenn);
+    print(tipeSimpanan);
+    if (buktiBayar != null && tipeTransaksiId == 1) {
+      String fileName = basename(buktiBayar.path);
+      request.files.add(await http.MultipartFile.fromPath(
+        'bukti_pembayaran',
+        buktiBayar.path,
+        filename: fileName,
+      ));
+    }
+    request.fields['tipe_transaksi_id'] = tipeTransaksiId.toString();
+    request.fields['jumlah'] = jumlah.toString();
+    request.fields['tanggal_transaksi'] = tanggalTransaksi.toString();
+    request.fields['tipe_simpanan_id'] = tipeSimpananId.toString();
+    request.fields['rekening'] = rekening;
+    request.fields['tipe_simpanan'] = tipeSimpanan;
+
+    var response = await request.send();
+    var responseBody = await response.stream.bytesToString();
+    print(response.statusCode);
+    print(responseBody);
+    if (response.statusCode == 200) {
+      return ResponsePostModel.fromJson(json.decode(responseBody));
     } else {
       throw ServerException();
     }

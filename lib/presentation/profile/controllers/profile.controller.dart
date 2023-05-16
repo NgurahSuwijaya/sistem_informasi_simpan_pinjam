@@ -44,7 +44,7 @@ class ProfileController extends GetxController {
             persentasePajakBungaSimpanan: 0,
             awalTahunBuku: 0,
             status: '',
-            note: '',
+            // note: '',
             createdAt: DateTime.now(),
             updatedAt: DateTime.now())),
   ));

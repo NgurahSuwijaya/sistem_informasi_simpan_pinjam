@@ -13,7 +13,7 @@ class HomeControllerBinding extends Bindings {
     Get.lazyPut<SimpananDataSource>(() => SimpananDataSourceImpl(Get.find()));
     Get.lazyPut<SimpananRepository>(
         () => SimpananRepositoryImpl(simpananDataSource: Get.find()));
-    Get.lazyPut<GetSimpananData>(() => GetSimpananData(Get.find()));
+    Get.lazyPut<SimpananUseCase>(() => SimpananUseCase(Get.find()));
     Get.lazyPut<HomeController>(
       () => HomeController(Get.find()),
     );

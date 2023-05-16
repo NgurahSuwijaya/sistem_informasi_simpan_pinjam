@@ -52,6 +52,7 @@ class LoginScreen extends GetView<LoginController> {
                         topText: "Email",
                         obscureText: false,
                         controller: controller.emailController,
+                        isCurrency: false,
                       ),
                       const SizedBox(
                         height: 15,
@@ -71,6 +72,7 @@ class LoginScreen extends GetView<LoginController> {
                                   icon: Icon(CupertinoIcons.eye_slash_fill),
                                   onPressed: controller.onShowPassword,
                                 ),
+                                isCurrency: false,
                               )
                             : AppInput(
                                 topText: "Password",
@@ -84,6 +86,7 @@ class LoginScreen extends GetView<LoginController> {
                                   icon: Icon(CupertinoIcons.eye_fill),
                                   onPressed: controller.onShowPassword,
                                 ),
+                                isCurrency: false,
                               ),
                       ),
                       const SizedBox(

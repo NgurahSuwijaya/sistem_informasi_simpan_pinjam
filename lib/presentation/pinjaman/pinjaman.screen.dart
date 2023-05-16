@@ -25,8 +25,7 @@ class PinjamanScreen extends GetView<PinjamanController> {
                       padding:
                           const EdgeInsets.only(left: 25, right: 25, top: 10),
                       child: Obx((() => controller.isMeminjam
-                          ? PinjamanTidakAda(controller: controller)
-                          : Column(
+                          ? Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const SizedBox(
@@ -39,7 +38,8 @@ class PinjamanScreen extends GetView<PinjamanController> {
                                   height: 100,
                                 )
                               ],
-                            )))),
+                            )
+                          : PinjamanTidakAda()))),
                 ),
               ))));
   }

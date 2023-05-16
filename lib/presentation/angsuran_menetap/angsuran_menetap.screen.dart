@@ -330,6 +330,7 @@ class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
                                   topText: 'Tanggal Pembayaran',
                                   obscureText: false,
                                   canEdit: false,
+                                  isCurrency: false,
                                 ),
                                 const SizedBox(
                                   height: 20,
@@ -339,6 +340,7 @@ class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
                                   topText: 'Jumlah yang dibayarkan',
                                   obscureText: false,
                                   canEdit: true,
+                                  isCurrency: true,
                                 ),
                                 const SizedBox(
                                   height: 20,
@@ -399,6 +401,7 @@ class AngsuranMenetapScreen extends GetView<AngsuranMenetapController> {
                                   topText: 'Nomor Rekening Koperasi',
                                   obscureText: false,
                                   canEdit: true,
+                                  isCurrency: false,
                                 ),
                                 const SizedBox(
                                   height: 20,

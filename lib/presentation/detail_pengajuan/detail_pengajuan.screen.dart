@@ -1,7 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
+import '../../domain/entities/bunga_pinjaman.dart';
+import '../../domain/entities/kategori_pinjaman.dart';
+import '../../domain/entities/tipe_jaminan.dart';
 import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
 import '../../widget/app_button.dart';
@@ -11,6 +17,19 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
   const DetailPengajuanScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    String formattedDate =
+        DateFormat('yyyy-MM-dd').format(DateTime.now().toLocal());
+    final arg = Get.arguments;
+    final String tipeAngsuran = arg[0];
+    final KategoriPinjaman kategoriPinjaman = arg[1];
+    final String jenisBunga = arg[2];
+    final BungaPinjaman bungaPinjaman = arg[3];
+    final TipeJaminan tipeJaminan = arg[4];
+    final String namaJaminan = arg[5];
+    final int nilaiAsetJaminan = arg[6];
+    final int jumlahPinjaman = arg[7];
+    print(nilaiAsetJaminan);
+    final File jaminanFile = File(arg[8]);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Pengajuan Pinjaman'),
@@ -63,7 +82,7 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                           child: Padding(
                             padding: const EdgeInsets.all(25.0),
                             child: Text(
-                              "11/02/2023",
+                              formattedDate,
                               style: AppFont.title1,
                             ),
                           )),
@@ -98,7 +117,7 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      "Kendaraan Roda Dua",
+                                      tipeJaminan.namaTipeJaminan,
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -115,7 +134,7 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      "Vario 150 (2022)",
+                                      namaJaminan,
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -132,7 +151,11 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      "Rp15,000,000",
+                                      NumberFormat.currency(
+                                              symbol: 'Rp',
+                                              decimalDigits: 0,
+                                              locale: 'id_ID')
+                                          .format(nilaiAsetJaminan),
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -167,11 +190,28 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
+                                      "Tipe Angsuran",
+                                      style: AppFont.title3,
+                                    ),
+                                    Text(
+                                      tipeAngsuran,
+                                      style: AppFont.title2,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
                                       "Jenis Bunga",
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      "Bunga Menetap",
+                                      jenisBunga,
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -187,20 +227,9 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       "Jangka Waktu",
                                       style: AppFont.title3,
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "12",
-                                          style: AppFont.title2,
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          'Bulan',
-                                          style: AppFont.title2,
-                                        )
-                                      ],
+                                    Text(
+                                      bungaPinjaman.jangkaWaktu.toString(),
+                                      style: AppFont.title2,
                                     ),
                                   ],
                                 ),
@@ -216,7 +245,7 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      "Profuktif",
+                                      kategoriPinjaman.name,
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -232,20 +261,9 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       "Bunga",
                                       style: AppFont.title3,
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "1",
-                                          style: AppFont.title2,
-                                        ),
-                                        // SizedBox(
-                                        //   width: 5,
-                                        // ),
-                                        Text(
-                                          '% per Bulan',
-                                          style: AppFont.title2,
-                                        )
-                                      ],
+                                    Text(
+                                      '${bungaPinjaman.persentaseBunga}%',
+                                      style: AppFont.title2,
                                     ),
                                   ],
                                 ),
@@ -260,20 +278,13 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                       "Jumlah Pinjaman",
                                       style: AppFont.title3,
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Rp",
-                                          style: AppFont.title4,
-                                        ),
-                                        const SizedBox(
-                                          width: 1,
-                                        ),
-                                        Text(
-                                          '50,000,000',
-                                          style: AppFont.title4,
-                                        )
-                                      ],
+                                    Text(
+                                      NumberFormat.currency(
+                                              symbol: 'Rp',
+                                              decimalDigits: 0,
+                                              locale: 'id_ID')
+                                          .format(jumlahPinjaman),
+                                      style: AppFont.title4,
                                     ),
                                   ],
                                 ),
@@ -294,15 +305,25 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Informasi Pinjaman Aktif",
+                                  "File Jaminan",
                                   style: AppFont.title1,
                                 ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "screenshoot.jpg",
-                                  style: AppFont.title2,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "bukti_bayar.jpg",
+                                      style: AppFont.title2,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        controller.previewFile(
+                                            filePath: jaminanFile.path);
+                                      },
+                                      icon: const Icon(Icons.image_search),
+                                    ),
+                                  ],
                                 )
                               ],
                             ),
@@ -316,7 +337,16 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                 AppButton(
                   text: "Simpan",
                   onPressed: () {
-                    Get.toNamed('');
+                    controller.postPengajuanSimpanan(
+                        tipeAngsuran,
+                        kategoriPinjaman,
+                        jenisBunga,
+                        bungaPinjaman,
+                        tipeJaminan,
+                        namaJaminan,
+                        nilaiAsetJaminan,
+                        jumlahPinjaman,
+                        jaminanFile);
                   },
                 ),
                 const SizedBox(

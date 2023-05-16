@@ -9,8 +9,10 @@ import '../../../domain/entities/member.dart';
 import '../../../domain/entities/user.dart';
 
 class HomeController extends GetxController {
-  final GetSimpananData getSimpanandata;
+  final SimpananUseCase getSimpanandata;
   RxBool isPasswordVisible = false.obs;
+  RxInt currentPageIndex = 0.obs;
+
   final simpananData = Rx<Simpanan>(Simpanan(
     id: 0,
     institutionId: 0,
@@ -55,7 +57,7 @@ class HomeController extends GetxController {
               persentasePajakBungaSimpanan: 0,
               awalTahunBuku: 0,
               status: '',
-              note: '',
+              // note: '',
               createdAt: DateTime.now(),
               updatedAt: DateTime.now())),
     ),
@@ -115,7 +117,7 @@ class HomeController extends GetxController {
 
     result.fold((failure) {
       _isLoading.value = true;
-      Get.snackbar('Error', failure.message);
+      Get.snackbar('tai', failure.message);
       print(failure.message);
     }, (success) {
       _isLoading.value = false;

@@ -27,7 +27,9 @@ class HomeFooter extends StatelessWidget {
                         icon: const Icon(CupertinoIcons.book_fill),
                         color: AppColor.sPurple,
                         onPressed: () {
-                          Get.toNamed('/simpanan');
+                          Get.toNamed('/simpanan',
+                              arguments:
+                                  homeController.simpananData.value.saldo);
                         },
                       ),
                       Text(

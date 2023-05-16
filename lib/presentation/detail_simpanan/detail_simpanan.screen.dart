@@ -1,7 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:sistem_informasi_simpan_pinjam/widget/app_image_preview.dart';
 
+import '../../domain/entities/response_bank.dart';
+import '../../domain/entities/tipe_simpanan.dart';
 import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
 import '../../widget/app_button.dart';
@@ -11,6 +17,23 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
   const DetailSimpananScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    String formattedDate =
+        DateFormat('yyyy-MM-dd').format(DateTime.now().toLocal());
+    final arg = Get.arguments;
+    final isSetoran = arg[0] as bool;
+    final jenisRekeningSimpnan = arg[1] as String;
+    final jumlahSimpanan = arg[2] as int;
+    Bank? bankSimpanan;
+    File? buktiBayar = File('');
+    String namaBank = "";
+    String nomRek = "";
+    if (isSetoran) {
+      bankSimpanan = arg[3] as Bank?;
+      namaBank = bankSimpanan!.namaBank;
+      nomRek = bankSimpanan.nomorRekening;
+      buktiBayar = File(arg[4]);
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Detail Simpanan'),
@@ -23,10 +46,10 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: double.infinity,
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -63,66 +86,85 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
                             child: Padding(
                               padding: const EdgeInsets.all(25.0),
                               child: Text(
-                                "11/02/2023",
+                                formattedDate,
                                 style: AppFont.title1,
                               ),
                             )),
-                        Container(
-                            width: double.infinity,
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(
-                                    width: 1.0, color: AppColor.gray5),
+                        if (isSetoran)
+                          Container(
+                              width: double.infinity,
+                              decoration: const BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                      width: 1.0, color: AppColor.gray5),
+                                ),
                               ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 25, vertical: 20),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Tujuan Pembayaran',
-                                    style: AppFont.title1,
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Bank",
-                                        style: AppFont.title3,
-                                      ),
-                                      Text(
-                                        "BPD BALI",
-                                        style: AppFont.title2,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "No Rekening",
-                                        style: AppFont.title3,
-                                      ),
-                                      Text(
-                                        "7720828094",
-                                        style: AppFont.title2,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 25, vertical: 20),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Tujuan Pembayaran',
+                                      style: AppFont.title1,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Bank",
+                                          style: AppFont.title3,
+                                        ),
+                                        //  Obx((() => Text(
+                                        //       // controller
+                                        //       //     .bankSimpanan.value!.namaBank,
+
+                                        //       style: AppFont.title2,
+                                        //     ))),
+                                        Text(
+                                          // controller
+                                          //     .bankSimpanan.value!.namaBank,
+                                          namaBank,
+                                          style: AppFont.title2,
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "No Rekening",
+                                          style: AppFont.title3,
+                                        ),
+                                        // Obx((() => Text(
+                                        //       // controller.bankSimpanan.value!
+                                        //       //     .nomorRekening,
+
+                                        //       style: AppFont.title2,
+                                        //     ))),
+                                        Text(
+                                          // controller.bankSimpanan.value!
+                                          //     .nomorRekening,
+                                          nomRek,
+                                          style: AppFont.title2,
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ))
+                        else
+                          const Text(""),
                         Container(
                             width: double.infinity,
                             decoration: const BoxDecoration(
@@ -153,8 +195,42 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
                                         "Jenis Transaksi",
                                         style: AppFont.title3,
                                       ),
+                                      if (isSetoran)
+                                        Text(
+                                          // controller
+                                          //     .jenisSimpanan.value!.name,
+                                          'Setoran',
+                                          style: AppFont.title2,
+                                        )
+                                      else
+                                        Text(
+                                          // controller
+                                          //     .jenisSimpanan.value!.name,
+                                          'Penarikan',
+                                          style: AppFont.title2,
+                                        )
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
                                       Text(
-                                        "Simpanan Wajib",
+                                        "Rekening Simpanan",
+                                        style: AppFont.title3,
+                                      ),
+                                      //  Obx((() => Text(
+                                      //       // controller
+                                      //       //     .jenisRekeningSimpnan.value,
+                                      //       style: AppFont.title2,
+                                      //     ))),
+                                      Text(
+                                        // controller
+                                        //     .jenisRekeningSimpnan.value,
+                                        jenisRekeningSimpnan,
                                         style: AppFont.title2,
                                       ),
                                     ],
@@ -171,7 +247,13 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
                                         style: AppFont.title3,
                                       ),
                                       Text(
-                                        "Rp 1,000,0000,000",
+                                        // controller.jumlahSimpanan.value
+                                        //     .toString(),
+                                        NumberFormat.currency(
+                                                symbol: 'Rp',
+                                                decimalDigits: 0,
+                                                locale: 'id_ID')
+                                            .format(jumlahSimpanan),
                                         style: AppFont.title4,
                                       ),
                                     ],
@@ -179,46 +261,62 @@ class DetailSimpananScreen extends GetView<DetailSimpananController> {
                                 ],
                               ),
                             )),
-                        Container(
-                            width: double.infinity,
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(
-                                    width: 1.0, color: AppColor.gray5),
+                        if (isSetoran)
+                          Container(
+                              width: double.infinity,
+                              decoration: const BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                      width: 1.0, color: AppColor.gray5),
+                                ),
                               ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(25.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Informasi Pinjaman Aktif",
-                                    style: AppFont.title1,
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "screenshoot.jpg",
-                                    style: AppFont.title2,
-                                  )
-                                ],
-                              ),
-                            )),
+                              child: Padding(
+                                padding: const EdgeInsets.all(25.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Bukti Pembayaran",
+                                      style: AppFont.title1,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "bukti_bayar.jpg",
+                                          style: AppFont.title2,
+                                        ),
+                                        IconButton(
+                                          onPressed: () {
+                                            controller.previewImage(buktiBayar);
+                                          },
+                                          icon: const Icon(Icons.image_search),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ))
+                        else
+                          const Text('')
                       ]),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   AppButton(
-                    text: "Simpan",
-                    onPressed: () {
-                      Get.toNamed('/detail-simpanan');
-                    },
-                  ),
-                  SizedBox(
+                      text: "Simpan",
+                      onPressed: () {
+                        controller.postSimpananOnline2(
+                            isSetoran,
+                            jenisRekeningSimpnan,
+                            jumlahSimpanan,
+                            bankSimpanan,
+                            buktiBayar);
+                      }),
+                  const SizedBox(
                     height: 10,
                   ),
                   AppButton(

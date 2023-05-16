@@ -6,9 +6,10 @@ import 'package:sistem_informasi_simpan_pinjam/domain/entities/bunga_menurun.dar
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/kategori_pinjaman.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/pinjaman.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_jaminan.dart';
+import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/component/pinjaman_tidak_ada.dart';
 
 class PinjamanController extends GetxController {
-  final GetPinjamanData _getPinjamanData;
+  final PinjamanUseCase _getPinjamanData;
   final _isLoading = false.obs;
   final _isMeminjam = false.obs;
 
@@ -95,9 +96,11 @@ class PinjamanController extends GetxController {
       _isLoading.value = true;
       Get.snackbar('Status', failure.message);
       if (statusPinjaman != true) {
-        _isMeminjam.value = true;
+        _isMeminjam.value = false;
         _isLoading.value = false;
-        preferences.setBool('punyaPinjaman', true);
+
+        // preferences.setBool('punyaPinjaman', fals);
+        // Get.off(const PinjamanTidakAda());
       }
       print(failure.message);
     }, (success) {

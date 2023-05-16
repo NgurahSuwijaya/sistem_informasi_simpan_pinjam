@@ -15,7 +15,7 @@ class PinjamanControllerBinding extends Bindings {
     Get.lazyPut<PinjamanDataSource>(() => PinjamanDataSourceImpl(Get.find()));
     Get.lazyPut<PinjamanRepository>(
         () => PinjamanRepositoryImpl(pinjamanDataSource: Get.find()));
-    Get.lazyPut<GetPinjamanData>(() => GetPinjamanData(Get.find()));
+    Get.lazyPut<PinjamanUseCase>(() => PinjamanUseCase(Get.find()));
     Get.lazyPut<PinjamanController>(
       () => PinjamanController(Get.find()),
     );

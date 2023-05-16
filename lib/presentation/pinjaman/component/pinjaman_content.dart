@@ -239,6 +239,7 @@ class _PinjamanContentState extends State<PinjamanContent> {
                         textInputType: TextInputType.none,
                         obscureText: false,
                         canEdit: false,
+                        isCurrency: true,
                       ))))),
           Container(
               width: double.infinity,

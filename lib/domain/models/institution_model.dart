@@ -15,7 +15,7 @@ class InstitutionsModel extends Equatable {
     required this.persentasePajakBungaSimpanan,
     required this.awalTahunBuku,
     required this.status,
-    required this.note,
+    // required this.note,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -32,7 +32,7 @@ class InstitutionsModel extends Equatable {
   int persentasePajakBungaSimpanan;
   int awalTahunBuku;
   String status;
-  String note;
+  // String note;
   DateTime createdAt;
   DateTime updatedAt;
 
@@ -50,7 +50,7 @@ class InstitutionsModel extends Equatable {
         persentasePajakBungaSimpanan: json["persentase_pajak_bunga_simpanan"],
         awalTahunBuku: json["awal_tahun_buku"],
         status: json["status"],
-        note: json["note"],
+        // note: json["note"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
       );
@@ -68,7 +68,7 @@ class InstitutionsModel extends Equatable {
         "persentase_pajak_bunga_simpanan": persentasePajakBungaSimpanan,
         "awal_tahun_buku": awalTahunBuku,
         "status": status,
-        "note": note,
+        // "note": note,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
       };
@@ -87,7 +87,7 @@ class InstitutionsModel extends Equatable {
         persentasePajakBungaSimpanan: persentasePajakBungaSimpanan,
         awalTahunBuku: awalTahunBuku,
         status: status,
-        note: note,
+        // note: note,
         createdAt: createdAt,
         updatedAt: updatedAt);
   }
@@ -107,7 +107,7 @@ class InstitutionsModel extends Equatable {
         persentasePajakBungaSimpanan,
         awalTahunBuku,
         status,
-        note,
+        // note,
         createdAt,
         updatedAt
       ];

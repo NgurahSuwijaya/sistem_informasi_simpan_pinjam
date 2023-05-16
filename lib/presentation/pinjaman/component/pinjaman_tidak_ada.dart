@@ -7,7 +7,9 @@ import '../../../widget/app_button.dart';
 import '../controllers/pinjaman.controller.dart';
 
 class PinjamanTidakAda extends StatelessWidget {
-  const PinjamanTidakAda({super.key, required PinjamanController controller});
+  const PinjamanTidakAda({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

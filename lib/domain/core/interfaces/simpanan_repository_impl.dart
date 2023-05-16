@@ -6,8 +6,10 @@ import 'package:dartz/dartz.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/data/simpanan_remote_data_source.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/simpanan_repository.dart';
+import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_simpanan.dart';
 
+import '../../entities/response_tipe_simpanan.dart';
 import '../error/exception.dart';
 
 class SimpananRepositoryImpl implements SimpananRepository {
@@ -24,7 +26,58 @@ class SimpananRepositoryImpl implements SimpananRepository {
       // print(result);
       return Right(result.toEntity());
     } on ServerException {
-      return Left(ServerFailure('Email atau Password Salah'));
+      return Left(ServerFailure('Kesalahan Server'));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated not valid\n${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ResponseTipeSimpanan>> getTipeSimpananData(
+      {String? token}) async {
+    try {
+      final result = await simpananDataSource.onGetTipeSimpananData(token);
+      // print(result);
+      return Right(result.toEntity());
+    } on ServerException {
+      return Left(ServerFailure('Kesalahan Server'));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated not valid\n${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ResponsePost>> postSimpananData(
+      {String? token,
+      required int tipeSimpananId,
+      required int tipeTransaksiId,
+      required int jumlah,
+      required String tipeSimpanan,
+      required DateTime tanggalTransaksi,
+      required String rekening,
+      required File? buktiBayar}) async {
+    try {
+      final result = await simpananDataSource.onPostSimpananData(
+          token,
+          tipeSimpananId,
+          tipeTransaksiId,
+          jumlah,
+          tipeSimpanan,
+          tanggalTransaksi,
+          rekening,
+          buktiBayar);
+      // print(result);
+      return Right(result.toEntity());
+    } on ServerException {
+      return Left(ServerFailure('Kesalahan Server'));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {
