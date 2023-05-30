@@ -8,6 +8,7 @@ import 'package:sistem_informasi_simpan_pinjam/domain/models/response_pinjaman_m
 import 'package:http/http.dart' as http;
 import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
 import "package:path/path.dart";
+import 'package:sistem_informasi_simpan_pinjam/domain/models/response_tagihan_angsuran_model.dart';
 
 import '../error/exception.dart';
 
@@ -45,10 +46,11 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
     });
     // print(response.statusCode);
     // print(response.body);
+    print(response.body);
+    print(response.statusCode);
     if (response.statusCode == 200) {
-      print("ayam");
       var ayam = ResponsePinjamanModel.fromJson(json.decode(response.body));
-      print(ayam.data.id);
+      print(ayam);
       return ResponsePinjamanModel.fromJson(json.decode(response.body));
       // } else if(response.statusCode == 401){
       //   return

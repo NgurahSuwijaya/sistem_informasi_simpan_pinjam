@@ -1,17 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
+
+import 'package:sistem_informasi_simpan_pinjam/domain/models/kategori_pinjaman_model.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/tipe_jaminan_model.dart';
 
 import '../entities/pinjaman.dart';
-import 'bunga_menetap_model.dart';
-import 'bunga_menurun_model.dart';
+import 'bunga_pinjaman2_model.dart';
 
 class PinjamanModel extends Equatable {
   PinjamanModel({
     required this.id,
     required this.memberId,
     required this.adminId,
-    this.bungaMenetapId,
-    this.bungaMenurunId,
+    required this.kategoriPinjamanId,
+    required this.bungaPinjamanId,
+    required this.tipeAngsuran,
     required this.tipeBungaPinjaman,
     required this.jumlah,
     required this.tipeJaminanId,
@@ -23,15 +26,14 @@ class PinjamanModel extends Equatable {
     required this.createdAt,
     required this.updatedAt,
     required this.tipeJaminan,
-    this.bungaMenurun,
-    this.bungaMenetap,
+    required this.bungaPinjaman,
   });
-
   final int id;
   final int memberId;
   final int adminId;
-  final int? bungaMenetapId;
-  final int? bungaMenurunId;
+  final int kategoriPinjamanId;
+  final int bungaPinjamanId;
+  final String tipeAngsuran;
   final String tipeBungaPinjaman;
   final int jumlah;
   final int tipeJaminanId;
@@ -42,16 +44,16 @@ class PinjamanModel extends Equatable {
   final String statusPinjaman;
   final DateTime createdAt;
   final DateTime updatedAt;
-  final TipeJaminanModel tipeJaminan;
-  final BungaMenurunModel? bungaMenurun;
-  final BungaMenetapModel? bungaMenetap;
+  final TipeJaminanModel? tipeJaminan;
+  final BungaPinjaman2Model? bungaPinjaman;
 
   factory PinjamanModel.fromJson(Map<String, dynamic> json) => PinjamanModel(
         id: json["id"],
         memberId: json["member_id"],
         adminId: json["admin_id"],
-        bungaMenetapId: json["bunga_menetap_id"],
-        bungaMenurunId: json["bunga_menurun_id"],
+        kategoriPinjamanId: json["kategori_pinjaman_id"],
+        bungaPinjamanId: json["bunga_pinjaman_id"],
+        tipeAngsuran: json["tipe_angsuran"],
         tipeBungaPinjaman: json["tipe_bunga_pinjaman"],
         jumlah: json["jumlah"],
         tipeJaminanId: json["tipe_jaminan_id"],
@@ -62,21 +64,21 @@ class PinjamanModel extends Equatable {
         statusPinjaman: json["status_pinjaman"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        tipeJaminan: TipeJaminanModel.fromJson(json["tipe_jaminan"]),
-        bungaMenurun: json["bunga_menurun"] == null
+        tipeJaminan: json["tipe_jaminan"] == null
             ? null
-            : BungaMenurunModel.fromJson(json["bunga_menurun"]),
-        bungaMenetap: json["bunga_menetap"] == null
+            : TipeJaminanModel.fromJson(json["tipe_jaminan"]),
+        bungaPinjaman: json["bunga_pinjaman"] == null
             ? null
-            : BungaMenetapModel.fromJson(json["bunga_menetap"]),
+            : BungaPinjaman2Model.fromJson(json["bunga_pinjaman"]),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "member_id": memberId,
         "admin_id": adminId,
-        "bunga_menetap_id": bungaMenetapId,
-        "bunga_menurun_id": bungaMenurunId,
+        "kategori_pinjaman_id": kategoriPinjamanId,
+        "bunga_pinjaman_id": bungaPinjamanId,
+        "tipe_angsuran": tipeAngsuran,
         "tipe_bunga_pinjaman": tipeBungaPinjaman,
         "jumlah": jumlah,
         "tipe_jaminan_id": tipeJaminanId,
@@ -87,31 +89,31 @@ class PinjamanModel extends Equatable {
         "status_pinjaman": statusPinjaman,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        "tipe_jaminan": tipeJaminan.toJson(),
-        "bunga_menurun": bungaMenurun?.toJson(),
-        "bunga_menetap": bungaMenetap?.toJson(),
+        "tipe_jaminan": tipeJaminan?.toJson(),
+        "bunga_pinjaman": bungaPinjaman?.toJson(),
       };
 
   Pinjaman toEntity() {
     return Pinjaman(
-        id: id,
-        memberId: memberId,
-        adminId: adminId,
-        bungaMenetapId: bungaMenetapId,
-        bungaMenurunId: bungaMenurunId,
-        tipeBungaPinjaman: tipeBungaPinjaman,
-        jumlah: jumlah,
-        tipeJaminanId: tipeJaminanId,
-        nilaiAsetJaminan: nilaiAsetJaminan,
-        namaAsetJaminan: namaAsetJaminan,
-        dokumenAsetJaminan: dokumenAsetJaminan,
-        tanggalPinjaman: tanggalPinjaman,
-        statusPinjaman: statusPinjaman,
-        createdAt: createdAt,
-        updatedAt: updatedAt,
-        tipeJaminan: tipeJaminan.toEntity(),
-        bungaMenurun: bungaMenurun?.toEntity(),
-        bungaMenetap: bungaMenetap?.toEntity());
+      id: id,
+      memberId: memberId,
+      adminId: adminId,
+      kategoriPinjamanId: kategoriPinjamanId,
+      bungaPinjamanId: bungaPinjamanId,
+      tipeAngsuran: tipeAngsuran,
+      tipeBungaPinjaman: tipeBungaPinjaman,
+      jumlah: jumlah,
+      tipeJaminanId: tipeJaminanId,
+      nilaiAsetJaminan: nilaiAsetJaminan,
+      namaAsetJaminan: namaAsetJaminan,
+      dokumenAsetJaminan: dokumenAsetJaminan,
+      tanggalPinjaman: tanggalPinjaman,
+      statusPinjaman: statusPinjaman,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      tipeJaminan: tipeJaminan?.toEntity(),
+      bungaPinjaman: bungaPinjaman?.toEntity(),
+    );
   }
 
   @override
@@ -120,8 +122,9 @@ class PinjamanModel extends Equatable {
         id,
         memberId,
         adminId,
-        bungaMenetapId,
-        bungaMenurunId,
+        kategoriPinjamanId,
+        bungaPinjamanId,
+        tipeAngsuran,
         tipeBungaPinjaman,
         jumlah,
         tipeJaminanId,
@@ -133,7 +136,6 @@ class PinjamanModel extends Equatable {
         createdAt,
         updatedAt,
         tipeJaminan,
-        bungaMenurun,
-        bungaMenetap
+        bungaPinjaman,
       ];
 }

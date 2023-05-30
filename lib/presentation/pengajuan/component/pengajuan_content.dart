@@ -309,7 +309,16 @@ class _PengajuanContentState extends State<PengajuanContent> {
                                               ]))
                                           .toList())
                                   : Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
+                                        Text(
+                                          "Jangka Waktu",
+                                          style: AppFont.title1,
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
                                         Obx((() => DropdownButtonHideUnderline(
                                                 child: DropdownButton2(
                                               hint: Row(
@@ -393,6 +402,9 @@ class _PengajuanContentState extends State<PengajuanContent> {
                                                     '  Persentase Bunga  ${widget.controller.selectedBungaPinjaman.value?.persentaseBunga} %',
                                                     style: AppFont.title42,
                                                   ),
+                                                  const SizedBox(
+                                                    height: 20,
+                                                  )
                                                 ],
                                               )
                                             : Text(''))),
@@ -406,9 +418,6 @@ class _PengajuanContentState extends State<PengajuanContent> {
                               //   height: 10,
                               // ),
 
-                              const SizedBox(
-                                height: 20,
-                              ),
 ///////////////////////////     JAMINAN PINJAMAN     //////////////////////////
                               Text(
                                 "Tipe Jaminan",

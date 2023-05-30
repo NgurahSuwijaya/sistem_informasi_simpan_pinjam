@@ -18,12 +18,12 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
   @override
   Widget build(BuildContext context) {
     String formattedDate =
-        DateFormat('yyyy-MM-dd').format(DateTime.now().toLocal());
+        DateFormat('dd MMMM yyyy', 'id_ID').format(DateTime.now().toLocal());
     final arg = Get.arguments;
     final String tipeAngsuran = arg[0];
     final KategoriPinjaman kategoriPinjaman = arg[1];
     final String jenisBunga = arg[2];
-    final BungaPinjaman bungaPinjaman = arg[3];
+    final BungaPinjaman? bungaPinjaman = arg[3];
     final TipeJaminan tipeJaminan = arg[4];
     final String namaJaminan = arg[5];
     final int nilaiAsetJaminan = arg[6];
@@ -219,20 +219,23 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                 const SizedBox(
                                   height: 5,
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Jangka Waktu",
-                                      style: AppFont.title3,
-                                    ),
-                                    Text(
-                                      bungaPinjaman.jangkaWaktu.toString(),
-                                      style: AppFont.title2,
-                                    ),
-                                  ],
-                                ),
+                                (jenisBunga != 'menurun')
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Jangka Waktu",
+                                            style: AppFont.title3,
+                                          ),
+                                          Text(
+                                            bungaPinjaman!.jangkaWaktu
+                                                .toString(),
+                                            style: AppFont.title2,
+                                          ),
+                                        ],
+                                      )
+                                    : SizedBox(),
                                 const SizedBox(
                                   height: 5,
                                 ),
@@ -253,20 +256,22 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                 const SizedBox(
                                   height: 5,
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Bunga",
-                                      style: AppFont.title3,
-                                    ),
-                                    Text(
-                                      '${bungaPinjaman.persentaseBunga}%',
-                                      style: AppFont.title2,
-                                    ),
-                                  ],
-                                ),
+                                (jenisBunga != 'menurun')
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Bunga",
+                                            style: AppFont.title3,
+                                          ),
+                                          Text(
+                                            '${bungaPinjaman!.persentaseBunga}%',
+                                            style: AppFont.title2,
+                                          ),
+                                        ],
+                                      )
+                                    : const SizedBox(),
                                 const SizedBox(
                                   height: 5,
                                 ),
@@ -341,7 +346,7 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                         tipeAngsuran,
                         kategoriPinjaman,
                         jenisBunga,
-                        bungaPinjaman,
+                        bungaPinjaman!,
                         tipeJaminan,
                         namaJaminan,
                         nilaiAsetJaminan,

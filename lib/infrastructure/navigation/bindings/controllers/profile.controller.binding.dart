@@ -12,7 +12,7 @@ class ProfileControllerBinding extends Bindings {
     Get.lazyPut(() => Client());
     Get.lazyPut<MemberDataSource>(() => MemberDataSourceImpl(Get.find()));
     Get.lazyPut<MemberRepository>(() => MemberRepositoryImpl(Get.find()));
-    Get.lazyPut<GetMemberData>(() => GetMemberData(Get.find()));
+    Get.lazyPut<MemberUseCase>(() => MemberUseCase(Get.find()));
     Get.lazyPut<ProfileController>(
       () => ProfileController(Get.find()),
     );

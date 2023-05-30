@@ -12,8 +12,8 @@ import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_input.dart';
 
 class PinjamanContent extends StatefulWidget {
-  final PinjamanController pinjamanController;
-  const PinjamanContent({super.key, required this.pinjamanController});
+  final PinjamanController controller;
+  const PinjamanContent({super.key, required this.controller});
 
   @override
   State<PinjamanContent> createState() => _PinjamanContentState();
@@ -23,9 +23,9 @@ class _PinjamanContentState extends State<PinjamanContent> {
   @override
   Widget build(BuildContext context) {
     DateTime tglPinjaman;
-    tglPinjaman = widget.pinjamanController.pinjamanData.value.tanggalPinjaman;
+    tglPinjaman = widget.controller.pinjamanData.value!.tanggalPinjaman;
     String formattedDate =
-        DateFormat('yyyy-MM-dd').format(tglPinjaman.toLocal());
+        DateFormat('dd MMMM yyyy', 'id_ID').format(tglPinjaman);
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -46,17 +46,10 @@ class _PinjamanContentState extends State<PinjamanContent> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(25.0),
-                child: Obx((() => widget.pinjamanController.pinjamanData.value
-                            .bungaMenetapId !=
-                        null
-                    ? Text(
-                        'Pinjaman Bunga Menetap',
-                        style: AppFont.title1,
-                      )
-                    : Text(
-                        'Pinjaman Bunga Menurun',
-                        style: AppFont.title1,
-                      ))),
+                child: Text(
+                  'Pinjaman Bunga ${widget.controller.pinjamanData.value!.tipeBungaPinjaman[0].toUpperCase()}${widget.controller.pinjamanData.value!.tipeBungaPinjaman.substring(1)}',
+                  style: AppFont.title4,
+                ),
               )),
           Container(
               width: double.infinity,
@@ -81,7 +74,7 @@ class _PinjamanContentState extends State<PinjamanContent> {
                     ),
                     Text(
                       formattedDate,
-                      style: AppFont.title2,
+                      style: AppFont.title3,
                     ),
                   ],
                 ),
@@ -101,49 +94,16 @@ class _PinjamanContentState extends State<PinjamanContent> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Suku Bunga Pinjaman Perbulan",
+                      "Suku Bunga Pinjaman",
                       style: AppFont.title1,
                     ),
                     const SizedBox(
                       height: 5,
                     ),
-                    Obx((() => widget.pinjamanController.pinjamanData.value
-                                .bungaMenetapId !=
-                            null
-                        ? Row(
-                            children: [
-                              Text(
-                                widget.pinjamanController.pinjamanData.value
-                                    .bungaMenetap!.persentaseBunga
-                                    .toString(),
-                                style: AppFont.title2,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                '%',
-                                style: AppFont.title2,
-                              ),
-                            ],
-                          )
-                        : Row(
-                            children: [
-                              Text(
-                                widget.pinjamanController.pinjamanData.value
-                                    .bungaMenurun!.persentaseBunga
-                                    .toString(),
-                                style: AppFont.title2,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                '%',
-                                style: AppFont.title2,
-                              ),
-                            ],
-                          ))),
+                    Obx((() => Text(
+                          '${widget.controller.pinjamanData.value!.bungaPinjaman!.persentaseBunga.toString()}%',
+                          style: AppFont.title3,
+                        ))),
                   ],
                 ),
               )),
@@ -157,69 +117,47 @@ class _PinjamanContentState extends State<PinjamanContent> {
               child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-                  child: Obx((() => widget.pinjamanController.pinjamanData.value
-                              .bungaMenetapId !=
-                          null
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Jangka Waktu",
-                              style: AppFont.title1,
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
+                  child: Obx((() =>
+                      widget.controller.pinjamanData.value!.tipeBungaPinjaman ==
+                              'menurun'
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  widget.pinjamanController.pinjamanData.value
-                                      .bungaMenetap!.jangkaWaktu
-                                      .toString(),
-                                  style: AppFont.title2,
+                                  "Batas Durasi Pinjaman Berjalan",
+                                  style: AppFont.title1,
                                 ),
-                                SizedBox(
-                                  width: 5,
+                                const SizedBox(
+                                  height: 5,
                                 ),
                                 Text(
-                                  "Bulan",
-                                  style: AppFont.title2,
+                                  '${widget.controller.pinjamanData.value!.bungaPinjaman!.batasDurasiPinjamanBerjalan.toString()} Bulan',
+                                  style: AppFont.title3,
                                 ),
                               ],
-                            ),
-                          ],
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Batas Durasi Pinjaman Berjalan",
-                              style: AppFont.title1,
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
+                            )
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  widget.pinjamanController.pinjamanData.value
-                                      .bungaMenurun!.batasDurasiPinjamanBerjalan
-                                      .toString(),
-                                  style: AppFont.title2,
+                                  "Jangka Waktu",
+                                  style: AppFont.title1,
                                 ),
-                                SizedBox(
-                                  width: 5,
+                                const SizedBox(
+                                  height: 5,
                                 ),
-                                Text(
-                                  "Bulan",
-                                  style: AppFont.title2,
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${widget.controller.pinjamanData.value!.bungaPinjaman!.jangkaWaktu.toString()} Bulan',
+                                      style: AppFont.title3,
+                                    ),
+                                  ],
                                 ),
                               ],
-                            ),
-                          ],
-                        ))))),
+                            ))))),
           Container(
               width: double.infinity,
               decoration: const BoxDecoration(
@@ -230,16 +168,41 @@ class _PinjamanContentState extends State<PinjamanContent> {
               child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-                  child: Obx((() => AppInput(
-                        topText: "Jumlah Pinjaman",
-                        hint: "Jumlah Pinjaman",
-                        value: widget
-                            .pinjamanController.pinjamanData.value.jumlah
-                            .toString(),
-                        textInputType: TextInputType.none,
-                        obscureText: false,
-                        canEdit: false,
-                        isCurrency: true,
+                  child: Obx((() => Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Jumlah Pinjaman",
+                            style: AppFont.title1,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            height: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: AppColor.gray5),
+                            ),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: Text(
+                                    NumberFormat.currency(
+                                            symbol: 'Rp',
+                                            decimalDigits: 0,
+                                            locale: 'id_ID')
+                                        .format(widget.controller.pinjamanData
+                                            .value!.jumlah)
+                                        .toString(),
+                                    style: AppFont.title2),
+                              ),
+                            ),
+                          ),
+                        ],
                       ))))),
           Container(
               width: double.infinity,
@@ -263,9 +226,8 @@ class _PinjamanContentState extends State<PinjamanContent> {
                       height: 5,
                     ),
                     Obx((() => Text(
-                          widget.pinjamanController.pinjamanData.value
-                              .namaAsetJaminan,
-                          style: AppFont.title2,
+                          widget.controller.pinjamanData.value!.namaAsetJaminan,
+                          style: AppFont.title3,
                         )))
                   ],
                 ),

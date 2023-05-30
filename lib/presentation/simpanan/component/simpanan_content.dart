@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
@@ -23,7 +24,7 @@ class _SimpananContentState extends State<SimpananContent> {
   String? selectedValueRekening;
   String? selectedValueTipeTransaksi;
   String formattedDate =
-      DateFormat('yyyy-MM-dd').format(DateTime.now().toLocal());
+      DateFormat('dd MMMM yyyy', 'id_ID').format(DateTime.now());
   final List<String> jenisValRekening = ['biasa', 'giro'];
   final List<String> tipeTransaksi = ['setoran', 'penarikan'];
   @override
@@ -307,13 +308,116 @@ class _SimpananContentState extends State<SimpananContent> {
                           const SizedBox(
                             height: 20,
                           ),
-                          Obx((() => Text(
-                                widget.controller.rekening.value,
-                                style: AppFont.title42,
-                              ))),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          Obx((() => widget.controller.isBankHasSelected.value
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Nomor Rekening",
+                                      style: AppFont.title1,
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            height: 60,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              border: Border.all(
+                                                  color: AppColor.gray5),
+                                            ),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 16),
+                                                child: Text(
+                                                  widget.controller.chosedBank
+                                                      .value!.nomorRekening
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    color:
+                                                        AppColor.blackComponent,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 5),
+                                        Container(
+                                          height: 60,
+                                          width: 60,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border: Border.all(
+                                                color: AppColor.gray5),
+                                          ),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              Clipboard.setData(
+                                                ClipboardData(
+                                                  text: widget
+                                                      .controller
+                                                      .chosedBank
+                                                      .value!
+                                                      .nomorRekening
+                                                      .toString(),
+                                                ),
+                                              ).then((value) {});
+                                            },
+                                            icon: Icon(Icons.copy),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text(
+                                      "Atas Nama",
+                                      style: AppFont.title1,
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      height: 60,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        border:
+                                            Border.all(color: AppColor.gray5),
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 16),
+                                          child: Text(
+                                            widget.controller.chosedBank.value!
+                                                .atasNama
+                                                .toString(),
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: AppColor.blackComponent,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                  ],
+                                )
+                              : SizedBox())),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

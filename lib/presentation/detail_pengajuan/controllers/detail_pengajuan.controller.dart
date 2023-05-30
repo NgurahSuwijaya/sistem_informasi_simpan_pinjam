@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/pinjaman_usecase.dart';
 
@@ -27,6 +28,7 @@ class DetailPengajuanController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    initializeDateFormatting('id_ID', null);
   }
 
   @override

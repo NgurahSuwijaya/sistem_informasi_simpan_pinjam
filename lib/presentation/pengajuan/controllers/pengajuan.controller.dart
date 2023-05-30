@@ -188,7 +188,14 @@ class PengajuanController extends GetxController {
     final tipeAngsuranDetail = selectedTipeAngsuran.value;
     final kategoriPinjamanDetail = selectedKategoriPinjaman.value;
     final jenisBungaDetail = selectedJenisBunga.value;
-    final bungaPinjamanDetail = selectedBungaPinjaman.value;
+    BungaPinjaman? bungaPinjamanDetail;
+    if (jenisBungaDetail == 'menurun') {
+      bungaPinjamanDetail = bungaPinjamanList.value[0];
+      print(bungaPinjamanDetail);
+    } else {
+      bungaPinjamanDetail = selectedBungaPinjaman.value;
+    }
+
     final tipeJaminanDetail = selectedTipeJaminan.value;
     final namaJaminanDetail = namaJaminan.text;
     final nilaiAsetJaminanDetail =
@@ -200,7 +207,6 @@ class PengajuanController extends GetxController {
     if (tipeAngsuranDetail != "" &&
         kategoriPinjamanDetail != null &&
         jenisBungaDetail != "" &&
-        bungaPinjamanDetail != null &&
         tipeJaminanDetail != null &&
         namaJaminanDetail != "" &&
         nilaiAsetJaminanDetail != null &&

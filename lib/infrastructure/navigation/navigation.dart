@@ -92,14 +92,29 @@ class Nav {
       binding: AngsuranMenurunControllerBinding(),
     ),
     GetPage(
-      name: Routes.ANGSURAN_MENETAP,
-      page: () => AngsuranMenetapScreen(),
-      binding: AngsuranMenetapControllerBinding(),
+      name: Routes.ANGSURAN,
+      page: () => AngsuranScreen(),
+      binding: AngsuranControllerBinding(),
     ),
     GetPage(
       name: Routes.DETAIL_ANGSURAN,
       page: () => const DetailAngsuranScreen(),
       binding: DetailAngsuranControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.TAGIHAN,
+      page: () => const TagihanScreen(),
+      binding: TagihanControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.SIMPANAN_WAJIB,
+      page: () => const SimpananWajibScreen(),
+      binding: SimpananWajibControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_SIMPANAN_WAJIB,
+      page: () => const DetailSimpananWajibScreen(),
+      binding: DetailSimpananWajibControllerBinding(),
     ),
   ];
 }

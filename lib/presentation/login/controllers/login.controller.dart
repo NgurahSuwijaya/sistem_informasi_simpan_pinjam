@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,6 +39,8 @@ class LoginController extends GetxController {
   }
 
   Future<void> loginUser() async {
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    print(fcmToken);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _isLoading.value = true;
     final email = emailController.text;

@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
 
+import '../../domain/entities/response_bank.dart';
 import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
 import '../../widget/app_button.dart';
@@ -11,6 +16,12 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
   const DetailAngsuranScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final argument = Get.arguments;
+    final ResponseTagihanAngsuran responseTagihanAngsuran = argument[0];
+    final int jumlah = argument[1];
+    final Bank bank = argument[2];
+    final File buktiBayar = File(argument[3]);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Angsuran'),
@@ -63,7 +74,10 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                           child: Padding(
                             padding: const EdgeInsets.all(25.0),
                             child: Text(
-                              "11/02/2023",
+                              DateFormat('dd MMMM yyyy', 'id_ID')
+                                  .format(responseTagihanAngsuran
+                                      .tagihanAngsuran![0].jatuhTempo)
+                                  .toString(),
                               style: AppFont.title1,
                             ),
                           )),
@@ -98,7 +112,7 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      "BPD BALI",
+                                      bank.namaBank,
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -115,7 +129,7 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      "7720828094",
+                                      bank.nomorRekening,
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -150,23 +164,17 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Pokok",
+                                      "Pembayaran Pokok",
                                       style: AppFont.title3,
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Rp",
-                                          style: AppFont.title2,
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          '1,000,000',
-                                          style: AppFont.title2,
-                                        )
-                                      ],
+                                    Text(
+                                      NumberFormat.currency(
+                                              symbol: 'Rp',
+                                              decimalDigits: 0,
+                                              locale: 'id_ID')
+                                          .format(responseTagihanAngsuran
+                                              .totalPokok),
+                                      style: AppFont.title2,
                                     ),
                                   ],
                                 ),
@@ -178,23 +186,17 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Bunga",
+                                      "Pembayaran Bunga",
                                       style: AppFont.title3,
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Rp",
-                                          style: AppFont.title2,
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          '10,000',
-                                          style: AppFont.title2,
-                                        )
-                                      ],
+                                    Text(
+                                      NumberFormat.currency(
+                                              symbol: 'Rp',
+                                              decimalDigits: 0,
+                                              locale: 'id_ID')
+                                          .format(responseTagihanAngsuran
+                                              .totalBunga),
+                                      style: AppFont.title2,
                                     ),
                                   ],
                                 ),
@@ -206,23 +208,17 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Admin",
+                                      "Biaya Admin",
                                       style: AppFont.title3,
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Rp",
-                                          style: AppFont.title42,
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          '2,000',
-                                          style: AppFont.title42,
-                                        )
-                                      ],
+                                    Text(
+                                      NumberFormat.currency(
+                                              symbol: 'Rp',
+                                              decimalDigits: 0,
+                                              locale: 'id_ID')
+                                          .format(responseTagihanAngsuran
+                                              .totalAdmin),
+                                      style: AppFont.title42,
                                     ),
                                   ],
                                 ),
@@ -234,23 +230,17 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Pinalti",
+                                      "Pembayaran Pinalti",
                                       style: AppFont.title3,
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Rp",
-                                          style: AppFont.title41,
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          '100,000',
-                                          style: AppFont.title41,
-                                        )
-                                      ],
+                                    Text(
+                                      NumberFormat.currency(
+                                              symbol: 'Rp',
+                                              decimalDigits: 0,
+                                              locale: 'id_ID')
+                                          .format(responseTagihanAngsuran
+                                              .totalPenalti),
+                                      style: AppFont.title41,
                                     ),
                                   ],
                                 ),
@@ -277,53 +267,73 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                         "Total Pembayaran",
                                         style: AppFont.title3,
                                       ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "Rp",
-                                            style: AppFont.title4,
-                                          ),
-                                          const SizedBox(
-                                            width: 1,
-                                          ),
-                                          Text(
-                                            '1,000,000',
-                                            style: AppFont.title4,
-                                          )
-                                        ],
+                                      Text(
+                                        NumberFormat.currency(
+                                                symbol: 'Rp',
+                                                decimalDigits: 0,
+                                                locale: 'id_ID')
+                                            .format(jumlah),
+                                        style: AppFont.title43,
                                       ),
                                     ],
                                   ),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Total Dibayarkan",
-                                        style: AppFont.title3,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "Rp",
-                                            style: AppFont.title4,
-                                          ),
-                                          const SizedBox(
-                                            width: 1,
-                                          ),
-                                          Text(
-                                            '1,000,000',
-                                            style: AppFont.title4,
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                  // Row(
+                                  //   mainAxisAlignment:
+                                  //       MainAxisAlignment.spaceBetween,
+                                  //   children: [
+                                  //     Text(
+                                  //       "Total Dibayarkan",
+                                  //       style: AppFont.title3,
+                                  //     ),
+                                  //     Row(
+                                  //       children: [
+                                  //         Text(
+                                  //           "Rp",
+                                  //           style: AppFont.title4,
+                                  //         ),
+                                  //         const SizedBox(
+                                  //           width: 1,
+                                  //         ),
+                                  //         Text(
+                                  //           '1,000,000',
+                                  //           style: AppFont.title4,
+                                  //         )
+                                  //       ],
+                                  //     ),
+                                  //   ],
+                                  // ),
                                 ],
                               ))),
+                      // Container(
+                      //     width: double.infinity,
+                      //     decoration: const BoxDecoration(
+                      //       border: Border(
+                      //         bottom:
+                      //             BorderSide(width: 1.0, color: AppColor.gray5),
+                      //       ),
+                      //     ),
+                      //     child: Padding(
+                      //       padding: const EdgeInsets.all(25.0),
+                      //       child: Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.start,
+                      //         children: [
+                      //           Text(
+                      //             "Keterangan Tambahan",
+                      //             style: AppFont.title1,
+                      //           ),
+                      //           SizedBox(
+                      //             height: 5,
+                      //           ),
+                      //           Text(
+                      //             "Sisa pembayaran dimasukan ke simpanan",
+                      //             style: AppFont.title3,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     )),
                       Container(
                           width: double.infinity,
                           decoration: const BoxDecoration(
@@ -338,42 +348,24 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Keterangan Tambahan",
+                                  "Bukti Pembayaran",
                                   style: AppFont.title1,
                                 ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "Sisa pembayaran dimasukan ke simpanan",
-                                  style: AppFont.title3,
-                                ),
-                              ],
-                            ),
-                          )),
-                      Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom:
-                                  BorderSide(width: 1.0, color: AppColor.gray5),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(25.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Informasi Pinjaman Aktif",
-                                  style: AppFont.title1,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "screenshoot.jpg",
-                                  style: AppFont.title2,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "bukti_bayar.jpg",
+                                      style: AppFont.title2,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        controller.previewImage(buktiBayar);
+                                      },
+                                      icon: const Icon(Icons.image_search),
+                                    ),
+                                  ],
                                 )
                               ],
                             ),
@@ -387,7 +379,10 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                 AppButton(
                   text: "Bayar",
                   onPressed: () {
-                    Get.toNamed('');
+                    controller.postBayarAngsuran(
+                        responseTagihanAngsuran: responseTagihanAngsuran,
+                        jumlah: jumlah,
+                        buktiBayar: buktiBayar.path);
                   },
                 ),
                 const SizedBox(

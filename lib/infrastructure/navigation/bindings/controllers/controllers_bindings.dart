@@ -1,9 +1,10 @@
-export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/angsuran_menetap.controller.binding.dart';
+export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/angsuran.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/angsuran_menurun.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/dashboard.controller.binding.dart';
-export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/detail_angsuran.controller.binding.dart'; 
+export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/detail_angsuran.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/detail_pengajuan.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/detail_simpanan.controller.binding.dart';
+export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/detail_simpanan_wajib.controller.binding.dart'; 
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/edit_profile.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/history.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/home.controller.binding.dart';
@@ -13,3 +14,5 @@ export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/binding
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/pinjaman.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/profile.controller.binding.dart';
 export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/simpanan.controller.binding.dart';
+export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/simpanan_wajib.controller.binding.dart'; 
+export 'package:sistem_informasi_simpan_pinjam/infrastructure/navigation/bindings/controllers/tagihan.controller.binding.dart';

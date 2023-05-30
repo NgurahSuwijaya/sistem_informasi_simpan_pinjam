@@ -25,6 +25,7 @@ class PinjamanRepositoryImpl implements PinjamanRepository {
     try {
       final result = await pinjamanDataSource.onGetPinjamanData(token);
       // print(result);
+      print(result);
       return Right(result.toEntity());
     } on ServerException {
       prefs.setBool('punyaPinjaman', false);

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:mime/mime.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -17,9 +18,10 @@ class SimpananController extends GetxController {
   final GetBankData _getBankData;
   final SimpananUseCase _simpananUseCase;
   final isSetoran = false.obs;
+  final isBankHasSelected = false.obs;
   final saldoSimpanan = 1.obs;
 
-  final _isLoading = false.obs;
+  final isLoading = false.obs;
 
   final jumlahSimpananController = TextEditingController();
 
@@ -27,6 +29,8 @@ class SimpananController extends GetxController {
   String? choosedRekening = '';
   final Rx<TipeSimpanans?> chosedTipeSimpanan = Rx<TipeSimpanans?>(null);
   final RxString rekening = "Pilih Rekening Koperasi".obs;
+  final RxString rekeningAN = "Pilih Rekening Koperasi".obs;
+  final RxString rekeningNom = "Pilih Rekening Koperasi".obs;
 
   final imageFile = Rx<File?>(File(''));
   final hasSelectedImage = RxBool(false);
@@ -58,6 +62,7 @@ class SimpananController extends GetxController {
     super.onInit();
     getBankData();
     getArgumentNextPage();
+    initializeDateFormatting('id_ID', null);
     // getTipeSimpananData();
   }
 
@@ -108,6 +113,9 @@ class SimpananController extends GetxController {
 
   void setNomrek(String nomrek, String nama) {
     rekening.value = "$nomrek A/N $nama";
+    rekeningNom.value = nomrek;
+    rekeningAN.value = nama;
+    isBankHasSelected.value = true;
   }
 
   Future<void> selectImage() async {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "599775303166",
+    "project_id": "simpinnotification",
+    "storage_bucket": "simpinnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599775303166:android:ef846aa35bc4c43d269caf",
+        "android_client_info": {
+          "package_name": "com.example.sistem_informasi_simpan_pinjam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgC0FhaUq4YKMWPuljAsyF5LreDeqNBtA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

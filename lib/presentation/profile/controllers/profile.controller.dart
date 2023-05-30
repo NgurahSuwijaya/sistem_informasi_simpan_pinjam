@@ -6,7 +6,7 @@ import '../../../domain/entities/member.dart';
 import '../../../domain/entities/user.dart';
 
 class ProfileController extends GetxController {
-  final GetMemberData _getMemberdata;
+  final MemberUseCase _getMemberdata;
   RxBool isPasswordVisible = false.obs;
   final memberProfileData = Rx<Member>(Member(
     id: 0,

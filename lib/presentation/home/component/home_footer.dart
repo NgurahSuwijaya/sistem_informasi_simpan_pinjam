@@ -33,11 +33,11 @@ class HomeFooter extends StatelessWidget {
                         },
                       ),
                       Text(
-                        "Simpanan",
+                        "Simpanan dan",
                         style: AppFont.subtitle3,
                       ),
                       Text(
-                        "Online",
+                        "Penarikan",
                         style: AppFont.subtitle3,
                       )
                     ],
@@ -67,11 +67,11 @@ class HomeFooter extends StatelessWidget {
                         icon: const Icon(CupertinoIcons.calendar_today),
                         color: AppColor.sBlue,
                         onPressed: () {
-                          Get.toNamed('/angsuran-menetap');
+                          Get.toNamed('/tagihan');
                         },
                       ),
                       Text(
-                        "Angsuran",
+                        "Tagihan",
                         style: AppFont.subtitle3,
                       ),
                       Text(

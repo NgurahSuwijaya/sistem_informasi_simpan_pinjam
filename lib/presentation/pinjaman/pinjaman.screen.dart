@@ -32,8 +32,8 @@ class PinjamanScreen extends GetView<PinjamanController> {
                                   height: 20,
                                 ),
                                 PinjamanHeader(controller: controller),
-                                PinjamanContent(pinjamanController: controller),
-                                // PinjamanFooter(controller: controller),
+                                PinjamanContent(controller: controller),
+                                PinjamanFooter(controller: controller),
                                 const SizedBox(
                                   height: 100,
                                 )
