@@ -93,6 +93,7 @@ class _SimpananWajibContentState extends State<SimpananWajibContent> {
                           controller: widget.controller.jumlahBayarController,
                           canEdit: true,
                           isCurrency: true,
+                          textInputType: TextInputType.number,
                         ),
                         const SizedBox(
                           height: 20,

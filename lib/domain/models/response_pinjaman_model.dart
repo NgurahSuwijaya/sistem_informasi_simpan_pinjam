@@ -4,7 +4,7 @@ import 'package:sistem_informasi_simpan_pinjam/domain/models/pinjaman_model.dart
 import '../entities/response_pinjaman.dart';
 
 class ResponsePinjamanModel extends Equatable {
-  ResponsePinjamanModel(
+  const ResponsePinjamanModel(
       {required this.success,
       required this.message,
       required this.data,
@@ -14,8 +14,8 @@ class ResponsePinjamanModel extends Equatable {
   final bool success;
   final String message;
   final PinjamanModel data;
-  final int sisaPokok;
-  final int sisaBunga;
+  final int? sisaPokok;
+  final int? sisaBunga;
 
   factory ResponsePinjamanModel.fromJson(Map<String, dynamic> json) =>
       ResponsePinjamanModel(
@@ -44,6 +44,5 @@ class ResponsePinjamanModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [success, message, data, sisaPokok, sisaBunga];
 }

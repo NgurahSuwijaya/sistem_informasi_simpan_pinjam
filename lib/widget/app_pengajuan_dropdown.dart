@@ -1,7 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/controllers/pengajuan.controller.dart';
 
 import '../infrastructure/theme/app_color.dart';
@@ -13,7 +11,7 @@ class AppPengajuanDropDown extends StatefulWidget {
   final String name;
   final String selectedValue;
 
-  AppPengajuanDropDown(
+  const AppPengajuanDropDown(
       {super.key,
       required this.items,
       required this.name,

@@ -114,4 +114,22 @@ class PinjamanRepositoryImpl implements PinjamanRepository {
       return Left(CommonFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, ResponsePinjaman>> getDetailPinjamanData(
+      {required String? token, required int id}) async {
+    try {
+      final result = await pinjamanDataSource.onGetPinjamanDetail(token, id);
+      // print(result);
+      return Right(result.toEntity());
+    } on ServerException {
+      return Left(ServerFailure('Server Error'));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated not valid\n${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
+    }
+  }
 }

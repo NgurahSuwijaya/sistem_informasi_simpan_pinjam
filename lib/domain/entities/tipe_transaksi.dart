@@ -19,7 +19,6 @@ class TipeTransaksis extends Equatable {
       required this.updatedAt});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,

@@ -18,7 +18,7 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
   @override
   Widget build(BuildContext context) {
     String formattedDate =
-        DateFormat('dd MMMM yyyy', 'id_ID').format(DateTime.now().toLocal());
+        DateFormat('dd MMMM yyyy', 'id_ID').format(DateTime.now());
     final arg = Get.arguments;
     final String tipeAngsuran = arg[0];
     final KategoriPinjaman kategoriPinjaman = arg[1];

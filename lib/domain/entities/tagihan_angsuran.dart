@@ -6,18 +6,18 @@ class TagihanAngsuran extends Equatable {
   final int id;
   final int pinjamanId;
   final int memberId;
-  final int tagihanPokok;
-  final int tagihanBunga;
-  final int tagihanPenalti;
-  final int tagihanAdmin;
-  final String status;
-  final int angsuranKe;
-  final DateTime jatuhTempo;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final Pinjaman pinjaman;
+  final int? tagihanPokok;
+  final int? tagihanBunga;
+  final int? tagihanPenalti;
+  final int? tagihanAdmin;
+  final String? status;
+  final int? angsuranKe;
+  final DateTime? jatuhTempo;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final Pinjaman? pinjaman;
 
-  TagihanAngsuran(
+  const TagihanAngsuran(
       this.id,
       this.pinjamanId,
       this.memberId,
@@ -33,7 +33,6 @@ class TagihanAngsuran extends Equatable {
       this.pinjaman);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         pinjamanId,

@@ -1,14 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
-
-import 'package:sistem_informasi_simpan_pinjam/domain/models/kategori_pinjaman_model.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/tipe_jaminan_model.dart';
-
 import '../entities/pinjaman.dart';
 import 'bunga_pinjaman2_model.dart';
 
 class PinjamanModel extends Equatable {
-  PinjamanModel({
+  const PinjamanModel({
     required this.id,
     required this.memberId,
     required this.adminId,
@@ -23,27 +19,29 @@ class PinjamanModel extends Equatable {
     required this.dokumenAsetJaminan,
     required this.tanggalPinjaman,
     required this.statusPinjaman,
+    required this.kwitansi,
     required this.createdAt,
     required this.updatedAt,
-    required this.tipeJaminan,
-    required this.bungaPinjaman,
+    this.tipeJaminan,
+    this.bungaPinjaman,
   });
   final int id;
   final int memberId;
-  final int adminId;
-  final int kategoriPinjamanId;
-  final int bungaPinjamanId;
-  final String tipeAngsuran;
-  final String tipeBungaPinjaman;
-  final int jumlah;
-  final int tipeJaminanId;
-  final int nilaiAsetJaminan;
-  final String namaAsetJaminan;
-  final String dokumenAsetJaminan;
-  final DateTime tanggalPinjaman;
-  final String statusPinjaman;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final int? adminId;
+  final int? kategoriPinjamanId;
+  final int? bungaPinjamanId;
+  final String? tipeAngsuran;
+  final String? tipeBungaPinjaman;
+  final int? jumlah;
+  final int? tipeJaminanId;
+  final int? nilaiAsetJaminan;
+  final String? namaAsetJaminan;
+  final String? dokumenAsetJaminan;
+  final DateTime? tanggalPinjaman;
+  final String? statusPinjaman;
+  final String? kwitansi;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
   final TipeJaminanModel? tipeJaminan;
   final BungaPinjaman2Model? bungaPinjaman;
 
@@ -62,6 +60,7 @@ class PinjamanModel extends Equatable {
         dokumenAsetJaminan: json["dokumen_aset_jaminan"],
         tanggalPinjaman: DateTime.parse(json["tanggal_pinjaman"]),
         statusPinjaman: json["status_pinjaman"],
+        kwitansi: json["kwitansi"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         tipeJaminan: json["tipe_jaminan"] == null
@@ -85,10 +84,10 @@ class PinjamanModel extends Equatable {
         "nilai_aset_jaminan": nilaiAsetJaminan,
         "nama_aset_jaminan": namaAsetJaminan,
         "dokumen_aset_jaminan": dokumenAsetJaminan,
-        "tanggal_pinjaman": tanggalPinjaman.toIso8601String(),
+        "tanggal_pinjaman": tanggalPinjaman?.toIso8601String(),
         "status_pinjaman": statusPinjaman,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
         "tipe_jaminan": tipeJaminan?.toJson(),
         "bunga_pinjaman": bungaPinjaman?.toJson(),
       };
@@ -109,6 +108,7 @@ class PinjamanModel extends Equatable {
       dokumenAsetJaminan: dokumenAsetJaminan,
       tanggalPinjaman: tanggalPinjaman,
       statusPinjaman: statusPinjaman,
+      kwitansi: kwitansi,
       createdAt: createdAt,
       updatedAt: updatedAt,
       tipeJaminan: tipeJaminan?.toEntity(),
@@ -117,7 +117,6 @@ class PinjamanModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         memberId,
@@ -133,6 +132,7 @@ class PinjamanModel extends Equatable {
         dokumenAsetJaminan,
         tanggalPinjaman,
         statusPinjaman,
+        kwitansi,
         createdAt,
         updatedAt,
         tipeJaminan,

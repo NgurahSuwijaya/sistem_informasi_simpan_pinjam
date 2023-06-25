@@ -1,15 +1,9 @@
-// To parse this JSON data, do
-//
-//     final member = memberFromJson(jsonString);
-
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/member.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/user_model.dart';
 
 class MemberModel extends Equatable {
-  MemberModel({
+  const MemberModel({
     required this.id,
     required this.userId,
     required this.institutionId,
@@ -22,20 +16,25 @@ class MemberModel extends Equatable {
     required this.createdAt,
     required this.updatedAt,
     required this.user,
+    required this.kontrolPenarikan,
+    required this.rekeningGiro,
   });
 
-  int id;
-  int userId;
-  int institutionId;
-  String jenisKelamin;
-  DateTime tanggalLahir;
-  String tempatLahir;
-  String nomorIndukAnggota;
-  String nomorKtp;
-  String memberStatus;
-  DateTime createdAt;
-  DateTime updatedAt;
-  UserModel user;
+  final int id;
+  final int userId;
+  final int institutionId;
+  final String jenisKelamin;
+  final DateTime tanggalLahir;
+  final String tempatLahir;
+  final String nomorIndukAnggota;
+  final String nomorKtp;
+
+  final String memberStatus;
+  final String? kontrolPenarikan;
+  final bool rekeningGiro;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final UserModel user;
 
   factory MemberModel.fromJson(Map<String, dynamic> json) => MemberModel(
         id: json["id"],
@@ -47,6 +46,8 @@ class MemberModel extends Equatable {
         nomorIndukAnggota: json["nomor_induk_anggota"],
         nomorKtp: json["nomor_ktp"],
         memberStatus: json["member_status"],
+        kontrolPenarikan: json["kontrol_penarikan_simpanan"],
+        rekeningGiro: json["rekening_giro"] == 0 ? false : true,
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         user: UserModel.fromJson(json["user"]),
@@ -81,11 +82,12 @@ class MemberModel extends Equatable {
         nomorIndukAnggota: nomorIndukAnggota,
         nomorKtp: nomorKtp,
         memberStatus: memberStatus,
-        user: user.toEntity());
+        user: user.toEntity(),
+        kontrolPenarikan: kontrolPenarikan,
+        rekeningGiro: rekeningGiro);
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,
@@ -98,6 +100,8 @@ class MemberModel extends Equatable {
         nomorIndukAnggota,
         nomorKtp,
         memberStatus,
+        kontrolPenarikan,
+        rekeningGiro,
         user
       ];
 }

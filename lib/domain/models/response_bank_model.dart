@@ -18,7 +18,7 @@ class ResponseBankModel extends Equatable {
   final String message;
   final List<BankModel> data;
 
-  ResponseBankModel({
+  const ResponseBankModel({
     required this.success,
     required this.message,
     required this.data,
@@ -44,7 +44,6 @@ class ResponseBankModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [success, message, data];
 }
 
@@ -54,17 +53,13 @@ class BankModel extends Equatable {
   final String namaBank;
   final String nomorRekening;
   final String atasNama;
-  final DateTime createdAt;
-  final DateTime updatedAt;
 
-  BankModel({
+  const BankModel({
     required this.id,
     required this.institutionId,
     required this.namaBank,
     required this.nomorRekening,
     required this.atasNama,
-    required this.createdAt,
-    required this.updatedAt,
   });
 
   factory BankModel.fromJson(Map<String, dynamic> json) => BankModel(
@@ -73,8 +68,6 @@ class BankModel extends Equatable {
         namaBank: json["nama_bank"],
         nomorRekening: json["nomor_rekening"],
         atasNama: json["atas_nama"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -83,30 +76,24 @@ class BankModel extends Equatable {
         "nama_bank": namaBank,
         "nomor_rekening": nomorRekening,
         "atas_nama": atasNama,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
       };
 
   Bank toEntity() {
     return Bank(
-        id: id,
-        institutionId: institutionId,
-        namaBank: namaBank,
-        nomorRekening: nomorRekening,
-        atasNama: atasNama,
-        createdAt: createdAt,
-        updatedAt: updatedAt);
+      id: id,
+      institutionId: institutionId,
+      namaBank: namaBank,
+      nomorRekening: nomorRekening,
+      atasNama: atasNama,
+    );
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,
         namaBank,
         nomorRekening,
         atasNama,
-        createdAt,
-        updatedAt
       ];
 }

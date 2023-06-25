@@ -23,7 +23,7 @@ class _PinjamanContentState extends State<PinjamanContent> {
   @override
   Widget build(BuildContext context) {
     DateTime tglPinjaman;
-    tglPinjaman = widget.controller.pinjamanData.value!.tanggalPinjaman;
+    tglPinjaman = widget.controller.pinjamanData.value!.tanggalPinjaman!;
     String formattedDate =
         DateFormat('dd MMMM yyyy', 'id_ID').format(tglPinjaman);
     return SizedBox(
@@ -47,7 +47,7 @@ class _PinjamanContentState extends State<PinjamanContent> {
               child: Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: Text(
-                  'Pinjaman Bunga ${widget.controller.pinjamanData.value!.tipeBungaPinjaman[0].toUpperCase()}${widget.controller.pinjamanData.value!.tipeBungaPinjaman.substring(1)}',
+                  'Pinjaman Bunga ${widget.controller.pinjamanData.value!.tipeBungaPinjaman![0].toUpperCase()}${widget.controller.pinjamanData.value!.tipeBungaPinjaman!.substring(1)}',
                   style: AppFont.title4,
                 ),
               )),
@@ -226,7 +226,8 @@ class _PinjamanContentState extends State<PinjamanContent> {
                       height: 5,
                     ),
                     Obx((() => Text(
-                          widget.controller.pinjamanData.value!.namaAsetJaminan,
+                          widget
+                              .controller.pinjamanData.value!.namaAsetJaminan!,
                           style: AppFont.title3,
                         )))
                   ],

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/institution.dart';
 
 class InstitutionsModel extends Equatable {
-  InstitutionsModel({
+  const InstitutionsModel({
     required this.id,
     required this.name,
     required this.address,
@@ -20,21 +20,21 @@ class InstitutionsModel extends Equatable {
     required this.updatedAt,
   });
 
-  int id;
-  String name;
-  String address;
-  String city;
-  String province;
-  String phoneNumber;
-  String email;
-  String photoPath;
-  double persentaseBungaSimpanan;
-  int persentasePajakBungaSimpanan;
-  int awalTahunBuku;
-  String status;
+  final int id;
+  final String name;
+  final String address;
+  final String city;
+  final String province;
+  final String phoneNumber;
+  final String email;
+  final String photoPath;
+  final double persentaseBungaSimpanan;
+  final int persentasePajakBungaSimpanan;
+  final int awalTahunBuku;
+  final String status;
   // String note;
-  DateTime createdAt;
-  DateTime updatedAt;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
   factory InstitutionsModel.fromJson(Map<String, dynamic> json) =>
       InstitutionsModel(
@@ -93,7 +93,6 @@ class InstitutionsModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         name,

@@ -1,14 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:sistem_informasi_simpan_pinjam/presentation/home/controllers/home.controller.dart';
+import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_card_button.dart';
 
-class HomeFooter extends StatelessWidget {
+class HomeFooter extends StatefulWidget {
   final HomeController homeController;
   const HomeFooter({super.key, required this.homeController});
 
+  @override
+  State<HomeFooter> createState() => _HomeFooterState();
+}
+
+class _HomeFooterState extends State<HomeFooter> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,19 +33,19 @@ class HomeFooter extends StatelessWidget {
                         icon: const Icon(CupertinoIcons.book_fill),
                         color: AppColor.sPurple,
                         onPressed: () {
-                          Get.toNamed('/simpanan',
-                              arguments:
-                                  homeController.simpananData.value.saldo);
+                          Get.toNamed('/simpanan', arguments: [
+                            widget.homeController.saldoAwalGiro.value,
+                            widget.homeController.maksPenarikan.value,
+                            widget.homeController.giroInstitusi.value,
+                            widget.homeController.saldoBiasa.value,
+                            widget.homeController.saldoGiro.value,
+                          ]);
                         },
                       ),
                       Text(
-                        "Simpanan dan",
+                        "Simpanan",
                         style: AppFont.subtitle3,
                       ),
-                      Text(
-                        "Penarikan",
-                        style: AppFont.subtitle3,
-                      )
                     ],
                   ),
                   Column(
@@ -74,16 +80,12 @@ class HomeFooter extends StatelessWidget {
                         "Tagihan",
                         style: AppFont.subtitle3,
                       ),
-                      Text(
-                        "Online",
-                        style: AppFont.subtitle3,
-                      )
                     ],
                   ),
                   Column(
                     children: [
                       AppCardButton(
-                        icon: const Icon(CupertinoIcons.plus_app_fill),
+                        icon: const Icon(CupertinoIcons.calendar_badge_plus),
                         color: AppColor.sRed,
                         onPressed: () {
                           Get.toNamed('/pengajuan');
@@ -111,66 +113,76 @@ class HomeFooter extends StatelessWidget {
                   Column(
                     children: [
                       AppCardButton(
-                        icon: const Icon(CupertinoIcons.clock_fill),
+                        icon: const Icon(CupertinoIcons.arrow_right_arrow_left),
+                        color: AppColor.sYellow,
+                        onPressed: () {
+                          Get.toNamed("/transfer", arguments: [
+                            widget.homeController.saldoBiasa.value,
+                            widget.homeController.simpananData.value.member!
+                                .nomorIndukAnggota
+                          ]);
+                        },
+                      ),
+                      Text(
+                        "Transfer",
+                        style: AppFont.subtitle3,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      AppCardButton(
+                        icon: const Icon(CupertinoIcons.doc_on_doc_fill),
                         color: AppColor.sBlue,
                         onPressed: () {
-                          Get.toNamed('/notification');
+                          Get.toNamed('/history');
                         },
                       ),
                       Text(
-                        "Mutasi",
+                        "Transaksi",
                         style: AppFont.subtitle3,
                       ),
                     ],
                   ),
-                  // const SizedBox(
-                  //   width: 23,
-                  // ),
                   Column(
                     children: [
                       AppCardButton(
-                        icon: const Icon(CupertinoIcons.bell_fill),
+                        icon: const Icon(CupertinoIcons.mail_solid),
                         color: AppColor.green1,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.offNamed('/notification');
+                        },
                       ),
                       Text(
-                        "Notifikasi",
+                        "Pesan",
                         style: AppFont.subtitle3,
                       ),
                     ],
                   ),
-                  // const SizedBox(
-                  //   width: 23,
-                  // ),
                   Column(
                     children: [
                       AppCardButton(
-                        icon: const Icon(CupertinoIcons.person_fill),
+                        icon: const Icon(CupertinoIcons.gear_alt_fill),
                         color: AppColor.gray2,
                         onPressed: () {
-                          Get.toNamed("/profile");
+                          Get.toNamed("/setting", arguments: [
+                            widget.homeController.simpananData.value.member!
+                                .user.photoPath,
+                            widget.homeController.simpananData.value.member!
+                                .nomorIndukAnggota,
+                            widget.homeController.simpananData.value.member!
+                                .user.name,
+                            widget.homeController.simpananData.value.member!
+                                .kontrolPenarikan,
+                            widget.homeController.saldoGiro.value,
+                            widget.homeController.simpananData.value.member!
+                                .rekeningGiro,
+                            widget.homeController.giroInstitusi.value
+                          ]);
                         },
                       ),
                       Text(
-                        "Profil",
-                        style: AppFont.subtitle3,
-                      ),
-                    ],
-                  ),
-                  // const SizedBox(
-                  //   width: 23,
-                  // ),
-                  Column(
-                    children: [
-                      AppCardButton(
-                        icon: const Icon(CupertinoIcons.arrow_right),
-                        color: AppColor.sRed,
-                        onPressed: () {
-                          Get.toNamed("/profile");
-                        },
-                      ),
-                      Text(
-                        "Keluar",
+                        "Pengaturan",
                         style: AppFont.subtitle3,
                       ),
                     ],

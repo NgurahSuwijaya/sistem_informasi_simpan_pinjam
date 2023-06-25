@@ -12,7 +12,7 @@ class ImagePreviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image Preview'),
+        title: const Text('Image Preview'),
       ),
       body: Center(
         child: Image.file(imageFile),

@@ -19,7 +19,7 @@ class AppFont {
       fontSize: 16, fontWeight: FontWeight.w500, color: AppColor.green1);
 
   static TextStyle get title3 => const TextStyle(
-      fontSize: 16, fontWeight: FontWeight.w500, color: AppColor.gray4);
+      fontSize: 16, fontWeight: FontWeight.w400, color: AppColor.gray4);
 
   static TextStyle get title4 => const TextStyle(
       fontSize: 16, fontWeight: FontWeight.w800, color: AppColor.green1);

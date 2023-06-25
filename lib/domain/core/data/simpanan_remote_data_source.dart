@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/response_simpanan_model.dart';
 import 'package:http/http.dart' as http;
@@ -21,7 +21,14 @@ abstract class SimpananDataSource {
       String tipeSimpanan,
       DateTime tanggalTransaksi,
       String rekening,
-      File? buktiBayar);
+      File? buktiBayar,
+      String? nomorIndukPenerima,
+      String? passAkun);
+  Future<ResponseSimpananModel> onGetDetailSimpananData(
+      String? token, int idSimpanan);
+  Future<ResponsePostModel> onIjinkanPenarikan(String? token, int id);
+  Future<ResponsePostModel> onTolakPenarikan(String? token, int id);
+
   // Future<ResponsePostModel> onPostPenarikanData(
   //   String? token,
   //   int tipeSimpananId,
@@ -34,7 +41,8 @@ abstract class SimpananDataSource {
 }
 
 class SimpananDataSourceImpl implements SimpananDataSource {
-  static const baseUrl = "http://localhost:8000/api";
+  // static const baseUrl = "http://localhost:8000/api";
+  static const baseUrl = "http://10.0.2.2:8000/api";
   final http.Client _httpClient;
 
   SimpananDataSourceImpl(this._httpClient);
@@ -46,6 +54,8 @@ class SimpananDataSourceImpl implements SimpananDataSource {
       'Authorization': 'Bearer ${token ?? " "}',
       'Content-Type': 'application/json',
     });
+    print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
       return ResponseSimpananModel.fromJson(json.decode(response.body));
     } else {
@@ -78,7 +88,9 @@ class SimpananDataSourceImpl implements SimpananDataSource {
       String tipeSimpanan,
       DateTime tanggalTransaksi,
       String rekening,
-      File? buktiBayar) async {
+      File? buktiBayar,
+      String? nomorIndukPenerima,
+      String? passAkun) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse('$baseUrl/simpanan/store-online?'));
 
@@ -101,12 +113,69 @@ class SimpananDataSourceImpl implements SimpananDataSource {
     request.fields['rekening'] = rekening;
     request.fields['tipe_simpanan'] = tipeSimpanan;
 
+    if (nomorIndukPenerima != null && passAkun != null) {
+      request.fields['no_induk_tujuan'] = nomorIndukPenerima;
+      request.fields['password'] = passAkun;
+    }
+
     var response = await request.send();
     var responseBody = await response.stream.bytesToString();
     print(response.statusCode);
     print(responseBody);
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(responseBody));
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<ResponseSimpananModel> onGetDetailSimpananData(
+      String? token, int idSimpanan) async {
+    final id = idSimpanan;
+    final response = await _httpClient
+        .post(Uri.parse('$baseUrl/simpanan/get-detail-member/$id'), headers: {
+      'Authorization': 'Bearer ${token ?? " "}',
+      'Content-Type': 'application/json',
+    });
+    print(response.statusCode);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return ResponseSimpananModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<ResponsePostModel> onIjinkanPenarikan(String? token, int id) async {
+    final response = await _httpClient.post(
+        Uri.parse('$baseUrl/simpanan/store-kontrol-penarikan-acc/$id'),
+        headers: {
+          'Authorization': 'Bearer ${token ?? " "}',
+          'Content-Type': 'application/json',
+        });
+    print(response.statusCode);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return ResponsePostModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<ResponsePostModel> onTolakPenarikan(String? token, int id) async {
+    final response = await _httpClient.post(
+        Uri.parse('$baseUrl/simpanan/store-kontrol-penarikan-reject/$id'),
+        headers: {
+          'Authorization': 'Bearer ${token ?? " "}',
+          'Content-Type': 'application/json',
+        });
+    print(response.statusCode);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return ResponsePostModel.fromJson(json.decode(response.body));
     } else {
       throw ServerException();
     }

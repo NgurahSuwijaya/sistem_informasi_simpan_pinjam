@@ -5,13 +5,14 @@ import 'package:sistem_informasi_simpan_pinjam/domain/models/tipe_transaksi_mode
 import 'member_model.dart';
 
 class SimpananModel extends Equatable {
-  SimpananModel({
+  const SimpananModel({
     required this.id,
     required this.institutionId,
     required this.memberId,
     required this.tipeSimpananId,
     required this.adminId,
     required this.tipeTransaksiId,
+    required this.rekening,
     required this.metodeSimpanan,
     required this.jumlah,
     required this.saldo,
@@ -19,6 +20,7 @@ class SimpananModel extends Equatable {
     required this.buktiPembayaran,
     required this.verifiedAt,
     required this.statusTransaksi,
+    required this.kwitansi,
     required this.createdAt,
     required this.updatedAt,
     required this.member,
@@ -26,44 +28,57 @@ class SimpananModel extends Equatable {
     required this.tipeSimpanans,
   });
 
-  int id;
-  int institutionId;
-  int memberId;
-  int tipeSimpananId;
-  int adminId;
-  int tipeTransaksiId;
-  String metodeSimpanan;
-  int jumlah;
-  int saldo;
-  DateTime tanggalTransaksi;
-  String buktiPembayaran;
-  DateTime verifiedAt;
-  String statusTransaksi;
-  DateTime createdAt;
-  DateTime updatedAt;
-  MemberModel member;
-  TipeTransaksisModel tipeTransaksis;
-  TipeSimpanansModel tipeSimpanans;
+  final int id;
+  final int institutionId;
+  final int memberId;
+  final int tipeSimpananId;
+  final int? adminId;
+  final int tipeTransaksiId;
+  final String rekening;
+  final String metodeSimpanan;
+  final int jumlah;
+  final int saldo;
+  final DateTime tanggalTransaksi;
+  final String? buktiPembayaran;
+  final DateTime? verifiedAt;
+  final String statusTransaksi;
+  final String? kwitansi;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final MemberModel? member;
+  final TipeTransaksisModel? tipeTransaksis;
+  final TipeSimpanansModel? tipeSimpanans;
 
   factory SimpananModel.fromJson(Map<String, dynamic> json) => SimpananModel(
         id: json["id"],
         institutionId: json["institution_id"],
         memberId: json["member_id"],
         tipeSimpananId: json["tipe_simpanan_id"],
-        adminId: json["admin_id"],
+        adminId: json['admin_id'] == null ? null : json["admin_id"],
         tipeTransaksiId: json["tipe_transaksi_id"],
+        rekening: json["rekening"],
         metodeSimpanan: json["metode_simpanan"],
         jumlah: json["jumlah"],
         saldo: json["saldo"],
         tanggalTransaksi: DateTime.parse(json["tanggal_transaksi"]),
-        buktiPembayaran: json["bukti_pembayaran"],
-        verifiedAt: DateTime.parse(json["verified_at"]),
+        buktiPembayaran:
+            json['bukti_pembayaran'] == null ? null : json["bukti_pembayaran"],
+        verifiedAt: json['verified_at'] == null
+            ? null
+            : DateTime.parse(json["verified_at"]),
         statusTransaksi: json["status_transaksi"],
+        kwitansi: json["kwitansi"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        member: MemberModel.fromJson(json["member"]),
-        tipeTransaksis: TipeTransaksisModel.fromJson(json["tipe_transaksis"]),
-        tipeSimpanans: TipeSimpanansModel.fromJson(json["tipe_simpanans"]),
+        member: json["member"] == null
+            ? null
+            : MemberModel.fromJson(json["member"]),
+        tipeTransaksis: json['tipe_transaksis'] == null
+            ? null
+            : TipeTransaksisModel.fromJson(json["tipe_transaksis"]),
+        tipeSimpanans: json['tipe_simpanans'] == null
+            ? null
+            : TipeSimpanansModel.fromJson(json["tipe_simpanans"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -73,18 +88,19 @@ class SimpananModel extends Equatable {
         "tipe_simpanan_id": tipeSimpananId,
         "admin_id": adminId,
         "tipe_transaksi_id": tipeTransaksiId,
+        "rekening": rekening,
         "metode_simpanan": metodeSimpanan,
         "jumlah": jumlah,
         "saldo": saldo,
         "tanggal_transaksi": tanggalTransaksi.toIso8601String(),
         "bukti_pembayaran": buktiPembayaran,
-        "verified_at": verifiedAt.toIso8601String(),
+        "verified_at": verifiedAt?.toIso8601String(),
         "status_transaksi": statusTransaksi,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        "member": member.toJson(),
-        "tipe_transaksis": tipeTransaksis.toJson(),
-        "tipe_simpanans": tipeSimpanans.toJson(),
+        "member": member?.toJson(),
+        "tipe_transaksis": tipeTransaksis?.toJson(),
+        "tipe_simpanans": tipeSimpanans?.toJson(),
       };
 
   Simpanan toEntity() {
@@ -95,6 +111,7 @@ class SimpananModel extends Equatable {
       tipeSimpananId: tipeSimpananId,
       adminId: adminId,
       tipeTransaksiId: tipeTransaksiId,
+      rekening: rekening,
       metodeSimpanan: metodeSimpanan,
       jumlah: jumlah,
       saldo: saldo,
@@ -102,16 +119,16 @@ class SimpananModel extends Equatable {
       buktiPembayaran: buktiPembayaran,
       verifiedAt: verifiedAt,
       statusTransaksi: statusTransaksi,
+      kwitansi: kwitansi,
       createdAt: createdAt,
       updatedAt: updatedAt,
-      member: member.toEntity(),
-      tipeTransaksis: tipeTransaksis.toEntity(),
-      tipeSimpanans: tipeSimpanans.toEntity(),
+      member: member?.toEntity(),
+      tipeTransaksis: tipeTransaksis?.toEntity(),
+      tipeSimpanans: tipeSimpanans?.toEntity(),
     );
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,
@@ -119,6 +136,7 @@ class SimpananModel extends Equatable {
         tipeSimpananId,
         adminId,
         tipeTransaksiId,
+        rekening,
         metodeSimpanan,
         jumlah,
         saldo,
@@ -126,6 +144,7 @@ class SimpananModel extends Equatable {
         buktiPembayaran,
         verifiedAt,
         statusTransaksi,
+        kwitansi,
         createdAt,
         updatedAt,
         member,

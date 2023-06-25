@@ -12,8 +12,8 @@ class ResponsePinjaman extends Equatable {
   final bool success;
   final String message;
   final Pinjaman data;
-  final int sisaPokok;
-  final int sisaBunga;
+  final int? sisaPokok;
+  final int? sisaBunga;
 
   @override
   List<Object?> get props => [success, message, data, sisaPokok, sisaBunga];

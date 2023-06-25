@@ -4,11 +4,11 @@ import 'package:sistem_informasi_simpan_pinjam/domain/models/member_model.dart';
 import '../entities/response_member.dart';
 
 class ResponseMemberModel extends Equatable {
-  bool success;
-  String message;
-  MemberModel data;
+  final bool success;
+  final String message;
+  final MemberModel data;
 
-  ResponseMemberModel(
+  const ResponseMemberModel(
       {required this.success, required this.message, required this.data});
 
   factory ResponseMemberModel.fromJson(Map<String, dynamic> json) {

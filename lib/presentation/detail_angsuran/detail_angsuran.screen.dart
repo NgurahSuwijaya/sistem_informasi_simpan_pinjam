@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
-
-import '../../domain/entities/response_bank.dart';
 import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
 import '../../widget/app_button.dart';
@@ -16,12 +13,6 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
   const DetailAngsuranScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final argument = Get.arguments;
-    final ResponseTagihanAngsuran responseTagihanAngsuran = argument[0];
-    final int jumlah = argument[1];
-    final Bank bank = argument[2];
-    final File buktiBayar = File(argument[3]);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Angsuran'),
@@ -75,8 +66,8 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                             padding: const EdgeInsets.all(25.0),
                             child: Text(
                               DateFormat('dd MMMM yyyy', 'id_ID')
-                                  .format(responseTagihanAngsuran
-                                      .tagihanAngsuran![0].jatuhTempo)
+                                  .format(controller.responseTagihanAngsuran
+                                      .value!.tagihanAngsuran![0].jatuhTempo!)
                                   .toString(),
                               style: AppFont.title1,
                             ),
@@ -112,7 +103,7 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      bank.namaBank,
+                                      controller.bank.value!.namaBank,
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -129,7 +120,7 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                       style: AppFont.title3,
                                     ),
                                     Text(
-                                      bank.nomorRekening,
+                                      controller.bank.value!.nomorRekening,
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -172,8 +163,7 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                               symbol: 'Rp',
                                               decimalDigits: 0,
                                               locale: 'id_ID')
-                                          .format(responseTagihanAngsuran
-                                              .totalPokok),
+                                          .format(controller.pokok.value),
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -194,8 +184,7 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                               symbol: 'Rp',
                                               decimalDigits: 0,
                                               locale: 'id_ID')
-                                          .format(responseTagihanAngsuran
-                                              .totalBunga),
+                                          .format(controller.bunga.value),
                                       style: AppFont.title2,
                                     ),
                                   ],
@@ -216,7 +205,9 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                               symbol: 'Rp',
                                               decimalDigits: 0,
                                               locale: 'id_ID')
-                                          .format(responseTagihanAngsuran
+                                          .format(controller
+                                              .responseTagihanAngsuran
+                                              .value!
                                               .totalAdmin),
                                       style: AppFont.title42,
                                     ),
@@ -238,7 +229,9 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                               symbol: 'Rp',
                                               decimalDigits: 0,
                                               locale: 'id_ID')
-                                          .format(responseTagihanAngsuran
+                                          .format(controller
+                                              .responseTagihanAngsuran
+                                              .value!
                                               .totalPenalti),
                                       style: AppFont.title41,
                                     ),
@@ -272,7 +265,8 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                                 symbol: 'Rp',
                                                 decimalDigits: 0,
                                                 locale: 'id_ID')
-                                            .format(jumlah),
+                                            .format(
+                                                controller.jumlahAwal.value),
                                         style: AppFont.title43,
                                       ),
                                     ],
@@ -361,7 +355,8 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        controller.previewImage(buktiBayar);
+                                        controller.previewImage(
+                                            File(controller.buktiBayar.value));
                                       },
                                       icon: const Icon(Icons.image_search),
                                     ),
@@ -380,9 +375,10 @@ class DetailAngsuranScreen extends GetView<DetailAngsuranController> {
                   text: "Bayar",
                   onPressed: () {
                     controller.postBayarAngsuran(
-                        responseTagihanAngsuran: responseTagihanAngsuran,
-                        jumlah: jumlah,
-                        buktiBayar: buktiBayar.path);
+                        responseTagihanAngsuran:
+                            controller.responseTagihanAngsuran.value!,
+                        jumlah: controller.pokok.value,
+                        buktiBayar: controller.buktiBayar.value);
                   },
                 ),
                 const SizedBox(

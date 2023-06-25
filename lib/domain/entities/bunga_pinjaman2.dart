@@ -6,18 +6,18 @@ class BungaPinjaman2 extends Equatable {
   final int id;
   final int kategoriPinjamanId;
   final int institutionId;
-  final String tipeAngsuran;
-  final String tipeBunga;
+  final String? tipeAngsuran;
+  final String? tipeBunga;
   final int? jangkaWaktu;
   final int? batasDurasiPinjamanBerjalan;
-  final int pinalti;
-  final double persentaseBunga;
-  final int biayaAdmin;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final KategoriPinjaman kategoriPinjaman;
+  final int? pinalti;
+  final double? persentaseBunga;
+  final int? biayaAdmin;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final KategoriPinjaman? kategoriPinjaman;
 
-  BungaPinjaman2({
+  const BungaPinjaman2({
     required this.id,
     required this.kategoriPinjamanId,
     required this.institutionId,
@@ -34,7 +34,6 @@ class BungaPinjaman2 extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         kategoriPinjamanId,

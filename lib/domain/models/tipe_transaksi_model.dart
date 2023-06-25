@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../entities/tipe_transaksi.dart';
 
 class TipeTransaksisModel extends Equatable {
-  TipeTransaksisModel({
+  const TipeTransaksisModel({
     required this.id,
     required this.institutionId,
     required this.name,
@@ -13,13 +13,13 @@ class TipeTransaksisModel extends Equatable {
     required this.updatedAt,
   });
 
-  int id;
-  int institutionId;
-  String name;
-  int pengali;
-  int perhitunganBunga;
-  DateTime createdAt;
-  DateTime updatedAt;
+  final int id;
+  final int institutionId;
+  final String name;
+  final int pengali;
+  final int perhitunganBunga;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
   factory TipeTransaksisModel.fromJson(Map<String, dynamic> json) =>
       TipeTransaksisModel(

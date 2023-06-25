@@ -1,36 +1,38 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_simpanan.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_transaksi.dart';
 import 'member.dart';
 
 class Simpanan extends Equatable {
-  int id;
-  int institutionId;
-  int memberId;
-  int tipeSimpananId;
-  int adminId;
-  int tipeTransaksiId;
-  String metodeSimpanan;
-  int jumlah;
-  int saldo;
-  DateTime tanggalTransaksi;
-  String buktiPembayaran;
-  DateTime verifiedAt;
-  String statusTransaksi;
-  DateTime createdAt;
-  DateTime updatedAt;
-  Member member;
-  TipeTransaksis tipeTransaksis;
-  TipeSimpanans tipeSimpanans;
+  final int id;
+  final int institutionId;
+  final int memberId;
+  final int tipeSimpananId;
+  final int? adminId;
+  final int tipeTransaksiId;
+  final String rekening;
+  final String metodeSimpanan;
+  final int jumlah;
+  final int saldo;
+  final DateTime tanggalTransaksi;
+  final String? buktiPembayaran;
+  final DateTime? verifiedAt;
+  final String statusTransaksi;
+  final String? kwitansi;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final Member? member;
+  final TipeTransaksis? tipeTransaksis;
+  final TipeSimpanans? tipeSimpanans;
 
-  Simpanan({
+  const Simpanan({
     required this.id,
     required this.institutionId,
     required this.memberId,
     required this.tipeSimpananId,
     required this.adminId,
     required this.tipeTransaksiId,
+    required this.rekening,
     required this.metodeSimpanan,
     required this.jumlah,
     required this.saldo,
@@ -38,6 +40,7 @@ class Simpanan extends Equatable {
     required this.buktiPembayaran,
     required this.verifiedAt,
     required this.statusTransaksi,
+    required this.kwitansi,
     required this.createdAt,
     required this.updatedAt,
     required this.member,
@@ -46,7 +49,6 @@ class Simpanan extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,
@@ -54,6 +56,7 @@ class Simpanan extends Equatable {
         tipeSimpananId,
         adminId,
         tipeTransaksiId,
+        rekening,
         metodeSimpanan,
         jumlah,
         saldo,
@@ -61,6 +64,7 @@ class Simpanan extends Equatable {
         buktiPembayaran,
         verifiedAt,
         statusTransaksi,
+        kwitansi,
         createdAt,
         updatedAt,
         member,

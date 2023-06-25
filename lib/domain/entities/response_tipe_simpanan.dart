@@ -6,9 +6,8 @@ class ResponseTipeSimpanan extends Equatable {
   final String message;
   final List<TipeSimpanans> data;
 
-  ResponseTipeSimpanan(this.success, this.message, this.data);
+  const ResponseTipeSimpanan(this.success, this.message, this.data);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [success, message, data];
 }

@@ -1,9 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/controllers/pengajuan.controller.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/simpanan/controllers/simpanan.controller.dart';
 
 import '../infrastructure/theme/app_color.dart';
 import '../infrastructure/theme/app_font.dart';
@@ -31,7 +27,7 @@ class _AppSimpananDropDownState extends State<AppSimpananDropDown> {
       child: DropdownButton2(
         hint: Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
             Text(
@@ -48,7 +44,7 @@ class _AppSimpananDropDownState extends State<AppSimpananDropDown> {
                   value: item,
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
                       Text(item, style: AppFont.subtitle1),

@@ -5,10 +5,9 @@ class ResponseTagihanSimpanan extends Equatable {
   final List<TagihanSimpanan> data;
   final int totalTagihan;
 
-  ResponseTagihanSimpanan(this.success, this.data, this.totalTagihan);
+  const ResponseTagihanSimpanan(this.success, this.data, this.totalTagihan);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [success, data, totalTagihan];
 }
 
@@ -21,11 +20,10 @@ class TagihanSimpanan extends Equatable {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  TagihanSimpanan(this.id, this.memberId, this.jumlah, this.status,
+  const TagihanSimpanan(this.id, this.memberId, this.jumlah, this.status,
       this.jatuhTempo, this.createdAt, this.updatedAt);
 
   @override
-  // TODO: implement props
   List<Object?> get props =>
       [id, memberId, jumlah, status, jatuhTempo, createdAt, updatedAt];
 }

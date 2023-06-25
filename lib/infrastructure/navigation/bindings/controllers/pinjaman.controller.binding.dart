@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:http/http.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/member_remote_data_source.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/data/pinjaman_remote_data_source.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/interfaces/pinjaman_repository_impl.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/pinjaman_repository.dart';

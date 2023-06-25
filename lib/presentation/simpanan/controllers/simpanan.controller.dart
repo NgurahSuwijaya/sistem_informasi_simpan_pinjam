@@ -11,15 +11,24 @@ import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/bank_usecase.
 import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/simpanan_usecase.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_bank.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_simpanan.dart';
+import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
 
 import '../../../widget/app_image_preview.dart';
 
 class SimpananController extends GetxController {
   final GetBankData _getBankData;
   final SimpananUseCase _simpananUseCase;
-  final isSetoran = false.obs;
+  final isSetoran = true.obs;
   final isBankHasSelected = false.obs;
   final saldoSimpanan = 1.obs;
+  final currency =
+      NumberFormat.currency(locale: 'id', symbol: 'Rp', decimalDigits: 0);
+
+  final saldoGiro = 0.obs;
+  final giroInstitusi = false.obs;
+  final saldoAwalGiro = 0.obs;
+  final maksPenarikan = 0.obs;
+  final jenisValRekening = <String>[].obs;
 
   final isLoading = false.obs;
 
@@ -37,13 +46,12 @@ class SimpananController extends GetxController {
 
   final RxList<Bank> bankList = [
     Bank(
-        id: 0,
-        institutionId: 0,
-        namaBank: "namaBank",
-        nomorRekening: "nomorRekening",
-        atasNama: "atasNama",
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now())
+      id: 0,
+      institutionId: 0,
+      namaBank: "namaBank",
+      nomorRekening: "nomorRekening",
+      atasNama: "atasNama",
+    )
   ].obs;
 
   final RxList<TipeSimpanans> tipeSimpananList = [
@@ -86,7 +94,17 @@ class SimpananController extends GetxController {
 
   void getArgumentNextPage() {
     final arg = Get.arguments;
-    saldoSimpanan.value = arg;
+    saldoAwalGiro.value = arg[0];
+    maksPenarikan.value = arg[1];
+    giroInstitusi.value = arg[2];
+    saldoSimpanan.value = arg[3];
+    saldoGiro.value = arg[4];
+
+    if (giroInstitusi.value) {
+      jenisValRekening.value = ['biasa', 'giro'];
+    } else {
+      jenisValRekening.value = ['biasa'];
+    }
     print(saldoSimpanan.value);
   }
 
@@ -178,6 +196,16 @@ class SimpananController extends GetxController {
 
   void setJenisRekening(String value) {
     choosedRekening = value;
+    if (choosedRekening == 'giro') {
+      if (saldoGiro.value == 0) {
+        Get.dialog(AppAlertDialog(
+          title: "Perhatian!",
+          onPressed: () => Get.back(),
+          content:
+              "Setoran awal minimal rekening giro adalah ${currency.format(saldoAwalGiro.value)}",
+        ));
+      }
+    }
   }
 
   void deleteImage() {
@@ -197,15 +225,27 @@ class SimpananController extends GetxController {
     if (imageFile.value != null &&
         jenisRekeningSimpananDetail != null &&
         bankSimpananDetail != null) {
-      Get.toNamed('/detail-simpanan', arguments: [
-        isSetoran.value,
-        jenisRekeningSimpananDetail,
-        jumlahSimpananDetail,
-        bankSimpananDetail,
-        buktiBayarSimpananDetail?.path
-      ]);
+      if (jumlahSimpananDetail < saldoAwalGiro.value &&
+          choosedRekening == 'giro') {
+        Get.dialog(AppAlertDialog(
+            title: 'Perhatian!',
+            onPressed: () => Get.back(),
+            content:
+                "Jumlah setoran anda lebih kecil dari setoran awal rekening giro yaitu ${currency.format(saldoAwalGiro.value)} "));
+      } else {
+        Get.toNamed('/detail-simpanan', arguments: [
+          isSetoran.value,
+          jenisRekeningSimpananDetail,
+          jumlahSimpananDetail,
+          bankSimpananDetail,
+          buktiBayarSimpananDetail?.path
+        ]);
+      }
     } else {
-      Get.snackbar('Notifikasi', 'Lengkapi Data Sebelum Melanjutkan');
+      Get.dialog(AppAlertDialog(
+          onPressed: () => Get.back(),
+          title: 'Perhatian!',
+          content: "Lengkapi data sebelum melanjutkan"));
     }
   }
 
@@ -225,11 +265,19 @@ class SimpananController extends GetxController {
           jumlahSimpananDetail,
         ]);
       } else {
-        Get.snackbar('Notifikasi',
-            'Nominal Penarikan Harus Lebih Kecil dari Saldo Simpanan');
+        Get.dialog(AppAlertDialog(
+          title: 'Perhatian!',
+          content: "Saldo simpanan anda tidak cukup",
+          onPressed: () {
+            Get.back();
+          },
+        ));
       }
     } else {
-      Get.snackbar('Notifikasi', 'Lengkapi Data Sebelum Melanjutkan');
+      Get.dialog(AppAlertDialog(
+          onPressed: () => Get.back(),
+          title: 'Perhatian!',
+          content: "Lengkapi data sebelum melanjutkan"));
     }
   }
 }

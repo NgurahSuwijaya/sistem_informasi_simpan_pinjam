@@ -4,7 +4,7 @@ import '../entities/bunga_menurun.dart';
 import 'kategori_pinjaman_model.dart';
 
 class BungaMenurunModel extends Equatable {
-  BungaMenurunModel({
+  const BungaMenurunModel({
     required this.id,
     required this.kategoriPinjamanId,
     required this.institutionId,
@@ -65,7 +65,6 @@ class BungaMenurunModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         kategoriPinjamanId,

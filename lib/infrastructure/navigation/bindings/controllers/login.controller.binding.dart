@@ -14,7 +14,7 @@ class LoginControllerBinding extends Bindings {
     Get.lazyPut<AuthDataSource>(() => AuthDataSourceImpl(Get.find()));
     Get.lazyPut<AuthRepository>(
         () => AuthRepositoryImpl(authDataSource: Get.find()));
-    Get.lazyPut<LoginUsecase>(() => LoginUsecase(Get.find()));
+    Get.lazyPut<AuthUsecase>(() => AuthUsecase(Get.find()));
     Get.lazyPut<LoginController>(
       () => LoginController(loginUsecase: Get.find()),
     );

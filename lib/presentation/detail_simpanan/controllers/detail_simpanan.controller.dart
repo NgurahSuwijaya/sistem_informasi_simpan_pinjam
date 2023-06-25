@@ -7,7 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/simpanan_usecase.dart';
 
 import '../../../domain/entities/response_bank.dart';
+import '../../../widget/app_alert_dialog.dart';
 import '../../../widget/app_image_preview.dart';
+import '../../../widget/app_ok_dialog.dart';
 
 class DetailSimpananController extends GetxController {
   final SimpananUseCase _simpananUseCase;
@@ -54,8 +56,15 @@ class DetailSimpananController extends GetxController {
         buktiBayar: bukti,
         tipeTransaksiId: tipeTransaksi);
 
-    result.fold((l) => {Get.snackbar('Error', l.message), print(l.message)},
-        (r) => {Get.snackbar('Success', r.message), Get.offAllNamed('/home')});
+    result.fold(
+        (l) => {Get.snackbar('Error', l.message), print(l.message)},
+        (r) => {
+              Get.dialog(AppOkeDialog(
+                  onPressed: () => Get.offAllNamed('/home'),
+                  title: "Berhasil!",
+                  content:
+                      "Berhasil melakukan setoran simpanan ! Transaksi anda akan segera di validasi oleh pengurus koperasi mohon di tunggu"))
+            });
   }
 
   void previewImage(File? bukti) {

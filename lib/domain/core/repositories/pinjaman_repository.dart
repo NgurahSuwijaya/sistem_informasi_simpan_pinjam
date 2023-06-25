@@ -6,7 +6,6 @@ import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_get_kate
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_pengajuana.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_pinjaman.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
 
 abstract class PinjamanRepository {
   Future<Either<Failure, ResponsePinjaman>> getPinjamanData({String? token});
@@ -30,4 +29,7 @@ abstract class PinjamanRepository {
       required String namaAsetJaminan,
       required File? dokumenAsetJaminan,
       required String tipeAngsuran});
+
+  Future<Either<Failure, ResponsePinjaman>> getDetailPinjamanData(
+      {required String? token, required int id});
 }

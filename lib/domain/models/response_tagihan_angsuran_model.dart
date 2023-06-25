@@ -1,19 +1,7 @@
-// To parse this JSON data, do
-//
-//     final responseTagihanAngsuranModel = responseTagihanAngsuranModelFromJson(jsonString);
-
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
 
 import 'tagihan_angsuran_model.dart';
-
-ResponseTagihanAngsuranModel responseTagihanAngsuranModelFromJson(String str) =>
-    ResponseTagihanAngsuranModel.fromJson(json.decode(str));
-
-String responseTagihanAngsuranModelToJson(ResponseTagihanAngsuranModel data) =>
-    json.encode(data.toJson());
 
 class ResponseTagihanAngsuranModel extends Equatable {
   final bool success;
@@ -24,9 +12,9 @@ class ResponseTagihanAngsuranModel extends Equatable {
   final int? totalPenalti;
   final int? totalTagihan;
 
-  ResponseTagihanAngsuranModel({
+  const ResponseTagihanAngsuranModel({
     required this.success,
-    required this.tagihanAngsuran,
+    this.tagihanAngsuran,
     required this.totalPokok,
     required this.totalBunga,
     required this.totalAdmin,
@@ -48,22 +36,10 @@ class ResponseTagihanAngsuranModel extends Equatable {
         totalTagihan: json["total_tagihan"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "success": success,
-        "data": tagihanAngsuran == null
-            ? []
-            : List<dynamic>.from(tagihanAngsuran!.map((x) => x.toJson())),
-        "total_pokok": totalPokok,
-        "total_bunga": totalBunga,
-        "total_admin": totalAdmin,
-        "total_penalti": totalPenalti,
-        "total_tagihan": totalTagihan,
-      };
-
   ResponseTagihanAngsuran toEntity() {
     return ResponseTagihanAngsuran(
         success,
-        tagihanAngsuran!.map((e) => e.toEntity()).toList(),
+        tagihanAngsuran?.map((e) => e.toEntity()).toList(),
         totalPokok,
         totalBunga,
         totalAdmin,
@@ -72,7 +48,6 @@ class ResponseTagihanAngsuranModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         success,
         tagihanAngsuran,

@@ -63,7 +63,9 @@ class SimpananRepositoryImpl implements SimpananRepository {
       required String tipeSimpanan,
       required DateTime tanggalTransaksi,
       required String rekening,
-      required File? buktiBayar}) async {
+      required File? buktiBayar,
+      String? nomorIndukPenerima,
+      String? passAkun}) async {
     try {
       final result = await simpananDataSource.onPostSimpananData(
           token,
@@ -73,7 +75,64 @@ class SimpananRepositoryImpl implements SimpananRepository {
           tipeSimpanan,
           tanggalTransaksi,
           rekening,
-          buktiBayar);
+          buktiBayar,
+          nomorIndukPenerima,
+          passAkun);
+      // print(result);
+      return Right(result.toEntity());
+    } on ServerException {
+      return Left(ServerFailure('Kesalahan Server'));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated not valid\n${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ResponseSimpanan>> getDetailSimpananData(
+      {required String? token, required int idSimpanan}) async {
+    try {
+      final result =
+          await simpananDataSource.onGetDetailSimpananData(token, idSimpanan);
+      // print(result);
+      return Right(result.toEntity());
+    } on ServerException {
+      return Left(ServerFailure('Kesalahan Server'));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated not valid\n${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ResponsePost>> onIjinkanPenarikan(
+      {required String? token, required int id}) async {
+    try {
+      final result = await simpananDataSource.onIjinkanPenarikan(token, id);
+      // print(result);
+      return Right(result.toEntity());
+    } on ServerException {
+      return Left(ServerFailure('Kesalahan Server'));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated not valid\n${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ResponsePost>> onTolakPenarikan(
+      {required String? token, required int id}) async {
+    try {
+      final result = await simpananDataSource.onTolakPenarikan(token, id);
       // print(result);
       return Right(result.toEntity());
     } on ServerException {

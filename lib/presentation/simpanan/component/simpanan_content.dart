@@ -25,220 +25,206 @@ class _SimpananContentState extends State<SimpananContent> {
   String? selectedValueTipeTransaksi;
   String formattedDate =
       DateFormat('dd MMMM yyyy', 'id_ID').format(DateTime.now());
-  final List<String> jenisValRekening = ['biasa', 'giro'];
+  // late List<String> jenisValRekening;
   final List<String> tipeTransaksi = ['setoran', 'penarikan'];
   @override
   Widget build(BuildContext context) {
-    return Card(
-      // margin: EdgeInsets.all(10),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      // color: AppColor.green1,
-      shadowColor: Colors.blueGrey,
-      elevation: 3,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppInput(
-                  topText: "Tanggal Transaksi",
-                  hint: "Tanggal Sekarang",
-                  canEdit: false,
-                  obscureText: false,
-                  value: formattedDate,
-                  textInputType: TextInputType.datetime,
-                  prefixIcons: const Icon(CupertinoIcons.calendar_today),
-                  isCurrency: false,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Tipe Transaksi Simpanan",
-                  style: AppFont.title1,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                DropdownButtonHideUnderline(
-                  child: DropdownButton2(
-                    hint: Row(
-                      children: [
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          'Tipe Transaksi',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Theme.of(context).hintColor,
-                          ),
-                        ),
-                      ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Card(
+          // margin: EdgeInsets.all(10),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          // color: AppColor.green1,
+          shadowColor: Colors.blueGrey,
+          elevation: 3,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppInput(
+                      topText: "Tanggal Transaksi",
+                      hint: "Tanggal Sekarang",
+                      canEdit: false,
+                      obscureText: false,
+                      value: formattedDate,
+                      textInputType: TextInputType.datetime,
+                      prefixIcons: const Icon(CupertinoIcons.calendar_today),
+                      isCurrency: false,
                     ),
-                    items: tipeTransaksi
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
-                                  Text(item.toString(),
-                                      style: AppFont.subtitle1),
-                                ],
+                    // const SizedBox(
+                    //   height: 20,
+                    // ),
+                    // Text(
+                    //   "Tipe Transaksi Simpanan",
+                    //   style: AppFont.title1,
+                    // ),
+                    // const SizedBox(
+                    //   height: 8,
+                    // ),
+
+                    // DropdownButtonHideUnderline(
+                    //   child: DropdownButton2(
+                    //     hint: Row(
+                    //       children: [
+                    //         const SizedBox(
+                    //           width: 15,
+                    //         ),
+                    //         Text(
+                    //           'Tipe Transaksi',
+                    //           style: TextStyle(
+                    //             fontSize: 14,
+                    //             color: Theme.of(context).hintColor,
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     items: tipeTransaksi
+                    //         .map((item) => DropdownMenuItem<String>(
+                    //               value: item,
+                    //               child: Row(
+                    //                 children: [
+                    //                   const SizedBox(
+                    //                     width: 15,
+                    //                   ),
+                    //                   Text(item.toString(),
+                    //                       style: AppFont.subtitle1),
+                    //                 ],
+                    //               ),
+                    //             ))
+                    //         .toList(),
+                    //     value: selectedValueTipeTransaksi,
+                    //     onChanged: (value) {
+                    //       setState(() {
+                    //         selectedValueTipeTransaksi = value.toString();
+                    //         widget.controller.setJenisRekening(
+                    //             selectedValueTipeTransaksi.toString());
+                    //         widget.controller.setPenarikan(value.toString());
+                    //       });
+                    //     },
+                    //     buttonHeight: 60,
+                    //     buttonWidth: double.infinity,
+                    //     buttonDecoration: BoxDecoration(
+                    //       color: AppColor.white,
+                    //       borderRadius: BorderRadius.circular(5),
+                    //       border: Border.all(width: 0.7, color: AppColor.gray1),
+                    //     ),
+                    //     buttonElevation: 0,
+                    //     itemHeight: 40,
+                    //     itemPadding:
+                    //         const EdgeInsets.symmetric(horizontal: 8.0),
+                    //   ),
+                    // ),
+
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Rekening Simpanan",
+                      style: AppFont.title1,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    DropdownButtonHideUnderline(
+                      child: DropdownButton2(
+                        hint: Row(
+                          children: [
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              'Jenis Rekening',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Theme.of(context).hintColor,
                               ),
-                            ))
-                        .toList(),
-                    value: selectedValueTipeTransaksi,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValueTipeTransaksi = value.toString();
-                        widget.controller.setJenisRekening(
-                            selectedValueTipeTransaksi.toString());
-                        widget.controller.setPenarikan(value.toString());
-                      });
-                    },
-                    buttonHeight: 60,
-                    buttonWidth: double.infinity,
-                    buttonDecoration: BoxDecoration(
-                      color: AppColor.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(width: 0.7, color: AppColor.gray1),
-                    ),
-                    buttonElevation: 0,
-                    itemHeight: 40,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  ),
-                ),
-                // Obx((() => DropdownButtonHideUnderline(
-                //       child: DropdownButton2(
-                //         hint: Row(
-                //           children: [
-                //             const SizedBox(
-                //               width: 15,
-                //             ),
-                //             Text(
-                //               'Tipe Simpanan',
-                //               style: TextStyle(
-                //                 fontSize: 14,
-                //                 color: Theme.of(context).hintColor,
-                //               ),
-                //             ),
-                //           ],
-                //         ),
-                //         items: widget.controller.tipeSimpananList.value
-                //             .map((item) => DropdownMenuItem<TipeSimpanans>(
-                //                   value: item,
-                //                   child: Row(
-                //                     children: [
-                //                       const SizedBox(
-                //                         width: 15,
-                //                       ),
-                //                       Text(item.name, style: AppFont.subtitle1),
-                //                     ],
-                //                   ),
-                //                 ))
-                //             .toList(),
-                //         value: widget.controller.chosedTipeSimpanan.value,
-                //         onChanged: (TipeSimpanans? newValue) {
-                //           widget.controller.chosedTipeSimpanan.value = newValue;
-                //         },
-                //         buttonHeight: 60,
-                //         buttonWidth: double.infinity,
-                //         buttonDecoration: BoxDecoration(
-                //           color: AppColor.white,
-                //           borderRadius: BorderRadius.circular(5),
-                //           border: Border.all(width: 0.7, color: AppColor.gray1),
-                //         ),
-                //         buttonElevation: 0,
-                //         itemHeight: 40,
-                //         itemPadding:
-                //             const EdgeInsets.symmetric(horizontal: 8.0),
-                //       ),
-                //     ))),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Rekening Simpanan",
-                  style: AppFont.title1,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                DropdownButtonHideUnderline(
-                  child: DropdownButton2(
-                    hint: Row(
-                      children: [
-                        const SizedBox(
-                          width: 15,
+                            ),
+                          ],
                         ),
-                        Text(
-                          'Jenis Rekening',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Theme.of(context).hintColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    items: jenisValRekening
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 15,
+                        items: widget.controller.jenisValRekening.value
+                            .map((item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 15,
+                                      ),
+                                      Text(item.toString(),
+                                          style: AppFont.subtitle1),
+                                    ],
                                   ),
-                                  Text(item.toString(),
-                                      style: AppFont.subtitle1),
-                                ],
-                              ),
-                            ))
-                        .toList(),
-                    value: selectedValueRekening,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValueRekening = value.toString();
-                        widget.controller
-                            .setJenisRekening(selectedValueRekening.toString());
-                      });
-                    },
-                    buttonHeight: 60,
-                    buttonWidth: double.infinity,
-                    buttonDecoration: BoxDecoration(
-                      color: AppColor.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(width: 0.7, color: AppColor.gray1),
+                                ))
+                            .toList(),
+                        value: selectedValueRekening,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedValueRekening = value.toString();
+                            widget.controller.setJenisRekening(
+                                selectedValueRekening.toString());
+                          });
+                        },
+                        buttonHeight: 60,
+                        buttonWidth: double.infinity,
+                        buttonDecoration: BoxDecoration(
+                          color: AppColor.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(width: 0.7, color: AppColor.gray1),
+                        ),
+                        buttonElevation: 0,
+                        itemHeight: 40,
+                        itemPadding:
+                            const EdgeInsets.symmetric(horizontal: 8.0),
+                      ),
                     ),
-                    buttonElevation: 0,
-                    itemHeight: 40,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  ),
-                ),
 
-                const SizedBox(
-                  height: 20,
-                ),
+                    const SizedBox(
+                      height: 20,
+                    ),
 
-                AppInput(
-                  controller: widget.controller.jumlahSimpananController,
-                  topText: "Jumlah",
-                  hint: "Jumlah",
-                  canEdit: true,
-                  obscureText: false,
-                  textInputType: TextInputType.number,
-                  isCurrency: true,
+                    AppInput(
+                      controller: widget.controller.jumlahSimpananController,
+                      topText: "Jumlah",
+                      hint: "Jumlah",
+                      canEdit: true,
+                      obscureText: false,
+                      textInputType: TextInputType.number,
+                      isCurrency: true,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    )
+                  ],
                 ),
-
-                Obx((() => widget.controller.isSetoran.value
-                    ? Column(
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Obx((() => widget.controller.isSetoran.value
+            ? Card(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                // color: AppColor.green1,
+                shadowColor: Colors.blueGrey,
+                elevation: 3,
+                child: Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(
@@ -316,7 +302,7 @@ class _SimpananContentState extends State<SimpananContent> {
                                       "Nomor Rekening",
                                       style: AppFont.title1,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
@@ -340,7 +326,7 @@ class _SimpananContentState extends State<SimpananContent> {
                                                   widget.controller.chosedBank
                                                       .value!.nomorRekening
                                                       .toString(),
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 16,
                                                     color:
                                                         AppColor.blackComponent,
@@ -350,7 +336,7 @@ class _SimpananContentState extends State<SimpananContent> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(width: 5),
+                                        const SizedBox(width: 5),
                                         Container(
                                           height: 60,
                                           width: 60,
@@ -373,19 +359,19 @@ class _SimpananContentState extends State<SimpananContent> {
                                                 ),
                                               ).then((value) {});
                                             },
-                                            icon: Icon(Icons.copy),
+                                            icon: const Icon(Icons.copy),
                                           ),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
                                     Text(
                                       "Atas Nama",
                                       style: AppFont.title1,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Container(
@@ -404,7 +390,7 @@ class _SimpananContentState extends State<SimpananContent> {
                                             widget.controller.chosedBank.value!
                                                 .atasNama
                                                 .toString(),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               color: AppColor.blackComponent,
                                             ),
@@ -417,7 +403,7 @@ class _SimpananContentState extends State<SimpananContent> {
                                     ),
                                   ],
                                 )
-                              : SizedBox())),
+                              : const SizedBox())),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -471,57 +457,60 @@ class _SimpananContentState extends State<SimpananContent> {
                             ],
                           ),
                         ],
-                      )
-                    : const Text(""))),
-              ],
-            ),
-          ),
-          Container(
-              decoration: const BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 1.0, color: AppColor.gray1),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              top:
+                                  BorderSide(width: 1.0, color: AppColor.gray1),
+                            ),
+                          ),
+                          child: Obx(() {
+                            if (widget.controller.hasSelectedImage.value) {
+                              // final fileName =
+                              //     widget.controller.imageFile.value!.path.split('/').last;
+                              print(widget.controller.imageFile.value!.path
+                                  .split('/')
+                                  .last);
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "${widget.controller.imageFile.value!.path.split('/').last.substring(0, 20)}...",
+                                    style: AppFont.title1,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed:
+                                            widget.controller.previewImage,
+                                        icon: const Icon(Icons.image_search),
+                                      ),
+                                      IconButton(
+                                        onPressed:
+                                            widget.controller.deleteImage,
+                                        icon: const Icon(Icons.delete),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return const SizedBox.shrink();
+                            }
+                          })),
+                    ],
+                  ),
                 ),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                child: Obx(() {
-                  if (widget.controller.hasSelectedImage.value) {
-                    // final fileName =
-                    //     widget.controller.imageFile.value!.path.split('/').last;
-                    print(widget.controller.imageFile.value!.path
-                        .split('/')
-                        .last);
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "${widget.controller.imageFile.value!.path.split('/').last.substring(0, 20)}...",
-                          style: AppFont.title1,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: widget.controller.previewImage,
-                              icon: const Icon(Icons.image_search),
-                            ),
-                            IconButton(
-                              onPressed: widget.controller.deleteImage,
-                              icon: const Icon(Icons.delete),
-                            ),
-                          ],
-                        ),
-                      ],
-                    );
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                }),
-              )),
-        ],
-      ),
+              )
+            : const Text("")))
+      ],
     );
   }
 }

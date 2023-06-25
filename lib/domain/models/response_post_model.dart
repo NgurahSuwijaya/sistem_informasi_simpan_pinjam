@@ -3,13 +3,13 @@ import 'package:equatable/equatable.dart';
 import '../entities/response_post.dart';
 
 class ResponsePostModel extends Equatable {
-  ResponsePostModel({
+  const ResponsePostModel({
     required this.success,
     required this.message,
   });
 
-  bool success;
-  String message;
+  final bool? success;
+  final String? message;
 
   factory ResponsePostModel.fromJson(Map<String, dynamic> json) =>
       ResponsePostModel(

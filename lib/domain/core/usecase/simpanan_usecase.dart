@@ -31,7 +31,9 @@ class SimpananUseCase {
       required String tipeSimpanan,
       required DateTime tanggalTransaksi,
       required String rekening,
-      required File? buktiBayar}) async {
+      required File? buktiBayar,
+      String? nomorIndukPenerima,
+      String? passAkun}) async {
     return _simpananRepository.postSimpananData(
         token: token,
         tipeSimpananId: tipeSimpananId,
@@ -40,6 +42,24 @@ class SimpananUseCase {
         tanggalTransaksi: tanggalTransaksi,
         rekening: rekening,
         buktiBayar: buktiBayar,
-        tipeTransaksiId: tipeTransaksiId);
+        tipeTransaksiId: tipeTransaksiId,
+        nomorIndukPenerima: nomorIndukPenerima,
+        passAkun: passAkun);
+  }
+
+  Future<Either<Failure, ResponseSimpanan>> onGetSimpananDetailData(
+      {required String? token, required int idSimpanan}) {
+    return _simpananRepository.getDetailSimpananData(
+        token: token, idSimpanan: idSimpanan);
+  }
+
+  Future<Either<Failure, ResponsePost>> onIjinkanPenarikanData(
+      {required String? token, required int id}) {
+    return _simpananRepository.onIjinkanPenarikan(token: token, id: id);
+  }
+
+  Future<Either<Failure, ResponsePost>> onTolakPenarikanData(
+      {required String? token, required int id}) {
+    return _simpananRepository.onTolakPenarikan(token: token, id: id);
   }
 }

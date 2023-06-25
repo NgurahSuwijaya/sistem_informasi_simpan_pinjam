@@ -17,14 +17,20 @@ dependencies:
   file_picker: ^4.0.0
   get: 4.6.5
   image_picker: ^0.8.6
+  url_launcher: ^6.0.10
+  carousel_slider: ^4.0.0
+  open_file: ^3.0.3
   flutter_pdfview: ^1.0.2
   dropdown_button2: ^1.9.2
   http: ^0.13.5
   flutter: 
     sdk: flutter
   permission_handler: ^10.2.0
+  flutter_local_notifications: ^9.1.4
   firebase_core: ^2.13.0
   firebase_messaging: ^14.6.1
+  pull_to_refresh: ^2.0.0
+  sqflite: ^2.2.8+4
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

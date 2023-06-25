@@ -28,13 +28,12 @@ class SimpananWajibController extends GetxController {
 
   final RxList<Bank> bankList = [
     Bank(
-        id: 0,
-        institutionId: 0,
-        namaBank: "namaBank",
-        nomorRekening: "nomorRekening",
-        atasNama: "atasNama",
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now())
+      id: 0,
+      institutionId: 0,
+      namaBank: "namaBank",
+      nomorRekening: "nomorRekening",
+      atasNama: "atasNama",
+    )
   ].obs;
 
   final Rx<Bank?> chosedBank = Rx<Bank?>(null);

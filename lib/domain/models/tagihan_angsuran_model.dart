@@ -7,18 +7,18 @@ class TagihanAngsuranModel extends Equatable {
   final int id;
   final int pinjamanId;
   final int memberId;
-  final int tagihanPokok;
-  final int tagihanBunga;
-  final int tagihanPenalti;
-  final int tagihanAdmin;
-  final String status;
-  final int angsuranKe;
-  final DateTime jatuhTempo;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final PinjamanModel pinjaman;
+  final int? tagihanPokok;
+  final int? tagihanBunga;
+  final int? tagihanPenalti;
+  final int? tagihanAdmin;
+  final String? status;
+  final int? angsuranKe;
+  final DateTime? jatuhTempo;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final PinjamanModel? pinjaman;
 
-  TagihanAngsuranModel(
+  const TagihanAngsuranModel(
       {required this.id,
       required this.pinjamanId,
       required this.memberId,
@@ -31,7 +31,7 @@ class TagihanAngsuranModel extends Equatable {
       required this.jatuhTempo,
       required this.createdAt,
       required this.updatedAt,
-      required this.pinjaman});
+      this.pinjaman});
 
   factory TagihanAngsuranModel.fromJson(Map<String, dynamic> json) =>
       TagihanAngsuranModel(
@@ -44,10 +44,19 @@ class TagihanAngsuranModel extends Equatable {
         tagihanAdmin: json["tagihan_admin"],
         status: json["status"],
         angsuranKe: json["angsuran_ke"],
-        jatuhTempo: DateTime.parse(json["jatuh_tempo"]),
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-        pinjaman: PinjamanModel.fromJson(json["pinjaman"]),
+        jatuhTempo: json["jatuh_tempo"] == null
+            ? null
+            : DateTime.parse(json["jatuh_tempo"]),
+        // kwitansi: json["kwitansi"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        pinjaman: json["pinjaman"] == null
+            ? null
+            : PinjamanModel.fromJson(json["pinjaman"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -60,10 +69,10 @@ class TagihanAngsuranModel extends Equatable {
         "tagihan_admin": tagihanAdmin,
         "status": status,
         "angsuran_ke": angsuranKe,
-        "jatuh_tempo": jatuhTempo.toIso8601String(),
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-        "pinjaman": pinjaman.toJson(),
+        "jatuh_tempo": jatuhTempo?.toIso8601String(),
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+        "pinjaman": pinjaman?.toJson(),
       };
 
   TagihanAngsuran toEntity() {
@@ -80,11 +89,10 @@ class TagihanAngsuranModel extends Equatable {
         jatuhTempo,
         createdAt,
         updatedAt,
-        pinjaman.toEntity());
+        pinjaman?.toEntity());
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         pinjamanId,

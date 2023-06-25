@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
 import 'package:http/http.dart' as http;
+import 'package:sistem_informasi_simpan_pinjam/domain/models/angsuran_pinjaman_detail.dart';
 
 import '../../models/response_post_model.dart';
 import '../error/exception.dart';
@@ -13,12 +14,14 @@ abstract class AngsuranDataSource {
   Future<ResponsePostModel> onPostBayarAngsuran(
       String? token,
       ResponseTagihanAngsuran responseTagihanAngsuran,
-      int jumlah,
+      int pembayaranPokok,
       File? buktiBayar);
+  Future<AngsuranDetailModel> onGetAngsuranDetail(String? token, int id);
 }
 
 class AngsuranDataSourceImpl implements AngsuranDataSource {
-  static const baseUrl = "http://localhost:8000/api/angsuran";
+  // static const baseUrl = "http://localhost:8000/api/angsuran";
+  static const baseUrl = "http://10.0.2.2:8000/api/angsuran";
   final http.Client _httpClient;
 
   AngsuranDataSourceImpl(this._httpClient);
@@ -27,7 +30,7 @@ class AngsuranDataSourceImpl implements AngsuranDataSource {
   Future<ResponsePostModel> onPostBayarAngsuran(
       String? token,
       ResponseTagihanAngsuran responseTagihanAngsuran,
-      int jumlah,
+      int pembayaranPokok,
       File? buktiBayar) async {
     var request =
         http.MultipartRequest('POST', Uri.parse('$baseUrl/store-member?'));
@@ -44,11 +47,6 @@ class AngsuranDataSourceImpl implements AngsuranDataSource {
         filename: fileName,
       ));
     }
-
-    int pembayaranPokok = jumlah -
-        (responseTagihanAngsuran.totalBunga!.toInt() +
-            responseTagihanAngsuran.totalAdmin!.toInt() +
-            responseTagihanAngsuran.totalPenalti!.toInt());
 
     request.fields['pinjaman_id'] =
         responseTagihanAngsuran.tagihanAngsuran![0].pinjamanId.toString();
@@ -77,6 +75,22 @@ class AngsuranDataSourceImpl implements AngsuranDataSource {
     print(responseBody);
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(responseBody));
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<AngsuranDetailModel> onGetAngsuranDetail(String? token, int id) async {
+    final response = await _httpClient
+        .post(Uri.parse('$baseUrl/get-detail-member/$id'), headers: {
+      'Authorization': 'Bearer ${token ?? " "}',
+      'Content-Type': 'application/json',
+    });
+    print(response.statusCode);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return AngsuranDetailModel.fromJson(json.decode(response.body));
     } else {
       throw ServerException();
     }

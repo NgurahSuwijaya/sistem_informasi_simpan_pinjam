@@ -1,39 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:sistem_informasi_simpan_pinjam/presentation/profile/controllers/profile.controller.dart';
+import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
+import 'package:sistem_informasi_simpan_pinjam/widget/app_bottom_sheet.dart';
 
 import '../../../infrastructure/theme/app_color.dart';
 
 class ProfileHeader extends StatelessWidget {
-  final ProfileController profileController;
-  const ProfileHeader({super.key, required this.profileController});
+  final ProfileController controller;
+
+  const ProfileHeader({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      // ignore: prefer_const_literals_to_create_immutables
       children: [
-        const CircleAvatar(
-          backgroundColor: AppColor.blackComponent,
-          backgroundImage: NetworkImage(
-              'https://cdn.discordapp.com/attachments/856786757516918784/1057564396194373632/Screenshot_20221228_154104_WhatsApp.jpg'),
-          minRadius: 60,
-          maxRadius: 80,
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            ClipOval(
+              child: Card(
+                shape: CircleBorder(),
+                elevation: 5,
+                child: CircleAvatar(
+                  backgroundColor: AppColor.blackComponent,
+                  backgroundImage: NetworkImage(
+                      'http://10.0.2.2:8000${controller.memberProfileData.value.user.photoPath}'),
+                  minRadius: 60,
+                  maxRadius: 80,
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: ClipOval(
+                child: Card(
+                  color: AppColor.green1,
+                  shape: CircleBorder(),
+                  elevation: 4,
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      Icons.edit,
+                      size: 18,
+                    ),
+                    onPressed: () {
+                      Get.bottomSheet(
+                          AppBottomSheet(
+                            context,
+                            onPressedCamera: () =>
+                                controller.selectImageCamera(),
+                            onPressedGallery: () =>
+                                {controller.selectImageGalery()},
+                          ),
+                          backgroundColor: AppColor.white);
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         Obx(
-          (() =>
-              Text(profileController.memberProfileData.value.nomorIndukAnggota,
-                  style: const TextStyle(
-                    color: AppColor.green1,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ))),
-        )
+          (() => Text(
+                controller.memberProfileData.value.nomorIndukAnggota,
+                style: const TextStyle(
+                  color: AppColor.green1,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              )),
+        ),
       ],
     );
   }

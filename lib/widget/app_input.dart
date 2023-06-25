@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/state_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
 import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dart';
@@ -49,7 +47,7 @@ class _AppInputState extends State<AppInput> {
               widget.topText,
               style: AppFont.title1,
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             if (widget.isCurrency)

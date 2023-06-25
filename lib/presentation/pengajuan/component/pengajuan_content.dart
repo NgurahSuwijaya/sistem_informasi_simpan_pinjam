@@ -1,7 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/bunga_pinjaman.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/kategori_pinjaman.dart';
@@ -539,15 +537,15 @@ class _PengajuanContentState extends State<PengajuanContent> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "Bukti pembayaran berupa",
+                                              "Dokumen jaminan berupa",
                                               style: AppFont.subtitle3,
                                             ),
                                             Text(
-                                              "bukti transfer ke rekening",
+                                              "scan bukti kepemilikan",
                                               style: AppFont.subtitle3,
                                             ),
                                             Text(
-                                              "yang tercantum",
+                                              "aset jaminan yang tercantum",
                                               style: AppFont.subtitle3,
                                             ),
                                           ],

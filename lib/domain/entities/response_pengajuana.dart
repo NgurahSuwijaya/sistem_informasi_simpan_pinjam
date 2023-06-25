@@ -13,6 +13,5 @@ class ResponsePengajuan extends Equatable {
       this.success, this.message, this.bungaPinjaman, this.tipeJaminan);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [success, message, bungaPinjaman, tipeJaminan];
 }

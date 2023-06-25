@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/kategori_pinjaman.dart';
 
 class KategoriPinjamanModel extends Equatable {
-  KategoriPinjamanModel({
+  const KategoriPinjamanModel({
     required this.id,
     required this.institutionId,
     required this.name,
@@ -43,7 +43,6 @@ class KategoriPinjamanModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,

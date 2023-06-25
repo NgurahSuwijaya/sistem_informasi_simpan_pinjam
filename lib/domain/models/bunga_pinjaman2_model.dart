@@ -7,18 +7,18 @@ class BungaPinjaman2Model extends Equatable {
   final int id;
   final int kategoriPinjamanId;
   final int institutionId;
-  final String tipeAngsuran;
-  final String tipeBunga;
+  final String? tipeAngsuran;
+  final String? tipeBunga;
   final int? jangkaWaktu;
   final int? batasDurasiPinjamanBerjalan;
-  final int pinalti;
-  final double persentaseBunga;
-  final int biayaAdmin;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final KategoriPinjamanModel kategoriPinjaman;
+  final int? pinalti;
+  final double? persentaseBunga;
+  final int? biayaAdmin;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final KategoriPinjamanModel? kategoriPinjaman;
 
-  BungaPinjaman2Model({
+  const BungaPinjaman2Model({
     required this.id,
     required this.kategoriPinjamanId,
     required this.institutionId,
@@ -48,8 +48,9 @@ class BungaPinjaman2Model extends Equatable {
         biayaAdmin: json["biaya_admin"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        kategoriPinjaman:
-            KategoriPinjamanModel.fromJson(json["kategori_pinjaman"]),
+        kategoriPinjaman: json["kategori_pinjaman"] == null
+            ? null
+            : KategoriPinjamanModel.fromJson(json["kategori_pinjaman"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -63,9 +64,9 @@ class BungaPinjaman2Model extends Equatable {
         "pinalti": pinalti,
         "persentase_bunga": persentaseBunga,
         "biaya_admin": biayaAdmin,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-        "kategori_pinjaman": kategoriPinjaman.toJson(),
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+        "kategori_pinjaman": kategoriPinjaman?.toJson(),
       };
 
   BungaPinjaman2 toEntity() {
@@ -82,11 +83,10 @@ class BungaPinjaman2Model extends Equatable {
         biayaAdmin: biayaAdmin,
         createdAt: createdAt,
         updatedAt: updatedAt,
-        kategoriPinjaman: kategoriPinjaman.toEntity());
+        kategoriPinjaman: kategoriPinjaman?.toEntity());
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         kategoriPinjamanId,

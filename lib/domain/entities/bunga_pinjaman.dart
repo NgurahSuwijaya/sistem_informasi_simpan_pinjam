@@ -11,6 +11,5 @@ class BungaPinjaman extends Equatable {
       this.jangkaWaktuInt, this.batasDurasiPinjamanBerjalan);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [id, jangkaWaktu, persentaseBunga, jangkaWaktu];
 }

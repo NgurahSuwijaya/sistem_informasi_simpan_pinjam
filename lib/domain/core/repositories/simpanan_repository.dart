@@ -19,5 +19,13 @@ abstract class SimpananRepository {
       required String tipeSimpanan,
       required DateTime tanggalTransaksi,
       required String rekening,
-      required File? buktiBayar});
+      required File? buktiBayar,
+      String? nomorIndukPenerima,
+      String? passAkun});
+  Future<Either<Failure, ResponseSimpanan>> getDetailSimpananData(
+      {required String? token, required int idSimpanan});
+  Future<Either<Failure, ResponsePost>> onIjinkanPenarikan(
+      {required String? token, required int id});
+  Future<Either<Failure, ResponsePost>> onTolakPenarikan(
+      {required String? token, required int id});
 }

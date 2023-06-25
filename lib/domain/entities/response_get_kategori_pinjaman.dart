@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'kategori_pinjaman.dart';
 
 class ResponseKategoriPinjaman extends Equatable {
-  ResponseKategoriPinjaman({
+  const ResponseKategoriPinjaman({
     required this.success,
     required this.message,
     required this.data,
@@ -13,6 +13,5 @@ class ResponseKategoriPinjaman extends Equatable {
   final List<KategoriPinjaman> data;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [success, message, data];
 }

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_simpanan.dart';
 
 class TipeSimpanansModel extends Equatable {
-  TipeSimpanansModel({
+  const TipeSimpanansModel({
     required this.id,
     required this.institutionId,
     required this.name,
@@ -10,11 +10,11 @@ class TipeSimpanansModel extends Equatable {
     required this.updatedAt,
   });
 
-  int id;
-  int institutionId;
-  String name;
-  DateTime createdAt;
-  DateTime updatedAt;
+  final int id;
+  final int institutionId;
+  final String name;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
   factory TipeSimpanansModel.fromJson(Map<String, dynamic> json) =>
       TipeSimpanansModel(
@@ -43,7 +43,6 @@ class TipeSimpanansModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,

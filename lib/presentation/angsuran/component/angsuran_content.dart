@@ -1,19 +1,14 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
 import 'package:sistem_informasi_simpan_pinjam/presentation/angsuran/controllers/angsuran.controller.dart';
-
 import '../../../domain/entities/response_bank.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_input.dart';
-import '../../../widget/app_simpanan_dropdown.dart';
 
 class AngsuranContent extends StatefulWidget {
   final AngsuranController controller;
@@ -87,15 +82,16 @@ class _AngsuranContentState extends State<AngsuranContent> {
                         ),
                         AppInput(
                           hint: NumberFormat.currency(
-                                  symbol: 'Rp',
-                                  decimalDigits: 0,
-                                  locale: 'id_ID')
+                            symbol: 'Rp',
+                            decimalDigits: 0,
+                          )
                               .format(
                                   widget.responseTagihanAngsuran.totalTagihan)
                               .toString(),
                           topText: 'Jumlah yang dibayarkan',
                           obscureText: false,
                           controller: widget.controller.jumlahBayarController,
+                          textInputType: TextInputType.number,
                           canEdit: true,
                           isCurrency: true,
                         ),

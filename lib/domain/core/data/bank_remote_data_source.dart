@@ -10,7 +10,8 @@ abstract class BankDataSource {
 }
 
 class BankDataSourceImpl implements BankDataSource {
-  static const baseUrl = "http://localhost:8000/api/bank";
+  // static const baseUrl = "http://localhost:8000/api/bank";
+  static const baseUrl = "http://10.0.2.2:8000/api/bank";
   final http.Client _httpClient;
 
   BankDataSourceImpl(this._httpClient);

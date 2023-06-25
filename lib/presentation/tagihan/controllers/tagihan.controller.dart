@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -45,15 +44,21 @@ class TagihanController extends GetxController {
     final result = await memberUseCase.onGetTagihanPinjamanMember(token: token);
     result.fold(
         (left) => {
-              Get.snackbar('Error', left.message),
+              Get.snackbar('Error angsuran', left.message),
+              print(left.message),
               isAdaTagihanAngsuran.value = false,
               isLoading.value = false
             },
         (right) => {
-              isAdaTagihanAngsuran.value = true,
-              tagihanAngsuran.value = right,
-              print(tagihanAngsuran.value),
-              isLoading.value = false
+              if (right.totalTagihan != 0 && right.totalTagihan != null)
+                {
+                  isAdaTagihanAngsuran.value = true,
+                  tagihanAngsuran.value = right,
+                  print(right.totalTagihan),
+                  isLoading.value = false
+                }
+              else
+                {isAdaTagihanAngsuran.value = false, isLoading.value = false}
             });
   }
 
@@ -65,12 +70,20 @@ class TagihanController extends GetxController {
     final result = await memberUseCase.onGetTagihanSimpananWajib(token: token);
 
     result.fold(
-        (l) => Get.snackbar("Error", l.message),
+        (l) => {
+              Get.snackbar("Error simpanan", l.message),
+              isAdaTagihanSimpanan.value = false
+            },
         (r) => {
-              isAdaTagihanSimpanan.value = true,
-              tagihanSimpanan.value = r,
-              print(tagihanSimpanan.value),
-              isLoading.value = false
+              if (r.totalTagihan != 0)
+                {
+                  isAdaTagihanSimpanan.value = true,
+                  tagihanSimpanan.value = r,
+                  // print(tagihanSimpanan.value),
+                  isLoading.value = false
+                }
+              else
+                {isAdaTagihanSimpanan.value = false, isLoading.value = false}
             });
   }
 }

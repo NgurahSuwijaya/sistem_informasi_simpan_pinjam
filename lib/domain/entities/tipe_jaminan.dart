@@ -6,7 +6,7 @@ class TipeJaminan extends Equatable {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  TipeJaminan({
+  const TipeJaminan({
     required this.id,
     required this.namaTipeJaminan,
     required this.createdAt,
@@ -14,6 +14,5 @@ class TipeJaminan extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [id, namaTipeJaminan, createdAt, updatedAt];
 }

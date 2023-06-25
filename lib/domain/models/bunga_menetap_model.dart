@@ -4,7 +4,7 @@ import 'package:sistem_informasi_simpan_pinjam/domain/entities/bunga_menetap.dar
 import 'kategori_pinjaman_model.dart';
 
 class BungaMenetapModel extends Equatable {
-  BungaMenetapModel({
+  const BungaMenetapModel({
     required this.id,
     required this.kategoriPinjamanId,
     required this.institutionId,
@@ -71,7 +71,6 @@ class BungaMenetapModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         kategoriPinjamanId,

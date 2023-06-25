@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../entities/tipe_jaminan.dart';
 
 class TipeJaminanModel extends Equatable {
-  TipeJaminanModel({
+  const TipeJaminanModel({
     required this.id,
     required this.namaTipeJaminan,
     required this.createdAt,
@@ -39,6 +39,5 @@ class TipeJaminanModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [id, namaTipeJaminan, createdAt, updatedAt];
 }

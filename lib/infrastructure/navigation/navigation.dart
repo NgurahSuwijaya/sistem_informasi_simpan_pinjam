@@ -9,6 +9,7 @@ import 'routes.dart';
 
 class EnvironmentsBadge extends StatelessWidget {
   final Widget child;
+  // ignore: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
   EnvironmentsBadge({required this.child});
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class Nav {
     ),
     GetPage(
       name: Routes.LOGIN,
-      page: () => LoginScreen(),
+      page: () => const LoginScreen(),
       binding: LoginControllerBinding(),
     ),
     GetPage(
@@ -73,7 +74,7 @@ class Nav {
     ),
     GetPage(
       name: Routes.PENGAJUAN,
-      page: () => PengajuanScreen(),
+      page: () => const PengajuanScreen(),
       binding: PengajuanControllerBinding(),
     ),
     GetPage(
@@ -85,11 +86,6 @@ class Nav {
       name: Routes.DETAIL_PENGAJUAN,
       page: () => const DetailPengajuanScreen(),
       binding: DetailPengajuanControllerBinding(),
-    ),
-    GetPage(
-      name: Routes.ANGSURAN_MENURUN,
-      page: () => const AngsuranMenurunScreen(),
-      binding: AngsuranMenurunControllerBinding(),
     ),
     GetPage(
       name: Routes.ANGSURAN,
@@ -115,6 +111,41 @@ class Nav {
       name: Routes.DETAIL_SIMPANAN_WAJIB,
       page: () => const DetailSimpananWajibScreen(),
       binding: DetailSimpananWajibControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_TRANSAKSI_SIMPANAN,
+      page: () => const DetailTransaksiSimpananScreen(),
+      binding: DetailTransaksiSimpananControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_TRANSAKSI_PINJAMAN,
+      page: () => const DetailTransaksiPinjamanScreen(),
+      binding: DetailTransaksiPinjamanControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_TRANSAKSI_ANGSURAN,
+      page: () => const DetailTransaksiAngsuranScreen(),
+      binding: DetailTransaksiAngsuranControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_NOTIFICATION,
+      page: () => const DetailNotificationScreen(),
+      binding: DetailNotificationControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.SETTING,
+      page: () => const SettingScreen(),
+      binding: SettingControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.TRANSFER,
+      page: () => const TransferScreen(),
+      binding: TransferControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.KONTROL_PENARIKAN,
+      page: () => const KontrolPenarikanScreen(),
+      binding: KontrolPenarikanControllerBinding(),
     ),
   ];
 }

@@ -154,7 +154,7 @@ class PengajuanController extends GetxController {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final token = preferences.getString('token');
     final result = await _pinjamanUseCase.onGetKategoriPinjaman(token: token);
-    result.fold((l) => Get.snackbar('Error', l.message),
+    result.fold((l) => {Get.snackbar('Error', l.message), print(l.message)},
         (r) => kategoriPinjamanList.value = r.data);
   }
 

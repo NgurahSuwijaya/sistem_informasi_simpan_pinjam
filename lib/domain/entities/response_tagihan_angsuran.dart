@@ -11,11 +11,16 @@ class ResponseTagihanAngsuran extends Equatable {
   final int? totalPenalti;
   final int? totalTagihan;
 
-  ResponseTagihanAngsuran(this.success, this.tagihanAngsuran, this.totalPokok,
-      this.totalBunga, this.totalAdmin, this.totalPenalti, this.totalTagihan);
+  const ResponseTagihanAngsuran(
+      this.success,
+      this.tagihanAngsuran,
+      this.totalPokok,
+      this.totalBunga,
+      this.totalAdmin,
+      this.totalPenalti,
+      this.totalTagihan);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         success,
         tagihanAngsuran,

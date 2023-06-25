@@ -8,11 +8,10 @@ class Angsuran extends Equatable {
   final int administrasiBulanIni;
   final int pinaltiBulanIni;
 
-  Angsuran(this.angsuranKe, this.sisaPokok, this.pokokBulanIni,
+  const Angsuran(this.angsuranKe, this.sisaPokok, this.pokokBulanIni,
       this.bungaBulanIni, this.administrasiBulanIni, this.pinaltiBulanIni);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         angsuranKe,
         sisaPokok,

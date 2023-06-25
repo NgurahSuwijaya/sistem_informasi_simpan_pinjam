@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class KategoriPinjaman extends Equatable {
-  KategoriPinjaman({
+  const KategoriPinjaman({
     required this.id,
     required this.institutionId,
     required this.name,
@@ -16,7 +16,6 @@ class KategoriPinjaman extends Equatable {
   final DateTime updatedAt;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,

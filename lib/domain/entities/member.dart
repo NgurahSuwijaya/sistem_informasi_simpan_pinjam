@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/entities/user.dart';
 
 class Member extends Equatable {
-  Member(
+  const Member(
       {required this.id,
       required this.institutionId,
       required this.createdAt,
@@ -14,23 +14,26 @@ class Member extends Equatable {
       required this.nomorIndukAnggota,
       required this.nomorKtp,
       required this.memberStatus,
+      required this.kontrolPenarikan,
+      required this.rekeningGiro,
       required this.user});
 
-  int id;
-  int userId;
-  int institutionId;
-  String jenisKelamin;
-  DateTime tanggalLahir;
-  String tempatLahir;
-  String nomorIndukAnggota;
-  String nomorKtp;
-  String memberStatus;
-  DateTime createdAt;
-  DateTime updatedAt;
-  User user;
+  final int id;
+  final int userId;
+  final int institutionId;
+  final String jenisKelamin;
+  final DateTime tanggalLahir;
+  final String tempatLahir;
+  final String nomorIndukAnggota;
+  final String nomorKtp;
+  final String memberStatus;
+  final String? kontrolPenarikan;
+  final bool rekeningGiro;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final User user;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         institutionId,
@@ -43,6 +46,8 @@ class Member extends Equatable {
         nomorIndukAnggota,
         nomorKtp,
         memberStatus,
+        kontrolPenarikan,
+        rekeningGiro,
         user
       ];
 }

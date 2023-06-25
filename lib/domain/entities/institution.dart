@@ -1,26 +1,25 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:math';
 
 import 'package:equatable/equatable.dart';
 
 class Institution extends Equatable {
-  int id;
-  String name;
-  String address;
-  String city;
-  String province;
-  String phoneNumber;
-  String email;
-  String photoPath;
-  double persentaseBungaSimpanan;
-  int persentasePajakBungaSimpanan;
-  int awalTahunBuku;
-  String status;
+  final int id;
+  final String name;
+  final String address;
+  final String city;
+  final String province;
+  final String phoneNumber;
+  final String email;
+  final String photoPath;
+  final double persentaseBungaSimpanan;
+  final int persentasePajakBungaSimpanan;
+  final int awalTahunBuku;
+  final String status;
   // String note;
-  DateTime createdAt;
-  DateTime updatedAt;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
-  Institution({
+  const Institution({
     required this.id,
     required this.name,
     required this.address,
@@ -39,7 +38,6 @@ class Institution extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         name,

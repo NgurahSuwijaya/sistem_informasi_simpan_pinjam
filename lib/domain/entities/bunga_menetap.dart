@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'kategori_pinjaman.dart';
 
 class BungaMenetap extends Equatable {
-  BungaMenetap({
+  const BungaMenetap({
     required this.id,
     required this.kategoriPinjamanId,
     required this.institutionId,
@@ -28,7 +28,6 @@ class BungaMenetap extends Equatable {
   final KategoriPinjaman kategoriPinjaman;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         kategoriPinjamanId,

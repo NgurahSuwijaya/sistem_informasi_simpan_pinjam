@@ -15,7 +15,7 @@ class ProfileScreen extends GetView<ProfileController> {
     return Scaffold(
         backgroundColor: AppColor.gray3,
         appBar: AppBar(
-          title: const Text('Profil Anggota'),
+          title: const Text('Profil'),
           centerTitle: true,
         ),
         body: Obx(() => controller.isLoading
@@ -27,7 +27,7 @@ class ProfileScreen extends GetView<ProfileController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ProfileHeader(
-                        profileController: controller,
+                        controller: controller,
                       ),
                       const SizedBox(
                         height: 30,

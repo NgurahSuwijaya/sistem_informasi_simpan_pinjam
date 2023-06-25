@@ -95,7 +95,7 @@ class _AngsuranHeaderState extends State<AngsuranHeader> {
                           height: 5,
                         ),
                         Text(
-                          "Pinjaman Bunga ${widget.responseTagihanAngsuran.tagihanAngsuran![0].pinjaman.tipeBungaPinjaman[0].toUpperCase()}${widget.responseTagihanAngsuran.tagihanAngsuran![0].pinjaman.tipeBungaPinjaman.substring(1)}",
+                          "Pinjaman Bunga ${widget.responseTagihanAngsuran.tagihanAngsuran![0].pinjaman!.tipeBungaPinjaman![0].toUpperCase()}${widget.responseTagihanAngsuran.tagihanAngsuran![0].pinjaman!.tipeBungaPinjaman!.substring(1)}",
                           style: AppFont.title42,
                         ),
                       ],
@@ -125,7 +125,7 @@ class _AngsuranHeaderState extends State<AngsuranHeader> {
                         Text(
                           DateFormat('dd MMMM yyyy', 'id_ID')
                               .format(widget.responseTagihanAngsuran
-                                  .tagihanAngsuran![0].jatuhTempo)
+                                  .tagihanAngsuran![0].jatuhTempo!)
                               .toString(),
                           style: AppFont.title4,
                         ),
@@ -160,7 +160,7 @@ class _AngsuranHeaderState extends State<AngsuranHeader> {
                       ],
                     ),
                   )),
-              widget.responseTagihanAngsuran.tagihanAngsuran![0].pinjaman
+              widget.responseTagihanAngsuran.tagihanAngsuran![0].pinjaman!
                           .tipeBungaPinjaman ==
                       'menurun'
                   ? SizedBox()
@@ -264,7 +264,7 @@ class _AngsuranHeaderState extends State<AngsuranHeader> {
                       ],
                     ),
                   )),
-              widget.responseTagihanAngsuran.tagihanAngsuran![0].pinjaman
+              widget.responseTagihanAngsuran.tagihanAngsuran![0].pinjaman!
                           .tipeBungaPinjaman ==
                       'menurun'
                   ? SizedBox()

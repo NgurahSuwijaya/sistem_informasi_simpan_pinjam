@@ -21,7 +21,7 @@ class ResponseKategoriPinjamanModel extends Equatable {
   final String message;
   final List<KategoriPinjamanModel> data;
 
-  ResponseKategoriPinjamanModel({
+  const ResponseKategoriPinjamanModel({
     required this.success,
     required this.message,
     required this.data,
@@ -49,6 +49,5 @@ class ResponseKategoriPinjamanModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [success, message, data];
 }

@@ -1,8 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:sistem_informasi_simpan_pinjam/presentation/tagihan/controllers/tagihan.controller.dart';
 import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
@@ -80,7 +76,7 @@ class _TagihanContentState extends State<TagihanContent> {
                                         "Anda memiliki tagihan simpanan wajib yang harus dibayar.",
                                         style: AppFont.title3,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 25,
                                       ),
                                       AppButton(
@@ -99,7 +95,7 @@ class _TagihanContentState extends State<TagihanContent> {
                                         "Anda tidak memiliki tagihan simpanan wajib yang harus dibayar.",
                                         style: AppFont.title3,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 25,
                                       ),
                                       AppButton(
@@ -168,7 +164,7 @@ class _TagihanContentState extends State<TagihanContent> {
                                         "Anda memiliki tagihan angsuran yang harus dibayar.",
                                         style: AppFont.title3,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 25,
                                       ),
                                       AppButton(
@@ -188,7 +184,7 @@ class _TagihanContentState extends State<TagihanContent> {
                                         "Anda tidak memiliki tagihan angsuran yang harus dibayar.",
                                         style: AppFont.title3,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 25,
                                       ),
                                       AppButton(

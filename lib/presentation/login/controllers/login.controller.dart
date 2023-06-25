@@ -10,13 +10,14 @@ class LoginController extends GetxController {
 
   final emailController = TextEditingController();
   RxBool isPasswordVisible = false.obs;
-  final LoginUsecase loginUsecase;
+  final AuthUsecase loginUsecase;
   final passwordController = TextEditingController();
 
   final _isLoading = false.obs;
 
   @override
   void onClose() {
+    super.dispose();
     super.onClose();
     emailController.dispose();
     passwordController.dispose();
@@ -39,15 +40,20 @@ class LoginController extends GetxController {
   }
 
   Future<void> loginUser() async {
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    print(fcmToken);
+    String fcmToken = "";
+    await FirebaseMessaging.instance
+        .getToken()
+        .then((value) => fcmToken = value!);
+
+    // print(fcmToken);
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _isLoading.value = true;
     final email = emailController.text;
     final password = passwordController.text;
 
-    final result =
-        await loginUsecase.onLoginUser(email: email, password: password);
+    final result = await loginUsecase.onLoginUser(
+        email: email, password: password, fcmToken: fcmToken);
     _isLoading.value = false;
     result.fold((failure) {
       // Get.defaultDialog(
@@ -68,7 +74,14 @@ class LoginController extends GetxController {
       // print(success.data.address);
       prefs.setString('token', success.token);
       prefs.setInt('user_id', success.data.id);
+      prefs.setBool('isNotification', false);
+      onLoginSuccess();
       Get.offNamed('/home', arguments: success);
     });
+  }
+
+  void onLoginSuccess() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isLoggedIn', true);
   }
 }

@@ -22,7 +22,7 @@ class ResponsePengajuanModel extends Equatable {
   final List<BungaPinjamanModel> bungaPinjaman;
   final List<TipeJaminanModel> tipeJaminan;
 
-  ResponsePengajuanModel({
+  const ResponsePengajuanModel({
     required this.success,
     required this.message,
     required this.bungaPinjaman,
@@ -56,6 +56,5 @@ class ResponsePengajuanModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 }

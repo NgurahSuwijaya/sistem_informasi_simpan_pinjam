@@ -103,8 +103,8 @@ class PinjamanController extends GetxController {
       _isLoading.value = false;
       _isMeminjam.value = true;
       pinjamanData.value = success.data;
-      sisaPokok.value = success.sisaPokok;
-      sisaBunga.value = success.sisaBunga;
+      sisaPokok.value = success.sisaPokok!;
+      sisaBunga.value = success.sisaBunga!;
       print(pinjamanData.value);
     });
   }

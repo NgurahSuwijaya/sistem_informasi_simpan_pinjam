@@ -17,12 +17,12 @@ class HomeHeader extends StatelessWidget {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Row(
         children: [
-          const CircleAvatar(
-            backgroundColor: AppColor.blackComponent,
-            backgroundImage: NetworkImage(
-                'https://cdn.discordapp.com/attachments/856786757516918784/1057564396194373632/Screenshot_20221228_154104_WhatsApp.jpg'),
-            radius: 30,
-          ),
+          Obx((() => CircleAvatar(
+                backgroundImage: NetworkImage(
+                    'http://10.0.2.2:8000${controller.simpananData.value.member!.user.photoPath}',
+                    scale: 1),
+                radius: 30,
+              ))),
           SizedBox(
             width: 10,
           ),
@@ -30,7 +30,7 @@ class HomeHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Obx((() => Text(
-                    controller.simpananData.value.member.user.name,
+                    controller.simpananData.value.member!.user.name,
                     style: AppFont.h2,
                   ))),
               SizedBox(

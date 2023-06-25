@@ -6,10 +6,12 @@ import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/pinjaman_usecase.dart';
+import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
 
 import '../../../domain/entities/bunga_pinjaman.dart';
 import '../../../domain/entities/kategori_pinjaman.dart';
 import '../../../domain/entities/tipe_jaminan.dart';
+import '../../../widget/app_ok_dialog.dart';
 
 class DetailPengajuanController extends GetxController {
   final PinjamanUseCase _pinjamanUseCase;
@@ -28,7 +30,7 @@ class DetailPengajuanController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    initializeDateFormatting('id_ID', null);
+    // initializeDateFormatting('id_ID', null);
   }
 
   @override
@@ -64,8 +66,15 @@ class DetailPengajuanController extends GetxController {
         namaAsetJaminan: namaJaminan,
         dokumenAsetJaminan: jFile,
         tipeAngsuran: tAngsuran);
-    result.fold((l) => {Get.snackbar('Error', l.message), print(l.message)},
-        (r) => {Get.snackbar('Success', r.message), Get.offAllNamed('/home')});
+    result.fold(
+        (l) => {Get.snackbar('Error', l.message), print(l.message)},
+        (r) => {
+              Get.dialog(AppOkeDialog(
+                  title: "Berhasil!",
+                  onPressed: () => Get.offAllNamed('/home'),
+                  content:
+                      "Berhasil melakukan pengajuan pinjaman! Pengajuan anda akan segera di validasi oleh pengurus koperasi mohon ditunggu.")),
+            });
   }
 
   // void getArgumentPrevPage() {

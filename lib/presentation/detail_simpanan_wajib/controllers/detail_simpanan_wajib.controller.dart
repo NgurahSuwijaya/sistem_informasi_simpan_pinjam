@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
 
 import '../../../domain/core/usecase/simpanan_usecase.dart';
 import '../../../domain/entities/response_bank.dart';
 import '../../../widget/app_image_preview.dart';
+import '../../../widget/app_ok_dialog.dart';
 
 class DetailSimpananWajibController extends GetxController {
   final SimpananUseCase _simpananUseCase;
@@ -46,13 +48,20 @@ class DetailSimpananWajibController extends GetxController {
         token: tokenn,
         tipeSimpananId: 2,
         jumlah: jumlah,
-        tipeSimpanan: "sukarela",
+        tipeSimpanan: "wajib",
         tanggalTransaksi: DateTime.now(),
         rekening: 'biasa',
         buktiBayar: bukti,
         tipeTransaksiId: 1);
 
-    result.fold((l) => {Get.snackbar('Error', l.message), print(l.message)},
-        (r) => {Get.snackbar('Success', r.message), Get.offAllNamed('/home')});
+    result.fold(
+        (l) => {Get.snackbar('Error', l.message), print(l.message)},
+        (r) => {
+              Get.dialog(AppOkeDialog(
+                  onPressed: () => Get.offAllNamed('/home'),
+                  title: "Berhasil!",
+                  content:
+                      "Berhasil melakukan pembayaran tagihan simpanan wajib! Transaksi anda akan segera di validasi oleh pengurus koperasi mohon di tunggu"))
+            });
   }
 }

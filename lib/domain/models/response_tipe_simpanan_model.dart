@@ -8,7 +8,7 @@ class ResponseTipeSimpananModel extends Equatable {
   final String message;
   final List<TipeSimpanansModel> data;
 
-  ResponseTipeSimpananModel({
+  const ResponseTipeSimpananModel({
     required this.success,
     required this.message,
     required this.data,
@@ -34,6 +34,5 @@ class ResponseTipeSimpananModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [success, message, data];
 }

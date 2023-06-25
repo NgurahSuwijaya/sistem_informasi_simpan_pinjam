@@ -41,7 +41,7 @@ class LoginResponseData extends Equatable {
   final String updatedAt;
   // final int? admin;
 
-  LoginResponseData({
+  const LoginResponseData({
     required this.id,
     required this.roleId,
     required this.name,
@@ -59,7 +59,6 @@ class LoginResponseData extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         roleId,

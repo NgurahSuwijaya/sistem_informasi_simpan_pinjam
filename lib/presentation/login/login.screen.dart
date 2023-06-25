@@ -26,11 +26,11 @@ class LoginScreen extends GetView<LoginController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Simpin',
+                        'Masuk',
                         style: AppFont.h1,
                       ),
                       const GradientText(
-                        'Masuk',
+                        'Simpin',
                         style: TextStyle(
                             fontSize: 65, fontWeight: FontWeight.w800),
                         gradient: LinearGradient(colors: [
@@ -69,7 +69,8 @@ class LoginScreen extends GetView<LoginController> {
                                 obscureText:
                                     !controller.isPasswordVisible.value,
                                 sufixIcons: IconButton(
-                                  icon: Icon(CupertinoIcons.eye_slash_fill),
+                                  icon:
+                                      const Icon(CupertinoIcons.eye_slash_fill),
                                   onPressed: controller.onShowPassword,
                                 ),
                                 isCurrency: false,
@@ -83,7 +84,7 @@ class LoginScreen extends GetView<LoginController> {
                                 obscureText:
                                     !controller.isPasswordVisible.value,
                                 sufixIcons: IconButton(
-                                  icon: Icon(CupertinoIcons.eye_fill),
+                                  icon: const Icon(CupertinoIcons.eye_fill),
                                   onPressed: controller.onShowPassword,
                                 ),
                                 isCurrency: false,

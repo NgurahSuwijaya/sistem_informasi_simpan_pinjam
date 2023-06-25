@@ -39,6 +39,5 @@ class BungaPinjamanModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [id, jangkaWaktu, persentaseBunga, jangkaWaktu];
 }

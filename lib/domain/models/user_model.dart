@@ -4,7 +4,7 @@ import 'package:sistem_informasi_simpan_pinjam/domain/entities/user.dart';
 import 'institution_model.dart';
 
 class UserModel extends Equatable {
-  UserModel({
+  const UserModel({
     required this.id,
     required this.roleId,
     required this.name,
@@ -21,20 +21,20 @@ class UserModel extends Equatable {
     required this.institutions,
   });
 
-  int id;
-  int roleId;
-  String name;
-  String email;
-  String phoneNumber;
-  String address;
-  String city;
-  String province;
-  String photoPath;
-  int institutionId;
-  DateTime emailVerifiedAt;
-  DateTime createdAt;
-  DateTime updatedAt;
-  InstitutionsModel institutions;
+  final int id;
+  final int roleId;
+  final String name;
+  final String email;
+  final String phoneNumber;
+  final String address;
+  final String city;
+  final String province;
+  final String photoPath;
+  final int institutionId;
+  final DateTime emailVerifiedAt;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final InstitutionsModel institutions;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         id: json["id"],
@@ -89,7 +89,6 @@ class UserModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         roleId,

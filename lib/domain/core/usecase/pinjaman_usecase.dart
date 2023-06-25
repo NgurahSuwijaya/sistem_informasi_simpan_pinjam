@@ -58,4 +58,9 @@ class PinjamanUseCase {
         dokumenAsetJaminan: dokumenAsetJaminan,
         tipeAngsuran: tipeAngsuran);
   }
+
+  Future<Either<Failure, ResponsePinjaman>> onGetPinjamanDetail(
+      {required String? token, required int id}) async {
+    return _pinjamanRepository.getDetailPinjamanData(token: token, id: id);
+  }
 }

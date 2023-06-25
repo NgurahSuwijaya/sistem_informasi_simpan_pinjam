@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
 
 class AppCardButton extends StatelessWidget {
-  AppCardButton(
+  const AppCardButton(
       {super.key, required this.icon, this.onPressed, required this.color});
 
   final Icon icon;

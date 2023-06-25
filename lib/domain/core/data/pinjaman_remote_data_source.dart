@@ -1,14 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/response_get_kategori_pinjaman_model.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/response_pengajuan_model.dart';
 import 'package:sistem_informasi_simpan_pinjam/domain/models/response_pinjaman_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
 import "package:path/path.dart";
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_tagihan_angsuran_model.dart';
 
 import '../error/exception.dart';
 
@@ -29,10 +27,12 @@ abstract class PinjamanDataSource {
       String namaAsetJaminan,
       File? dokumenAsetJaminan,
       String tipeAngsuran);
+  Future<ResponsePinjamanModel> onGetPinjamanDetail(String? token, int id);
 }
 
 class PinjamanDataSourceImpl implements PinjamanDataSource {
-  static const baseUrl = "http://localhost:8000/api";
+  // static const baseUrl = "http://localhost:8000/api";
+  static const baseUrl = "http://10.0.2.2:8000/api";
   final http.Client _httpClient;
 
   PinjamanDataSourceImpl(this._httpClient);
@@ -43,6 +43,7 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
         .get(Uri.parse('$baseUrl/pinjaman/index-member?'), headers: {
       'Authorization': 'Bearer ${token ?? " "}',
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
     });
     // print(response.statusCode);
     // print(response.body);
@@ -67,13 +68,12 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
       'Authorization': 'Bearer ${token ?? " "}',
       'Content-Type': 'application/json',
     });
-    // print(response.statusCode);
-    // print(response.body);
+    print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
-      print("ayam");
       var ayam =
           ResponseKategoriPinjamanModel.fromJson(json.decode(response.body));
-      print(ayam.data[0].name);
+      print(ayam.data);
       return ResponseKategoriPinjamanModel.fromJson(json.decode(response.body));
       // } else if(response.statusCode == 401){
       //   return
@@ -148,6 +148,25 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
     print(responseBody);
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(responseBody));
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<ResponsePinjamanModel> onGetPinjamanDetail(
+      String? token, int id) async {
+    final idPinjaman = id;
+    final response = await _httpClient.post(
+        Uri.parse('$baseUrl/pinjaman/get-detail-member/$idPinjaman'),
+        headers: {
+          'Authorization': 'Bearer ${token ?? " "}',
+          'Content-Type': 'application/json',
+        });
+    print(response.statusCode);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return ResponsePinjamanModel.fromJson(json.decode(response.body));
     } else {
       throw ServerException();
     }

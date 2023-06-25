@@ -8,7 +8,7 @@ class AngsuranModel extends Equatable {
   final int administrasiBulanIni;
   final int pinaltiBulanIni;
 
-  AngsuranModel({
+  const AngsuranModel({
     required this.angsuranKe,
     required this.sisaPokok,
     required this.pokokBulanIni,
@@ -36,7 +36,6 @@ class AngsuranModel extends Equatable {
       };
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         angsuranKe,
         sisaPokok,
