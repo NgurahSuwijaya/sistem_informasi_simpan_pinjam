@@ -59,10 +59,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD1oGf3rMDmTX3pGS6G2D8vXDts5sKnji0',
-    appId: '1:599775303166:ios:ff303df760368ddc269caf',
+    appId: '1:599775303166:ios:95f92ff0c701dab4269caf',
     messagingSenderId: '599775303166',
     projectId: 'simpinnotification',
     storageBucket: 'simpinnotification.appspot.com',
-    iosBundleId: 'com.example.sistemInformasiSimpanPinjam',
+    iosBundleId: 'com.simpin.sistemInformasiSimpanPinjam',
   );
 }
