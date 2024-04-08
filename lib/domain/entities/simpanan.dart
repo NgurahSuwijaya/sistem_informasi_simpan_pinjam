@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_simpanan.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_transaksi.dart';
 import 'member.dart';
+import 'tipe_simpanan.dart';
+import 'tipe_transaksi.dart';
 
 class Simpanan extends Equatable {
   final int id;

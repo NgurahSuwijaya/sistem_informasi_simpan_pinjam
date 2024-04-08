@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/member_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_transaksi_saya.dart';
+
+import '../../../domain/core/usecase/member_usecase.dart';
+import '../../../domain/entities/response_transaksi_saya.dart';
 
 class HistoryController extends GetxController {
   final MemberUseCase memberUseCase;

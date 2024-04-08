@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/history/controllers/history.controller.dart';
-
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../widget/app_button.dart';
+import '../controllers/history.controller.dart';
 
 class HistoryHeader extends StatefulWidget {
   final HistoryController controller;
@@ -30,7 +27,7 @@ class _HistoryHeaderState extends State<HistoryHeader> {
                   onPressed: () {},
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Expanded(

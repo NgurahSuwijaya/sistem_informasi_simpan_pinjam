@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/notification_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/notification.dart';
+
+import '../../entities/notification.dart';
+import '../error/failure.dart';
+import '../repositories/notification_repository.dart';
 
 class NotificationUseCase {
   final NotificationRepository _notificationRepository;

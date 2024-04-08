@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_simpanan.dart';
 
+import '../../entities/response_post.dart';
+import '../../entities/response_simpanan.dart';
 import '../../entities/response_tipe_simpanan.dart';
+import '../error/failure.dart';
 
 abstract class SimpananRepository {
   Future<Either<Failure, ResponseSimpanan>> getSimpananData({String? token});

@@ -1,14 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// To parse this JSON data, do
-//
-//     final angsuranDetailModel = angsuranDetailModelFromJson(jsonString);
-
 import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/angsuran_pinjaman_detail.dart';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/models/pinjaman_model.dart';
+import '../entities/angsuran_pinjaman_detail.dart';
+import 'pinjaman_model.dart';
 
 AngsuranDetailModel angsuranDetailModelFromJson(String str) =>
     AngsuranDetailModel.fromJson(json.decode(str));

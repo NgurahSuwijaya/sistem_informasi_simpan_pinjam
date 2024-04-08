@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-
+import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_button.dart';
 import '../controllers/pinjaman.controller.dart';

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/simpanan/component/simpanan_content.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/simpanan/component/simpanan_footer.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/simpanan/component/simpanan_header.dart';
-
+import '../../infrastructure/theme/app_color.dart';
+import 'component/simpanan_content.dart';
+import 'component/simpanan_footer.dart';
+import 'component/simpanan_header.dart';
 import 'controllers/simpanan.controller.dart';
 
 class SimpananScreen extends GetView<SimpananController> {

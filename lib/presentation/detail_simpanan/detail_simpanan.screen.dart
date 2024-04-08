@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_image_preview.dart';
-
 import '../../domain/entities/response_bank.dart';
-import '../../domain/entities/tipe_simpanan.dart';
 import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
 import '../../widget/app_button.dart';

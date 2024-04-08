@@ -3,7 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config.dart';
-import '../../presentation/screens.dart';
+import '../../presentation/angsuran/angsuran.screen.dart';
+import '../../presentation/detail_angsuran/detail_angsuran.screen.dart';
+import '../../presentation/detail_notification/detail_notification.screen.dart';
+import '../../presentation/detail_pengajuan/detail_pengajuan.screen.dart';
+import '../../presentation/detail_simpanan/detail_simpanan.screen.dart';
+import '../../presentation/detail_simpanan_wajib/detail_simpanan_wajib.screen.dart';
+import '../../presentation/detail_transaksi_angsuran/detail_transaksi_angsuran.screen.dart';
+import '../../presentation/detail_transaksi_pinjaman/detail_transaksi_pinjaman.screen.dart';
+import '../../presentation/detail_transaksi_simpanan/detail_transaksi_simpanan.screen.dart';
+import '../../presentation/edit_profile/edit_profile.screen.dart';
+import '../../presentation/history/history.screen.dart';
+import '../../presentation/home/home.screen.dart';
+import '../../presentation/kontrol_penarikan/kontrol_penarikan.screen.dart';
+import '../../presentation/login/login.screen.dart';
+import '../../presentation/notification/notification.screen.dart';
+import '../../presentation/pengajuan/pengajuan.screen.dart';
+import '../../presentation/pinjaman/pinjaman.screen.dart';
+import '../../presentation/profile/profile.screen.dart';
+import '../../presentation/setting/setting.screen.dart';
+import '../../presentation/simpanan/simpanan.screen.dart';
+import '../../presentation/simpanan_wajib/simpanan_wajib.screen.dart';
+import '../../presentation/tagihan/tagihan.screen.dart';
+import '../../presentation/transfer/transfer.screen.dart';
 import 'bindings/controllers/controllers_bindings.dart';
 import 'routes.dart';
 
@@ -36,11 +58,6 @@ class Nav {
       name: Routes.LOGIN,
       page: () => const LoginScreen(),
       binding: LoginControllerBinding(),
-    ),
-    GetPage(
-      name: Routes.DASHBOARD,
-      page: () => const DashboardScreen(),
-      binding: DashboardControllerBinding(),
     ),
     GetPage(
       name: Routes.PROFILE,

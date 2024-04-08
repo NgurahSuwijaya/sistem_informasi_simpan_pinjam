@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/user.dart';
+
+import 'user.dart';
 
 class Member extends Equatable {
   const Member(

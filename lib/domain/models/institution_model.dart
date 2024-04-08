@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/institution.dart';
+
+import '../entities/institution.dart';
 
 class InstitutionsModel extends Equatable {
   const InstitutionsModel({

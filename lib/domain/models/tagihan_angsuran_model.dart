@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tagihan_angsuran.dart';
-
+import '../entities/tagihan_angsuran.dart';
 import 'pinjaman_model.dart';
 
 class TagihanAngsuranModel extends Equatable {

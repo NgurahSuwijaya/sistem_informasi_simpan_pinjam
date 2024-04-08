@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_shaking_text.dart';
 
 import '../infrastructure/theme/app_color.dart';
 import '../infrastructure/theme/app_font.dart';
+import 'app_shaking_text.dart';
 
 class AppCardNotification extends StatefulWidget {
   final bool isReaded;

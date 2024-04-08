@@ -7,12 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/bank_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/simpanan_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_bank.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_simpanan.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
-
+import '../../../domain/core/usecase/bank_usecase.dart';
+import '../../../domain/core/usecase/simpanan_usecase.dart';
+import '../../../domain/entities/response_bank.dart';
+import '../../../domain/entities/tipe_simpanan.dart';
+import '../../../widget/app_alert_dialog.dart';
 import '../../../widget/app_image_preview.dart';
 
 class SimpananController extends GetxController {

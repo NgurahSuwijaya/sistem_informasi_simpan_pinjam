@@ -5,7 +5,8 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_simpanan.dart';
+
+import '../entities/response_tagihan_simpanan.dart';
 
 ResponseTagihanSimpananModel responseTagihanSimpananModelFromJson(String str) =>
     ResponseTagihanSimpananModel.fromJson(json.decode(str));

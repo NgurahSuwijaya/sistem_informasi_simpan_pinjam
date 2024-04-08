@@ -3,11 +3,11 @@ import 'dart:io';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_simpanan_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_tipe_simpanan_model.dart';
 
+import '../../models/response_post_model.dart';
+import '../../models/response_simpanan_model.dart';
+import '../../models/response_tipe_simpanan_model.dart';
 import '../error/exception.dart';
 
 abstract class SimpananDataSource {
@@ -59,7 +59,7 @@ class SimpananDataSourceImpl implements SimpananDataSource {
     if (response.statusCode == 200) {
       return ResponseSimpananModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -75,7 +75,7 @@ class SimpananDataSourceImpl implements SimpananDataSource {
     if (response.statusCode == 200) {
       return ResponseTipeSimpananModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -125,7 +125,7 @@ class SimpananDataSourceImpl implements SimpananDataSource {
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(responseBody));
     } else {
-      throw ServerException();
+      throw ServerException(message: responseBody);
     }
   }
 
@@ -143,7 +143,7 @@ class SimpananDataSourceImpl implements SimpananDataSource {
     if (response.statusCode == 200) {
       return ResponseSimpananModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -160,7 +160,7 @@ class SimpananDataSourceImpl implements SimpananDataSource {
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -177,7 +177,7 @@ class SimpananDataSourceImpl implements SimpananDataSource {
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 }

@@ -5,8 +5,9 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_get_kategori_pinjaman.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/kategori_pinjaman_model.dart';
+
+import '../entities/response_get_kategori_pinjaman.dart';
+import 'kategori_pinjaman_model.dart';
 
 ResponseKategoriPinjamanModel responseKategoriPinjamanModelFromJson(
         String str) =>

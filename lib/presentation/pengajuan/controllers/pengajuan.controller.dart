@@ -7,10 +7,11 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/pinjaman_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/bunga_pinjaman.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/kategori_pinjaman.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_jaminan.dart';
+
+import '../../../domain/core/usecase/pinjaman_usecase.dart';
+import '../../../domain/entities/bunga_pinjaman.dart';
+import '../../../domain/entities/kategori_pinjaman.dart';
+import '../../../domain/entities/tipe_jaminan.dart';
 
 class PengajuanController extends GetxController {
   final PinjamanUseCase _pinjamanUseCase;

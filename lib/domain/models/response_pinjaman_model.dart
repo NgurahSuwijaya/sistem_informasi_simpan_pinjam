@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/pinjaman_model.dart';
-
 import '../entities/response_pinjaman.dart';
+import 'pinjaman_model.dart';
 
 class ResponsePinjamanModel extends Equatable {
   const ResponsePinjamanModel(

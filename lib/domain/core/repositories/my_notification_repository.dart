@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/my_notification.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
 
+import '../../entities/my_notification.dart';
+import '../../entities/response_post.dart';
 import '../error/failure.dart';
 
 abstract class MyNotificationRepository {

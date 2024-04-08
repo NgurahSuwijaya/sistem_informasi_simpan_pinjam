@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/local_data_source/notification_local_data_source.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/exception.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/notification_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/notification.dart';
 
+import '../../entities/notification.dart';
 import '../../models/notification_model.dart';
+import '../data/local_data_source/notification_local_data_source.dart';
+import '../error/exception.dart';
+import '../error/failure.dart';
+import '../repositories/notification_repository.dart';
 
 class NotificationRepositoryImpl implements NotificationRepository {
   final LocalNotificationDataSource localNotificationDataSource;

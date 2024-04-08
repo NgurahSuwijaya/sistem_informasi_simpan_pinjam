@@ -1,13 +1,14 @@
 import 'dart:io';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/auth_remote_data_source.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/auth_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/login.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+import '../../entities/login.dart';
+import '../../entities/response_post.dart';
+import '../data/auth_remote_data_source.dart';
 import '../error/exception.dart';
+import '../error/failure.dart';
+import '../repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthDataSource authDataSource;
@@ -26,8 +27,8 @@ class AuthRepositoryImpl implements AuthRepository {
           await authDataSource.onLoginUser(email, password, fcmToken);
       print(result);
       return Right(result.toEntity());
-    } on ServerException {
-      return Left(ServerFailure('Email atau Password Salah'));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message!.toString()));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {

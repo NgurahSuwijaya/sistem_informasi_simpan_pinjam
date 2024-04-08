@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_login_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
+import '../../models/response_login_model.dart';
+import '../../models/response_post_model.dart';
 import '../error/exception.dart';
 
 abstract class AuthDataSource {
@@ -34,7 +34,7 @@ class AuthDataSourceImpl implements AuthDataSource {
       print(dia);
       return LoginResponseModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: json.decode(response.body)['errors']);
     }
   }
 
@@ -50,7 +50,7 @@ class AuthDataSourceImpl implements AuthDataSource {
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 }

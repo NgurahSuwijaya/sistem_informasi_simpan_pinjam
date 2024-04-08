@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/profile/controllers/profile.controller.dart';
+
+import '../../../infrastructure/theme/app_color.dart';
+import '../controllers/profile.controller.dart';
 
 class ProfileContent extends StatelessWidget {
   final ProfileController profileController;

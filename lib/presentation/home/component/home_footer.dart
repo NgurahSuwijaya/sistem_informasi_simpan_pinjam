@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/home/controllers/home.controller.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_card_button.dart';
+import '../controllers/home.controller.dart';
 
 class HomeFooter extends StatefulWidget {
   final HomeController homeController;

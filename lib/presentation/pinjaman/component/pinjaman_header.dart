@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/controllers/pinjaman.controller.dart';
-
 import '../../../infrastructure/theme/app_font.dart';
+import '../controllers/pinjaman.controller.dart';
 
 class PinjamanHeader extends StatelessWidget {
   const PinjamanHeader({super.key, required PinjamanController controller});

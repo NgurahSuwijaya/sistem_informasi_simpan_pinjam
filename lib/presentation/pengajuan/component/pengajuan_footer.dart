@@ -1,14 +1,19 @@
+import 'package:SIMPIN/widget/app_alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/controllers/pengajuan.controller.dart';
-
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../widget/app_button.dart';
+import '../controllers/pengajuan.controller.dart';
 
-class PengajuanFooter extends StatelessWidget {
+class PengajuanFooter extends StatefulWidget {
   final PengajuanController controller;
   const PengajuanFooter({super.key, required this.controller});
 
+  @override
+  State<PengajuanFooter> createState() => _PengajuanFooterState();
+}
+
+class _PengajuanFooterState extends State<PengajuanFooter> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +23,7 @@ class PengajuanFooter extends StatelessWidget {
           AppButton(
             text: 'Lanjutkan',
             onPressed: () {
-              controller.getPengajuanRequest();
+              widget.controller.getPengajuanRequest();
             },
           ),
           const SizedBox(

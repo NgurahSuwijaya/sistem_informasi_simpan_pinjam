@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -235,7 +236,7 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                                           ),
                                         ],
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                                 const SizedBox(
                                   height: 5,
                                 ),
@@ -342,16 +343,47 @@ class DetailPengajuanScreen extends GetView<DetailPengajuanController> {
                 AppButton(
                   text: "Simpan",
                   onPressed: () {
-                    controller.postPengajuanSimpanan(
-                        tipeAngsuran,
-                        kategoriPinjaman,
-                        jenisBunga,
-                        bungaPinjaman!,
-                        tipeJaminan,
-                        namaJaminan,
-                        nilaiAsetJaminan,
-                        jumlahPinjaman,
-                        jaminanFile);
+                    Get.dialog(CupertinoAlertDialog(
+                      title: const Text("Persyaratan Peminjam"),
+                      content: Column(
+                        children: const [
+                          SizedBox(height: 16),
+                          Text(
+                            """Nasabah/Anggota Koperasi akan mendapatkan dana sesuai dengan yang diajukan dan akan dibebankan bunga sesuai dengan ketentuan dan pengajuan dari nasabah ketika pengajuan disetujui. Nasabah akan dibebankan denda dan administrasi sesuai dengan ketentuan dari koperasi. Setelah pengajuan disetuji peminjam wajib meyerahkan dokumen jaminan yang tercantum ke koperasi pada waktu penyerahan dana pinjaman""",
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            "Dengan melanjutkan, Anda menyetujui persyaratan di atas.",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      actions: <Widget>[
+                        CupertinoDialogAction(
+                          child: const Text('Kembali'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        CupertinoDialogAction(
+                          onPressed: (() => controller.postPengajuanSimpanan(
+                              tipeAngsuran,
+                              kategoriPinjaman,
+                              jenisBunga,
+                              bungaPinjaman!,
+                              tipeJaminan,
+                              namaJaminan,
+                              nilaiAsetJaminan,
+                              jumlahPinjaman,
+                              jaminanFile)),
+                          child: const Text('Lanjutkan'),
+                        )
+                      ],
+                    ));
                   },
                 ),
                 const SizedBox(

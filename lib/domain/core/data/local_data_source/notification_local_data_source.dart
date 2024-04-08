@@ -1,4 +1,4 @@
-import 'package:sistem_informasi_simpan_pinjam/utils/helpers/database_helper.dart';
+import '../../../../utils/helpers/database_helper.dart';
 import '../../../models/notification_model.dart';
 
 abstract class LocalNotificationDataSource {

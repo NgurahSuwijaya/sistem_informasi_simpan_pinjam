@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/profile/component/profile_content.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/profile/component/profile_footer.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/profile/component/profile_header.dart';
-
+import '../../infrastructure/theme/app_color.dart';
+import 'component/profile_content.dart';
+import 'component/profile_footer.dart';
+import 'component/profile_header.dart';
 import 'controllers/profile.controller.dart';
 
 class ProfileScreen extends GetView<ProfileController> {

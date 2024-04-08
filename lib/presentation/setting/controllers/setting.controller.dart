@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/member_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_ok_dialog.dart';
 
 import '../../../domain/core/usecase/login_usecase.dart';
+import '../../../domain/core/usecase/member_usecase.dart';
+import '../../../widget/app_alert_dialog.dart';
+import '../../../widget/app_ok_dialog.dart';
 
 class SettingController extends GetxController {
   final isLoading = false.obs;

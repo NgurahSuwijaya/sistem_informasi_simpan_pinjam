@@ -1,11 +1,7 @@
-// To parse this JSON data, do
-//
-//     final responseBankModel = responseBankModelFromJson(jsonString);
-
 import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_bank.dart';
+
+import '../entities/response_bank.dart';
 
 ResponseBankModel responseBankModelFromJson(String str) =>
     ResponseBankModel.fromJson(json.decode(str));

@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
-
 import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
+import '../../widget/app_button.dart';
 import 'controllers/detail_transaksi_simpanan.controller.dart';
 
 class DetailTransaksiSimpananScreen
@@ -314,7 +312,7 @@ class DetailTransaksiSimpananScreen
                                                                     .data
                                                                     .buktiPembayaran!);
                                                       }),
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                         CupertinoIcons
                                                             .arrow_down_to_line,
                                                         size: 20,
@@ -365,7 +363,7 @@ class DetailTransaksiSimpananScreen
                                                                     .data
                                                                     .kwitansi!);
                                                       }),
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                         CupertinoIcons
                                                             .arrow_down_to_line,
                                                         size: 20,
@@ -378,7 +376,7 @@ class DetailTransaksiSimpananScreen
                                 ],
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Padding(

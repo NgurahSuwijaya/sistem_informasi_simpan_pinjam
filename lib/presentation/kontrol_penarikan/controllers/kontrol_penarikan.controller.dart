@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/simpanan_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_ok_dialog.dart';
+
+import '../../../domain/core/usecase/simpanan_usecase.dart';
+import '../../../widget/app_alert_dialog.dart';
+import '../../../widget/app_ok_dialog.dart';
 
 class KontrolPenarikanController extends GetxController {
   final SimpananUseCase simpananUseCase;

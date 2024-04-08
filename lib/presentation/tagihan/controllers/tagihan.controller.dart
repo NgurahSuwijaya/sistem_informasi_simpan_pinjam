@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/member_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_simpanan.dart';
+import '../../../domain/core/usecase/member_usecase.dart';
+import '../../../domain/entities/response_tagihan_angsuran.dart';
+import '../../../domain/entities/response_tagihan_simpanan.dart';
 
 class TagihanController extends GetxController {
   MemberUseCase memberUseCase;

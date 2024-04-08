@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_simpanan.dart';
+import '../entities/tipe_simpanan.dart';
 
 class TipeSimpanansModel extends Equatable {
   const TipeSimpanansModel({

@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
-
+import '../entities/response_tagihan_angsuran.dart';
 import 'tagihan_angsuran_model.dart';
 
 class ResponseTagihanAngsuranModel extends Equatable {
@@ -48,6 +47,7 @@ class ResponseTagihanAngsuranModel extends Equatable {
   }
 
   @override
+  // TODO: implement props
   List<Object?> get props => [
         success,
         tagihanAngsuran,

@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:http/http.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/angsuran_remote_data_source.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/interfaces/angsuran_repository_impl.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/angsuran_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/angsuran_usecase.dart';
 
+import '../../../../domain/core/data/angsuran_remote_data_source.dart';
+import '../../../../domain/core/interfaces/angsuran_repository_impl.dart';
+import '../../../../domain/core/repositories/angsuran_repository.dart';
+import '../../../../domain/core/usecase/angsuran_usecase.dart';
 import '../../../../presentation/detail_angsuran/controllers/detail_angsuran.controller.dart';
 
 class DetailAngsuranControllerBinding extends Bindings {

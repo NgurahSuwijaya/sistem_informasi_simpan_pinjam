@@ -3,11 +3,10 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/controllers/pinjaman.controller.dart';
-
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_input.dart';
+import '../controllers/pinjaman.controller.dart';
 
 class PinjamanFooter extends StatefulWidget {
   PinjamanController controller;

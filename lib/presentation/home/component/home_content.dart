@@ -3,11 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/home/controllers/home.controller.dart';
-
+import '../../../infrastructure/theme/app_color.dart';
+import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_animated_indicator.dart';
+import '../controllers/home.controller.dart';
 
 class HomeContent extends StatefulWidget {
   final HomeController homeController;

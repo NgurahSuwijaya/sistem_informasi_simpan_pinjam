@@ -3,15 +3,15 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/member_remote_data_source.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/member_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_simpanan.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_transaksi_saya.dart';
 import '../../entities/response_member.dart';
+import '../../entities/response_post.dart';
+import '../../entities/response_tagihan_angsuran.dart';
+import '../../entities/response_tagihan_simpanan.dart';
+import '../../entities/response_transaksi_saya.dart';
+import '../data/member_remote_data_source.dart';
 import '../error/exception.dart';
+import '../error/failure.dart';
+import '../repositories/member_repository.dart';
 
 class MemberRepositoryImpl implements MemberRepository {
   final MemberDataSource memberDataSource;

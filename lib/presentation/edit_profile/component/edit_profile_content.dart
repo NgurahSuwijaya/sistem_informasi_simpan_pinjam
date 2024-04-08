@@ -1,11 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_input.dart';
-
-import '../../../infrastructure/theme/app_color.dart';
+import '../../../widget/app_input.dart';
 
 class EditProfileContent extends StatelessWidget {
   const EditProfileContent({super.key});
@@ -30,10 +25,10 @@ class EditProfileContent extends StatelessWidget {
                 hint: "Nama",
                 canEdit: true,
                 obscureText: false,
-                prefixIcons: Icon(CupertinoIcons.person_2_fill),
+                prefixIcons: const Icon(CupertinoIcons.person_2_fill),
                 isCurrency: false,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               // AppInput(
@@ -61,10 +56,10 @@ class EditProfileContent extends StatelessWidget {
                 canEdit: true,
                 hint: "Telepon",
                 obscureText: false,
-                prefixIcons: Icon(CupertinoIcons.phone_fill),
+                prefixIcons: const Icon(CupertinoIcons.phone_fill),
                 isCurrency: false,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               AppInput(
@@ -72,7 +67,7 @@ class EditProfileContent extends StatelessWidget {
                 hint: "Alamat",
                 canEdit: true,
                 obscureText: false,
-                prefixIcons: Icon(CupertinoIcons.placemark_fill),
+                prefixIcons: const Icon(CupertinoIcons.placemark_fill),
                 isCurrency: false,
               )
             ],

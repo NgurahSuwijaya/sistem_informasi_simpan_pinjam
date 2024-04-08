@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/member_model.dart';
-
 import '../entities/response_member.dart';
+import 'member_model.dart';
 
 class ResponseMemberModel extends Equatable {
   final bool success;

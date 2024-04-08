@@ -1,15 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_transaksi_saya.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/history/component/history_content.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/history/component/history_header.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_transaksi_card.dart';
-
 import '../../infrastructure/theme/app_font.dart';
+import 'component/history_content.dart';
 import 'controllers/history.controller.dart';
 
 class HistoryScreen extends GetView<HistoryController> {

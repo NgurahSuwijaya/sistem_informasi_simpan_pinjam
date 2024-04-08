@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:http/http.dart' as http;
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
 import '../../models/response_member_model.dart';
+import '../../models/response_post_model.dart';
 import '../../models/response_tagihan_angsuran_model.dart';
 import '../../models/response_tagihan_simpanan_model.dart';
 import '../../models/response_transaksi_saya_model.dart';
@@ -42,7 +42,7 @@ class MemberDataSourceImpl implements MemberDataSource {
     if (response.statusCode == 200) {
       return ResponseMemberModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -73,7 +73,7 @@ class MemberDataSourceImpl implements MemberDataSource {
         throw Exception('Empty response body');
       }
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -90,7 +90,7 @@ class MemberDataSourceImpl implements MemberDataSource {
     if (response.statusCode == 200) {
       return ResponseTagihanSimpananModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -102,14 +102,14 @@ class MemberDataSourceImpl implements MemberDataSource {
       'Authorization': 'Bearer $token',
       'Content-Type': 'application/json',
     });
-    print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
       var ayam =
           ResponseTransaksiSayaModel.fromJson(json.decode(response.body));
       print(ayam);
       return ResponseTransaksiSayaModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -124,12 +124,9 @@ class MemberDataSourceImpl implements MemberDataSource {
     });
     print(response.statusCode);
     if (response.statusCode == 200) {
-      var ayam =
-          ResponseTransaksiSayaModel.fromJson(json.decode(response.body));
-      print(ayam);
       return ResponsePostModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -139,18 +136,15 @@ class MemberDataSourceImpl implements MemberDataSource {
     final response = await _httpClient
         .post(Uri.parse('$baseUrl/set-rekening-giro'), headers: {
       'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json',
     }, body: {
-      'rekening_giro': kontrol
+      'rekening_giro': kontrol.toString()
     });
     print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
-      var ayam =
-          ResponseTransaksiSayaModel.fromJson(json.decode(response.body));
-      print(ayam);
       return ResponsePostModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -179,7 +173,7 @@ class MemberDataSourceImpl implements MemberDataSource {
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(responseBody));
     } else {
-      throw ServerException();
+      throw ServerException(message: responseBody);
     }
   }
 }

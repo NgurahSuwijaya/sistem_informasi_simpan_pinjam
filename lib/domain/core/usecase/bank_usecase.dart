@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/bank_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_bank.dart';
+import '../../entities/response_bank.dart';
+import '../error/failure.dart';
+import '../repositories/bank_repository.dart';
 
 class GetBankData {
   final BankRepository _bankRepository;

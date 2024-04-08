@@ -1,14 +1,14 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/bunga_pinjaman.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/kategori_pinjaman.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_jaminan.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/controllers/pengajuan.controller.dart';
 
+import '../../../domain/entities/bunga_pinjaman.dart';
+import '../../../domain/entities/kategori_pinjaman.dart';
+import '../../../domain/entities/tipe_jaminan.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_input.dart';
+import '../controllers/pengajuan.controller.dart';
 
 class PengajuanContent extends StatefulWidget {
   final PengajuanController controller;
@@ -140,7 +140,7 @@ class _PengajuanContentState extends State<PengajuanContent> {
                                 width: 15,
                               ),
                               Text(
-                                'Tipe Angsuran',
+                                'Kategori Pinjaman',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).hintColor),

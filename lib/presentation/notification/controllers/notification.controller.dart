@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/my_notification_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/my_notification.dart';
+
+import '../../../domain/core/usecase/my_notification_usecase.dart';
+import '../../../domain/entities/my_notification.dart';
 
 class NotificationController extends GetxController {
   final MyNotificationUseCase myNotificationUseCase;

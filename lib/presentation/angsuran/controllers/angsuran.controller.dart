@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:SIMPIN/widget/app_ok_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,10 +9,10 @@ import 'package:intl/intl.dart';
 import 'package:mime/mime.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/bank_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
 
+import '../../../domain/core/usecase/bank_usecase.dart';
 import '../../../domain/entities/response_bank.dart';
+import '../../../domain/entities/response_tagihan_angsuran.dart';
 import '../../../widget/app_image_preview.dart';
 
 class AngsuranController extends GetxController {
@@ -158,12 +159,31 @@ class AngsuranController extends GetxController {
         Get.snackbar("Error",
             'Jumlah pembayaran anda lebih kecil dari jumlah tagihan anda');
       } else {
-        Get.toNamed('/detail-angsuran', arguments: [
-          responseTagihanAngsuran,
-          jumlahPembayaranDetail,
-          bankSimpananDetail,
-          buktiBayarSimpananDetail?.path
-        ]);
+        if (responseTagihanAngsuran
+                .tagihanAngsuran![0].pinjaman!.tipeBungaPinjaman ==
+            'menetap') {
+          if (jumlahPembayaranDetail == responseTagihanAngsuran.totalTagihan) {
+            Get.toNamed('/detail-angsuran', arguments: [
+              responseTagihanAngsuran,
+              jumlahPembayaranDetail,
+              bankSimpananDetail,
+              buktiBayarSimpananDetail?.path
+            ]);
+          } else {
+            Get.dialog(AppOkeDialog(
+                onPressed: () => Get.back(),
+                title: "Peringatan",
+                content:
+                    "Jumlah pembayaran harus sama dengan total jumlah tagihan angsuran"));
+          }
+        } else {
+          Get.toNamed('/detail-angsuran', arguments: [
+            responseTagihanAngsuran,
+            jumlahPembayaranDetail,
+            bankSimpananDetail,
+            buktiBayarSimpananDetail?.path
+          ]);
+        }
       }
     } else {
       Get.snackbar("Notifikasi", 'Lengkapi Data Sebelum Melanjutkan');

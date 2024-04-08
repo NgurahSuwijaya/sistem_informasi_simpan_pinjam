@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/user.dart';
-
+import '../entities/user.dart';
 import 'institution_model.dart';
 
 class UserModel extends Equatable {

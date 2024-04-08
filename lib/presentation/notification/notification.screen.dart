@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_card_notification.dart';
+import '../../widget/app_card_notification.dart';
 import 'controllers/notification.controller.dart';
 
 class NotificationScreen extends GetView<NotificationController> {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
+
+import '../infrastructure/theme/app_color.dart';
 
 class AnimatedIndicator extends StatelessWidget {
   final bool isSelected;

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/edit_profile/component/edit_profile_content.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/edit_profile/component/edit_profile_footer.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/edit_profile/component/edit_profile_header.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_card_button.dart';
-
+import '../../infrastructure/theme/app_color.dart';
+import 'component/edit_profile_content.dart';
+import 'component/edit_profile_footer.dart';
+import 'component/edit_profile_header.dart';
 import 'controllers/edit_profile.controller.dart';
 
 class EditProfileScreen extends GetView<EditProfileController> {
@@ -25,7 +23,7 @@ class EditProfileScreen extends GetView<EditProfileController> {
               padding: const EdgeInsets.only(left: 30, right: 30),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   SizedBox(
                     height: 20,
                   ),

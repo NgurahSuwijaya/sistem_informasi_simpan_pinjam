@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_jaminan.dart';
-
 import 'bunga_pinjaman.dart';
+import 'tipe_jaminan.dart';
 
 class ResponsePengajuan extends Equatable {
   final bool success;

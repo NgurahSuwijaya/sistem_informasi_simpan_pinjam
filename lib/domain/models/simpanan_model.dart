@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/simpanan.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/tipe_simpanan_model.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/tipe_transaksi_model.dart';
+import '../entities/simpanan.dart';
 import 'member_model.dart';
+import 'tipe_simpanan_model.dart';
+import 'tipe_transaksi_model.dart';
 
 class SimpananModel extends Equatable {
   const SimpananModel({

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/bunga_pinjaman.dart';
+
+import '../entities/bunga_pinjaman.dart';
 
 class BungaPinjamanModel extends Equatable {
   final int id;

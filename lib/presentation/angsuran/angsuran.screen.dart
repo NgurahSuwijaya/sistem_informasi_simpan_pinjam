@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/angsuran/component/angsuran_content.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/angsuran/component/angsuran_footer.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/angsuran/component/angsuran_header.dart';
+import '../../domain/entities/response_tagihan_angsuran.dart';
+import 'component/angsuran_content.dart';
+import 'component/angsuran_footer.dart';
+import 'component/angsuran_header.dart';
 import 'controllers/angsuran.controller.dart';
 
 class AngsuranScreen extends GetView<AngsuranController> {

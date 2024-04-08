@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
-
 import '../../../domain/core/usecase/simpanan_usecase.dart';
 import '../../../domain/entities/response_bank.dart';
 import '../../../widget/app_image_preview.dart';

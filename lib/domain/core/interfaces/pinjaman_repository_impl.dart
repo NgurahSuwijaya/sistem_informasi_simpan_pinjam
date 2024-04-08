@@ -2,11 +2,10 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_get_kategori_pinjaman.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_pengajuana.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
-
+import '../../entities/response_get_kategori_pinjaman.dart';
+import '../../entities/response_pengajuana.dart';
 import '../../entities/response_pinjaman.dart';
+import '../../entities/response_post.dart';
 import '../data/pinjaman_remote_data_source.dart';
 import '../error/exception.dart';
 import '../error/failure.dart';

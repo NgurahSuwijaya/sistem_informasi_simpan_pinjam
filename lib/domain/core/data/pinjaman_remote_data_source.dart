@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_get_kategori_pinjaman_model.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_pengajuan_model.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_pinjaman_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
 import "package:path/path.dart";
 
+import '../../models/response_get_kategori_pinjaman_model.dart';
+import '../../models/response_pengajuan_model.dart';
+import '../../models/response_pinjaman_model.dart';
+import '../../models/response_post_model.dart';
 import '../error/exception.dart';
 
 abstract class PinjamanDataSource {
@@ -56,7 +56,7 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
       // } else if(response.statusCode == 401){
       //   return
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -78,7 +78,7 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
       // } else if(response.statusCode == 401){
       //   return
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -103,7 +103,7 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
     if (response.statusCode == 200) {
       return ResponsePengajuanModel.fromJson(json.decode(responseBody));
     } else {
-      throw ServerException();
+      throw ServerException(message: responseBody);
     }
   }
 
@@ -149,7 +149,7 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(responseBody));
     } else {
-      throw ServerException();
+      throw ServerException(message: responseBody);
     }
   }
 
@@ -168,7 +168,7 @@ class PinjamanDataSourceImpl implements PinjamanDataSource {
     if (response.statusCode == 200) {
       return ResponsePinjamanModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 }

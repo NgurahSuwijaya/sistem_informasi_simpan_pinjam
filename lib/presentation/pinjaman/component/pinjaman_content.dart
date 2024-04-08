@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/main.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/controllers/pinjaman.controller.dart';
-
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
-import '../../../widget/app_input.dart';
+import '../controllers/pinjaman.controller.dart';
 
 class PinjamanContent extends StatefulWidget {
   final PinjamanController controller;
@@ -248,13 +243,16 @@ class _PinjamanContentState extends State<PinjamanContent> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Jenis Jaminan",
+                      "Berkas Jaminan",
                       style: AppFont.title1,
                     ),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          widget.controller.downloadFile(widget.controller
+                              .pinjamanData.value!.dokumenAsetJaminan!);
+                        },
                         icon: const Icon(
-                          CupertinoIcons.cloud_download_fill,
+                          Icons.download,
                           color: AppColor.blackComponent,
                         ))
                   ],

@@ -5,7 +5,7 @@ import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/simpanan_usecase.dart';
+import '../../../domain/core/usecase/simpanan_usecase.dart';
 import '../../../domain/entities/institution.dart';
 import '../../../domain/entities/member.dart';
 import '../../../domain/entities/response_simpanan.dart';

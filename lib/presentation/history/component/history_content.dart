@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-
-import 'package:sistem_informasi_simpan_pinjam/presentation/history/controllers/history.controller.dart';
-
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../widget/app_transaksi_card.dart';
+import '../controllers/history.controller.dart';
 
 class HistoryContent extends StatefulWidget {
   final HistoryController controller;
@@ -61,8 +58,8 @@ class _HistoryContentState extends State<HistoryContent> {
                         color: AppColor.green1,
                         size: 30,
                       ),
-                      onTap: () => widget.controller.goToDetailSimpanan(
-                          transaksi.simpananId!, "penarikan"),
+                      onTap: () => widget.controller
+                          .goToDetailSimpanan(transaksi.simpananId!, "setoran"),
                     );
                   } else if (transaksi.tipeTransaksiId == 7) {
                     return AppTransaksiCard(

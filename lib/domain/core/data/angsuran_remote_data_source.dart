@@ -3,10 +3,10 @@ import 'dart:io';
 
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
 import 'package:http/http.dart' as http;
-import 'package:sistem_informasi_simpan_pinjam/domain/models/angsuran_pinjaman_detail.dart';
 
+import '../../entities/response_tagihan_angsuran.dart';
+import '../../models/angsuran_pinjaman_detail.dart';
 import '../../models/response_post_model.dart';
 import '../error/exception.dart';
 
@@ -76,7 +76,7 @@ class AngsuranDataSourceImpl implements AngsuranDataSource {
     if (response.statusCode == 200) {
       return ResponsePostModel.fromJson(json.decode(responseBody));
     } else {
-      throw ServerException();
+      throw ServerException(message: responseBody);
     }
   }
 
@@ -92,7 +92,7 @@ class AngsuranDataSourceImpl implements AngsuranDataSource {
     if (response.statusCode == 200) {
       return AngsuranDetailModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 }

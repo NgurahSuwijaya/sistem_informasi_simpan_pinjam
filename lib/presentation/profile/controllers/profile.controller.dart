@@ -6,12 +6,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/institution.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_ok_dialog.dart';
 import '../../../domain/core/usecase/member_usecase.dart';
+import '../../../domain/entities/institution.dart';
 import '../../../domain/entities/member.dart';
 import '../../../domain/entities/user.dart';
+import '../../../widget/app_alert_dialog.dart';
+import '../../../widget/app_ok_dialog.dart';
 
 class ProfileController extends GetxController {
   final MemberUseCase _getMemberdata;

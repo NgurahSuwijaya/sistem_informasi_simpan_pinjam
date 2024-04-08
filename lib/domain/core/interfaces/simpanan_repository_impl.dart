@@ -2,15 +2,13 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/simpanan_remote_data_source.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/simpanan_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_simpanan.dart';
-
+import '../../entities/response_post.dart';
+import '../../entities/response_simpanan.dart';
 import '../../entities/response_tipe_simpanan.dart';
+import '../data/simpanan_remote_data_source.dart';
 import '../error/exception.dart';
+import '../error/failure.dart';
+import '../repositories/simpanan_repository.dart';
 
 class SimpananRepositoryImpl implements SimpananRepository {
   final SimpananDataSource simpananDataSource;

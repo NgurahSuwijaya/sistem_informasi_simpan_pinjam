@@ -1,11 +1,11 @@
+import 'package:SIMPIN/widget/app_alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
-
+import '../../infrastructure/theme/app_color.dart';
 import '../../infrastructure/theme/app_font.dart';
+import '../../widget/app_button.dart';
 import 'controllers/detail_notification.controller.dart';
 
 class DetailNotificationScreen extends GetView<DetailNotificationController> {
@@ -37,31 +37,51 @@ class DetailNotificationScreen extends GetView<DetailNotificationController> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 25.0, vertical: 25),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      controller.title.value == 'Diterima'
-                          ? const Icon(
-                              CupertinoIcons.checkmark_alt_circle,
-                              color: AppColor.green1,
-                              size: 35,
-                            )
-                          : controller.title.value == "Ditolak"
+                      Row(
+                        children: [
+                          controller.title.value == 'Diterima'
                               ? const Icon(
-                                  CupertinoIcons.exclamationmark_triangle_fill,
-                                  color: AppColor.sRed,
+                                  CupertinoIcons.checkmark_alt_circle,
+                                  color: AppColor.green1,
                                   size: 35,
                                 )
-                              : const Icon(
-                                  CupertinoIcons.mail_solid,
-                                  color: AppColor.sBlue,
-                                  size: 35,
-                                ),
-                      const SizedBox(
-                        width: 10,
+                              : controller.title.value == "Ditolak"
+                                  ? const Icon(
+                                      CupertinoIcons
+                                          .exclamationmark_triangle_fill,
+                                      color: AppColor.sRed,
+                                      size: 35,
+                                    )
+                                  : const Icon(
+                                      CupertinoIcons.mail_solid,
+                                      color: AppColor.sBlue,
+                                      size: 35,
+                                    ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            controller.myAllNotification.value!.title!,
+                            style: AppFont.title1,
+                          ),
+                        ],
                       ),
-                      Text(
-                        controller.myAllNotification.value!.title!,
-                        style: AppFont.title1,
-                      ),
+                      IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: (() {
+                            Get.dialog(AppAlertDialog(
+                                onPressed: () => controller.deleteNotification(
+                                    controller.myAllNotification.value!),
+                                title: "Pemberitahuan",
+                                content:
+                                    "Apakah anda akan menghapus pesan ini ?"));
+                          }),
+                          icon: const Icon(
+                            CupertinoIcons.trash,
+                            color: AppColor.blackComponent,
+                          ))
                     ],
                   ),
                 ),

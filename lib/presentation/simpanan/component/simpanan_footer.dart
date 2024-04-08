@@ -1,10 +1,6 @@
-import 'package:flutter/src/widgets/basic.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
-
+import '../../../widget/app_button.dart';
 import '../controllers/simpanan.controller.dart';
 
 class SimpananFooter extends StatefulWidget {

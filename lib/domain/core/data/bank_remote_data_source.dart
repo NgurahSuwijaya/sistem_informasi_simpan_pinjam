@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_bank_model.dart';
 import 'package:http/http.dart' as http;
 
+import '../../models/response_bank_model.dart';
 import '../error/exception.dart';
 
 abstract class BankDataSource {
@@ -29,7 +29,7 @@ class BankDataSourceImpl implements BankDataSource {
       print(ayam);
       return ResponseBankModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 }

@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
 
 import '../../infrastructure/theme/app_color.dart';
+import '../../infrastructure/theme/app_font.dart';
+import '../../widget/app_alert_dialog.dart';
 import '../../widget/app_ok_dialog.dart';
 import 'controllers/setting.controller.dart';
 
@@ -189,8 +189,11 @@ class SettingScreen extends GetView<SettingController> {
                                           onChanged: ((value) {
                                             if (value == true) {
                                               Get.dialog(AppAlertDialog(
-                                                  onPressed: () => controller
-                                                      .onActiveRekeningGiro(),
+                                                  onPressed: () => {
+                                                        Get.back(),
+                                                        controller
+                                                            .onActiveRekeningGiro()
+                                                      },
                                                   title: "Rekening",
                                                   content:
                                                       "Apakah anda akan mengaktifkan rekening giro?"));
@@ -198,8 +201,14 @@ class SettingScreen extends GetView<SettingController> {
                                               if (controller.saldoGiro.value ==
                                                   0) {
                                                 Get.dialog(AppAlertDialog(
-                                                    onPressed: () => controller
-                                                        .onGiroChange(value),
+                                                    onPressed: () => {
+                                                          controller
+                                                              .onGiroChange(
+                                                                  value),
+                                                          Get.back(),
+                                                          controller
+                                                              .setRekeningGiro()
+                                                        },
                                                     title: "Rekening Giro",
                                                     content:
                                                         "Apakah anda akan mengnonaktifkan layanan rekening giro?"));

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/tagihan/controllers/tagihan.controller.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
-
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
+import '../../../widget/app_button.dart';
+import '../controllers/tagihan.controller.dart';
 
 class TagihanContent extends StatefulWidget {
   TagihanController controller;

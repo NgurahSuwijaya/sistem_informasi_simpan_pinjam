@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/models/my_notification_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:sistem_informasi_simpan_pinjam/domain/models/response_post_model.dart';
 
+import '../../models/my_notification_model.dart';
+import '../../models/response_post_model.dart';
 import '../error/exception.dart';
 
 abstract class MyNotificationDataSource {
@@ -36,7 +36,7 @@ class MyNotificationDataSourceImpl implements MyNotificationDataSource {
       print(ayam);
       return ResponseMyNotificationModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -53,7 +53,7 @@ class MyNotificationDataSourceImpl implements MyNotificationDataSource {
       print(ayam);
       return ResponsePostModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 
@@ -70,7 +70,7 @@ class MyNotificationDataSourceImpl implements MyNotificationDataSource {
       print(ayam);
       return ResponsePostModel.fromJson(json.decode(response.body));
     } else {
-      throw ServerException();
+      throw ServerException(message: response.body);
     }
   }
 }

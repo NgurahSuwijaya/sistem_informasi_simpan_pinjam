@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/home/component/home_content.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/home/component/home_footer.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/home/component/home_header.dart';
-
 import '../../infrastructure/theme/app_color.dart';
+import 'component/home_content.dart';
+import 'component/home_footer.dart';
+import 'component/home_header.dart';
 import 'controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {

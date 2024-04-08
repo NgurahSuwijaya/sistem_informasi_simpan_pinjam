@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/angsuran/controllers/angsuran.controller.dart';
 import '../../../domain/entities/response_bank.dart';
+import '../../../domain/entities/response_tagihan_angsuran.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_input.dart';
+import '../controllers/angsuran.controller.dart';
 
 class AngsuranContent extends StatefulWidget {
   final AngsuranController controller;
@@ -127,7 +127,7 @@ class _AngsuranContentState extends State<AngsuranContent> {
                         //   height: 20,
                         // ),
                         Text(
-                          "Bank Jaminan",
+                          "Bank Koperasi",
                           style: AppFont.title1,
                         ),
                         const SizedBox(

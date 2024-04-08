@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/tipe_simpanan_model.dart';
 
 import '../entities/response_tipe_simpanan.dart';
+import 'tipe_simpanan_model.dart';
 
 class ResponseTipeSimpananModel extends Equatable {
   final bool success;

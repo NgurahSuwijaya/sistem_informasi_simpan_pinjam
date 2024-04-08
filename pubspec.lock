@@ -700,6 +700,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.6"
+  usage:
+    dependency: "direct main"
+    description:
+      name: usage
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.0"
   vector_math:
     dependency: transitive
     description:

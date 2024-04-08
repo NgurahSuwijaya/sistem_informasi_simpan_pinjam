@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_simpanan.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/simpanan_wajib/controllers/simpanan_wajib.controller.dart';
-
+import '../../../domain/entities/response_tagihan_simpanan.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../widget/app_button.dart';
+import '../controllers/simpanan_wajib.controller.dart';
 
 class SimpananWajibFooter extends StatefulWidget {
   final SimpananWajibController controller;

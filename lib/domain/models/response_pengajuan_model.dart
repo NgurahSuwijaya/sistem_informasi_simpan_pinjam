@@ -3,12 +3,11 @@
 //     final responsePengajuanModel = responsePengajuanModelFromJson(jsonString);
 
 import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_pengajuana.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/tipe_jaminan_model.dart';
 
+import '../entities/response_pengajuana.dart';
 import 'bunga_pinjaman_model.dart';
+import 'tipe_jaminan_model.dart';
 
 ResponsePengajuanModel responsePengajuanModelFromJson(String str) =>
     ResponsePengajuanModel.fromJson(json.decode(str));

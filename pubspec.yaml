@@ -1,4 +1,4 @@
-name: sistem_informasi_simpan_pinjam
+name: SIMPIN
 version: 1.0.0+1
 publish_to: none
 description: Aplikasi Mobile dari Sistem Informasi Simpan Pinjam
@@ -20,6 +20,7 @@ dependencies:
   url_launcher: ^6.0.10
   carousel_slider: ^4.0.0
   open_file: ^3.0.3
+  usage: ^4.1.0
   flutter_pdfview: ^1.0.2
   dropdown_button2: ^1.9.2
   http: ^0.13.5

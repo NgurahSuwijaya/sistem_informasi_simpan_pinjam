@@ -8,11 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/local_data_source/notification_local_data_source.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/notification_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/notification_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/utils/helpers/database_helper.dart';
 
 import 'domain/core/interfaces/notification_repository_impl.dart';
 import 'domain/entities/notification.dart';
@@ -20,20 +15,15 @@ import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'infrastructure/theme/app_color.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
-
   if (kDebugMode) {
     print("Handling a background message: ${message.messageId}");
   }
 }
-
-// final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-//     FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,13 +37,6 @@ void main() async {
   );
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  DatabaseHelper databaseHelper = DatabaseHelper();
-  LocalNotificationDataSourceImpl localNotificationDataSource =
-      LocalNotificationDataSourceImpl(databaseHelper);
-  NotificationRepository notificationRepository =
-      NotificationRepositoryImpl(localNotificationDataSource);
-  NotificationUseCase notificationUseCase =
-      NotificationUseCase(notificationRepository);
 
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
@@ -80,13 +63,6 @@ void main() async {
 
       final titleNotif = notification.title;
 
-      final result =
-          await notificationUseCase.onInsertNotification(newNotification);
-      result.fold((l) => print(l.message), (r) => print('Berhasil'));
-      SharedPreferences preferences = await SharedPreferences.getInstance();
-      final isNotificationOn =
-          // preferences.getBool('isNotification')!
-          true;
       // if (isNotificationOn) {
 
       Map<String, dynamic> data = message.data;

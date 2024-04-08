@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/simpanan/controllers/simpanan.controller.dart';
-
 import '../../../domain/entities/response_bank.dart';
+import '../../../infrastructure/theme/app_color.dart';
+import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_input.dart';
+import '../controllers/simpanan.controller.dart';
 
 class SimpananContent extends StatefulWidget {
   final SimpananController controller;

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/component/pengajuan_content.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/component/pengajuan_content2.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/component/pengajuan_footer.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pengajuan/component/pengajuan_header.dart';
+import 'component/pengajuan_content.dart';
+import 'component/pengajuan_footer.dart';
+import 'component/pengajuan_header.dart';
 import 'controllers/pengajuan.controller.dart';
 
 class PengajuanScreen extends GetView<PengajuanController> {

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/member.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/models/user_model.dart';
+
+import '../entities/member.dart';
+import 'user_model.dart';
 
 class MemberModel extends Equatable {
   const MemberModel({

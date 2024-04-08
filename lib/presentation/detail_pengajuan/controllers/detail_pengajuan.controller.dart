@@ -3,11 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:get/get.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/pinjaman_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
-
+import '../../../domain/core/usecase/pinjaman_usecase.dart';
 import '../../../domain/entities/bunga_pinjaman.dart';
 import '../../../domain/entities/kategori_pinjaman.dart';
 import '../../../domain/entities/tipe_jaminan.dart';
@@ -24,6 +21,7 @@ class DetailPengajuanController extends GetxController {
   final tipeAngsuran = ''.obs;
   final jenisBunga = ''.obs;
   final jaminanFile = Rx<File?>(File(''));
+  final RxBool tOS = false.obs;
 
   DetailPengajuanController(this._pinjamanUseCase);
 
@@ -76,19 +74,6 @@ class DetailPengajuanController extends GetxController {
                       "Berhasil melakukan pengajuan pinjaman! Pengajuan anda akan segera di validasi oleh pengurus koperasi mohon ditunggu.")),
             });
   }
-
-  // void getArgumentPrevPage() {
-  //   final arg = Get.arguments;
-  //   tipeAngsuran.value = arg[0];
-  //   kategoriPinjaman.value = arg[1];
-  //   jenisBunga.value = arg[2];
-  //   bungaPinjaman.value = arg[3];
-  //   tipeJaminan.value = arg[4];
-  //   namaJaminan.value = arg[5];
-  //   nilaiAsetJaminan.value = arg[6];
-  //   jumlahPinjaman.value = arg[7];
-  //   jaminanFile.value = File(arg[8]);
-  // }
 
   void previewFile({required String filePath}) {
     if (filePath.endsWith('.pdf')) {

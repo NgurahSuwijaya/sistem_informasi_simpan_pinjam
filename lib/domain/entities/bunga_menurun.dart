@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/kategori_pinjaman.dart';
+
+import 'kategori_pinjaman.dart';
 
 class BungaMenurun extends Equatable {
   const BungaMenurun({

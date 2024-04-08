@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/pinjaman.dart';
+
+import 'pinjaman.dart';
 
 class ResponsePinjaman extends Equatable {
   const ResponsePinjaman(

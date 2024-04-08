@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/my_notification_data_source.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/my_notification_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/my_notification.dart';
 
+import '../../entities/my_notification.dart';
+import '../../entities/response_post.dart';
+import '../data/my_notification_data_source.dart';
 import '../error/exception.dart';
+import '../error/failure.dart';
+import '../repositories/my_notification_repository.dart';
 
 class MyNotificationRepositoryImpl implements MyNotificationRepository {
   final MyNotificationDataSource myNotificationDataSource;

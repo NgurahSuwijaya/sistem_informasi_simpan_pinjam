@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_font.dart';
+import '../../../infrastructure/theme/app_font.dart';
 
 class SimpananHeader extends StatelessWidget {
   const SimpananHeader({super.key});

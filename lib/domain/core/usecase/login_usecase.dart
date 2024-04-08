@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_post.dart';
 import '../../entities/login.dart';
+import '../../entities/response_post.dart';
 import '../error/failure.dart';
 import '../repositories/auth_repository.dart';
 

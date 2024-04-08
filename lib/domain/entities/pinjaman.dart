@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
-
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/tipe_jaminan.dart';
 import 'bunga_pinjaman2.dart';
+import 'tipe_jaminan.dart';
 
 class Pinjaman extends Equatable {
   const Pinjaman({

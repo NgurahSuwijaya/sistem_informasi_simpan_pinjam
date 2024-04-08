@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/component/pinjaman_content.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/component/pinjaman_footer.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/component/pinjaman_header.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/pinjaman/component/pinjaman_tidak_ada.dart';
-
+import 'component/pinjaman_content.dart';
+import 'component/pinjaman_footer.dart';
+import 'component/pinjaman_header.dart';
+import 'component/pinjaman_tidak_ada.dart';
 import 'controllers/pinjaman.controller.dart';
 
 class PinjamanScreen extends GetView<PinjamanController> {

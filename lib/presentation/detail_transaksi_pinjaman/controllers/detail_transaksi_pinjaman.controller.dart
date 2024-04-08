@@ -5,9 +5,10 @@ import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/pinjaman_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_pinjaman.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../domain/core/usecase/pinjaman_usecase.dart';
+import '../../../domain/entities/response_pinjaman.dart';
 
 class DetailTransaksiPinjamanController extends GetxController {
   final PinjamanUseCase _pinjamanUseCase;

@@ -1,13 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// To parse this JSON data, do
-//
-//     final responseMyNotificationModel = responseMyNotificationModelFromJson(jsonString);
-
 import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/my_notification.dart';
+import '../entities/my_notification.dart';
 
 ResponseMyNotificationModel responseMyNotificationModelFromJson(String str) =>
     ResponseMyNotificationModel.fromJson(json.decode(str));

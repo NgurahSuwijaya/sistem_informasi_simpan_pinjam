@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
 import 'package:http/http.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/data/pinjaman_remote_data_source.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/interfaces/pinjaman_repository_impl.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/repositories/pinjaman_repository.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/pinjaman_usecase.dart';
-
+import '../../../../domain/core/data/pinjaman_remote_data_source.dart';
+import '../../../../domain/core/interfaces/pinjaman_repository_impl.dart';
+import '../../../../domain/core/repositories/pinjaman_repository.dart';
+import '../../../../domain/core/usecase/pinjaman_usecase.dart';
 import '../../../../presentation/pinjaman/controllers/pinjaman.controller.dart';
 
 class PinjamanControllerBinding extends Bindings {

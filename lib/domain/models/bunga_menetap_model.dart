@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/bunga_menetap.dart';
-
+import '../entities/bunga_menetap.dart';
 import 'kategori_pinjaman_model.dart';
 
 class BungaMenetapModel extends Equatable {

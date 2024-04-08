@@ -1,13 +1,13 @@
 import 'dart:io';
 
+import 'package:SIMPIN/widget/app_ok_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
-
 import '../../../domain/core/usecase/angsuran_usecase.dart';
 import '../../../domain/entities/response_bank.dart';
+import '../../../domain/entities/response_tagihan_angsuran.dart';
 import '../../../widget/app_image_preview.dart';
 
 class DetailAngsuranController extends GetxController
@@ -96,8 +96,15 @@ class DetailAngsuranController extends GetxController
         jumlah: jumlah,
         buktiBayar: File(buktiBayar));
 
-    result.fold((l) => Get.snackbar("Error", l.message),
-        (r) => {Get.snackbar("Succes", r.message!), Get.offAllNamed('/home')});
+    result.fold(
+        (l) => Get.snackbar("Error", l.message),
+        (r) => {
+              Get.dialog(AppOkeDialog(
+                  onPressed: () => Get.offAllNamed('/home'),
+                  title: "Pemberitahuan",
+                  content:
+                      "Pembayaran anda berhasil di ajukan pengurus koperasi akan segera memvalidasi transaksi anda. Mohon ditunggu")),
+            });
   }
 
   void getArgumentPrevPage() {

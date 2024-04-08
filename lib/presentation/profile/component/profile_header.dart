@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/profile/controllers/profile.controller.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_alert_dialog.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_bottom_sheet.dart';
-
 import '../../../infrastructure/theme/app_color.dart';
+import '../../../widget/app_bottom_sheet.dart';
+import '../controllers/profile.controller.dart';
 
 class ProfileHeader extends StatelessWidget {
   final ProfileController controller;

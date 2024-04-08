@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:intl/intl.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_simpanan.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/simpanan_wajib/controllers/simpanan_wajib.controller.dart';
-
 import '../../../domain/entities/response_bank.dart';
+import '../../../domain/entities/response_tagihan_simpanan.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../infrastructure/theme/app_font.dart';
 import '../../../widget/app_input.dart';
+import '../controllers/simpanan_wajib.controller.dart';
 
 class SimpananWajibContent extends StatefulWidget {
   final SimpananWajibController controller;

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/response_tagihan_angsuran.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/angsuran/controllers/angsuran.controller.dart';
-
+import '../../../domain/entities/response_tagihan_angsuran.dart';
 import '../../../infrastructure/theme/app_color.dart';
 import '../../../widget/app_button.dart';
+import '../controllers/angsuran.controller.dart';
 
 class AngsuranFooter extends StatefulWidget {
   final AngsuranController controller;

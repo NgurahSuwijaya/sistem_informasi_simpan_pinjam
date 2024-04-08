@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sistem_informasi_simpan_pinjam/infrastructure/theme/app_color.dart';
+
+import 'app_color.dart';
 
 class AppFont {
   static TextStyle get h1 => const TextStyle(

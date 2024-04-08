@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/error/failure.dart';
 
 import '../../entities/notification.dart';
+import '../error/failure.dart';
 
 abstract class NotificationRepository {
   Future<Either<Failure, void>> insertNotification(

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/kategori_pinjaman.dart';
+
+import '../entities/kategori_pinjaman.dart';
 
 class KategoriPinjamanModel extends Equatable {
   const KategoriPinjamanModel({

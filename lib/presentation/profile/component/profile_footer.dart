@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sistem_informasi_simpan_pinjam/presentation/profile/controllers/profile.controller.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_button.dart';
-import 'package:sistem_informasi_simpan_pinjam/widget/app_ok_dialog.dart';
-
 import '../../../infrastructure/theme/app_color.dart';
+import '../../../widget/app_button.dart';
+import '../../../widget/app_ok_dialog.dart';
+import '../controllers/profile.controller.dart';
 
 class ProfileFooter extends StatelessWidget {
   final ProfileController profileController;

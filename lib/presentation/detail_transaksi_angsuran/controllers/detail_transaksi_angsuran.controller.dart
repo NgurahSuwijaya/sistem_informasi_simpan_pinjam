@@ -5,9 +5,10 @@ import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/core/usecase/angsuran_usecase.dart';
-import 'package:sistem_informasi_simpan_pinjam/domain/entities/angsuran_pinjaman_detail.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../domain/core/usecase/angsuran_usecase.dart';
+import '../../../domain/entities/angsuran_pinjaman_detail.dart';
 
 class DetailTransaksiAngsuranController extends GetxController {
   final AngsuranUseCase angsuranUseCase;
